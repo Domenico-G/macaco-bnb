@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuzzleHttp\Psr7;
 use App\Flat;
+use App\Service;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,9 @@ class FlatController extends Controller
      */
     public function create()
     {
-        return view("auth.flats.create");
+
+        $services = Service::all();
+        return view("auth.flats.create", compact("services"));
     }
 
     /**
@@ -43,7 +46,6 @@ class FlatController extends Controller
     {
         $data = $request->all();
         $id = Auth::id();
-        dd($data);
 
 
 
@@ -68,6 +70,7 @@ class FlatController extends Controller
             // Creare pagine per gestione errore
             return "caso";
         } else {
+            $services = $data["services"];
             $lat = $res->results[0]->position->lat;
             $lon = $res->results[0]->position->lon;
             $flat = new Flat();
@@ -76,11 +79,18 @@ class FlatController extends Controller
             $flat->lon = $lon;
             $flat->user_id = $id;
             $flat->save();
-            return view("caso");
+
+
+
+            $detail = new Detail();
+            $detail->flat_id = $flat->id;
+            $detail->fill($data);
+            $detail->save();
+
+            $flat->services()->attach($services);
         }
 
 
-        $detail = new Detail();
 
 
 

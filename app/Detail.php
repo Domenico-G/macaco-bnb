@@ -8,7 +8,6 @@ class Detail extends Model
 {
     protected $fillable =
     [
-        "flat_id",
         "flat_title",
         "description",
         "image",
