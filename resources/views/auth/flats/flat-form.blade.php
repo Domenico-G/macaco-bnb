@@ -74,7 +74,7 @@
          <div class="form-row">
              <div class="form-group col-12">
                  <input type="text" class="form-control {{ $errors->has('flat_title') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->flat_title : '' }}" id="flat_title" name="flat_title"
+                     value="{{ isset($flat) ? $flat->details->flat_title : '' }}" id="flat_title" name="flat_title"
                      placeholder="Inserisci una breve descrizione che introduca l'appartamento">
                  <div class="invalid-feedback">
                      Inserisci una breve descrizione
@@ -83,7 +83,7 @@
 
              <div class="form-group col-12">
                  <input type="text" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->description : '' }}" id="description" name="description"
+                     value="{{ isset($flat) ? $flat->details->description : '' }}" id="description" name="description"
                      placeholder="Inserisci una descrizione completa dell'appartamento">
                  <div class="invalid-feedback">
                      Inserisci unadescrizione
@@ -93,7 +93,7 @@
 
              <div class="form-group col-12">
                  <input type="text" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->image : '' }}" id="image" name="image"
+                     value="{{ isset($flat) ? $flat->details->image : '' }}" id="image" name="image"
                      placeholder="Inserisci un'immagine">
                  <div class="invalid-feedback">
                      Inserisci un url
@@ -103,7 +103,7 @@
 
              <div class="form-group col-12">
                  <input type="number" class="form-control {{ $errors->has('area_sqm') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->area_sqm : '' }}" id="area_sqm" name="area_sqm"
+                     value="{{ isset($flat) ? $flat->details->area_sqm : '' }}" id="area_sqm" name="area_sqm"
                      placeholder="Inserisci le dimensioni dell'appartamento in metri quadri">
                  <div class="invalid-feedback">
                      Inserisci un numero
@@ -113,7 +113,7 @@
 
              <div class="form-group col-12">
                  <input type="number" class="form-control {{ $errors->has('rooms_quantity') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->rooms_quantity : '' }}" id="rooms_quantity"
+                     value="{{ isset($flat) ? $flat->details->rooms_quantity : '' }}" id="rooms_quantity"
                      name="rooms_quantity" placeholder="Inserisci il numero delle stanze ">
                  <div class="invalid-feedback">
                      Inserisci un numero
@@ -123,7 +123,7 @@
 
              <div class="form-group col-12">
                  <input type="text" class="form-control {{ $errors->has('beds_quantity') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->beds_quantity : '' }}" id="beds_quantity" name="beds_quantity"
+                     value="{{ isset($flat) ? $flat->details->beds_quantity : '' }}" id="beds_quantity" name="beds_quantity"
                      placeholder="Iinserisci in numero dei posti letto disponibili">
                  <div class="invalid-feedback">
                      Inserisci un numero
@@ -133,7 +133,7 @@
 
              <div class="form-group col-12">
                  <input type="text" class="form-control {{ $errors->has('bathrooms_quantity') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->bathrooms_quantity : '' }}" id="bathrooms_quantity"
+                     value="{{ isset($flat) ? $flat->details->bathrooms_quantity : '' }}" id="bathrooms_quantity"
                      name="bathrooms_quantity" placeholder="Inserisci il numero dei bagno disponibili">
                  <div class="invalid-feedback">
                      Inserisci un numero
@@ -143,7 +143,7 @@
 
              <div class="form-group col-12">
                  <input type="text" class="form-control {{ $errors->has('price_day') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->price_day : '' }}" id="price_day" name="price_day"
+                     value="{{ isset($flat) ? $flat->details->price_day : '' }}" id="price_day" name="price_day"
                      placeholder="Inserici il prezzo per giorno">
                  <div class="invalid-feedback">
                      Inserisci un numero
@@ -152,13 +152,21 @@
 
              <div class="form-group col-12">
                  <div class="form-check">
-                     <input class="form-check-input" type="radio" name="visible" id="visible" value="1">
+                     <input class="form-check-input" type="radio" name="visible" id="visible"
+                     @if ($flat->details->visible === 1)
+                         checked
+                     @endif
+                     value="1">
                      <label class="form-check-label" for="visible">
                          Rendi subito visibile l'appartamento
                      </label>
                  </div>
                  <div class="form-check">
-                     <input class="form-check-input" type="radio" name="visible" id="visible" checked value="0">
+                     <input class="form-check-input" type="radio" name="visible" id="visible"
+                     @if ($flat->details->visible === 0)
+                         checked
+                     @endif
+                     value="0">
                      <label class="form-check-label" for="visible">
                          Tieni nascosto l'appartamento
                      </label>

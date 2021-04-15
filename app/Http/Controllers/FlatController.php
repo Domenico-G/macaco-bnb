@@ -88,6 +88,8 @@ class FlatController extends Controller
             $detail->save();
 
             $flat->services()->attach($services);
+
+            return redirect()->route("flat.show", compact("flat"));
         }
 
 
@@ -105,40 +107,57 @@ class FlatController extends Controller
      */
     public function show(Flat $flat)
     {
-        //
+        return view("public.flats.show-flat", compact("flat"));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Flat $flat
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Flat $flat)
     {
-        //
+        $services = Service::All();
+        $detail = Detail::All();
+        return view("auth.flats.edit", compact("flat", "detail", "services"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Flat $flat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Flat $flat)
     {
-        return view("auth.flats.edit", compact("id"));
+
+        $data = $request->all();
+        $services = $data["services"];
+
+        $flat->update($data);
+        $flat->details->update($data);
+
+        $flat->services()->sync($services);
+
+
+        return redirect()->route("flat.show", compact("flat"));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Flat $flat
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Flat $flat)
     {
-        //
+
+        $flat->details->delete();
+        $flat->services()->detach($flat->services);
+        $flat->delete();
+
+        return redirect()->route("home");
     }
 }
