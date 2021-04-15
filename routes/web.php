@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Flat;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/vue', 'HomeController@vue');
+Route::resource('flat', FlatController::class)->middleware("auth");

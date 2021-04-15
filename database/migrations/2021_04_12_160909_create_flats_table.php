@@ -20,7 +20,8 @@ class CreateFlatsTable extends Migration
             $table->double("lon", 11, 8);
             $table->string("street_number", 8);
             $table->string("street_name", 64);
-            $table->string("municipality", 32);
+            $table->string("municipality", 64);
+            $table->string("country_secondary_subdivision", 64);
             $table->string("country_subdivision", 32);
             $table->unsignedMediumInteger("postal_code");
             $table->timestamps();

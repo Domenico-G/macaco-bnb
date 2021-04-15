@@ -11,10 +11,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-
-    public function vue()
+    public function __construct()
     {
-        return view('layouts/app');
+        $this->middleware('auth');
     }
 
     /**

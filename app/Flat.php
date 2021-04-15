@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Flat extends Model
 {
     protected $fillable = [
-        "user_id",
-        "lat",
-        "lon",
-        "sreet_number",
-        "sreet_name",
+        "street_number",
+        "street_name",
         "municipality",
+        "country_secondary_subdivision",
         "country_subdivision",
         "postal_code"
     ];

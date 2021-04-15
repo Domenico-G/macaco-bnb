@@ -11,7 +11,7 @@ use App\Message;
 
 
 
-class UserSeeder extends Seeder
+class AllOfFlatSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -34,12 +34,13 @@ class UserSeeder extends Seeder
 
           // Seeder per tabella Appartamenti
           $flat = new Flat;
-          $flat->lat = 45.47551;
-          $flat->lon = 9.16024;
-          $flat->street_number = 20;
-          $flat->street_name = "Viale Cassiodoro";
-          $flat->municipality = "Milano";
-          $flat->country_subdivision = "Lombardia";
+          $flat->lat = 44.77699;
+          $flat->lon = 10.88108;
+          $flat->street_number = 3;
+          $flat->street_name = "Via Carlo Marx";
+          $flat->municipality = "Carpi";
+          $flat->country_secondary_subdivision = "Modena";
+          $flat->country_subdivision = "Emilia Romagna";
           $flat->postal_code = 20145;
 
           $user->flats()->save($flat);
