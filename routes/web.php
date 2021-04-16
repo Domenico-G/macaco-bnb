@@ -23,4 +23,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('message', 'MessageController@store')->name('message');
+
 Route::resource('flat', FlatController::class)->middleware("auth");

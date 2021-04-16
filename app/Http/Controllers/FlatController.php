@@ -21,7 +21,8 @@ class FlatController extends Controller
      */
     public function index()
     {
-        //
+        $flats = Flat::all();
+        return view("home", compact("flats"));
     }
 
     /**
@@ -175,12 +176,12 @@ class FlatController extends Controller
     protected function formValidate(Request $request)
     {
         $request->validate([
-            "street_number" => 'required|max:99999999',
+            "street_number" => 'required|max:8',
             "street_name" => 'required',
             "municipality" => 'required',
             "country_secondary_subdivision" => 'required',
             "country_subdivision" => 'required',
-            "postal_code" => 'required|max:99999999',
+            "postal_code" => 'required|max:8',
             "flat_title" => 'required',
             "description" => 'required',
             "image" => 'required|url',

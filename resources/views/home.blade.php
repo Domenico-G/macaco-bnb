@@ -1,23 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    <div class="container d-flex flex-wrap">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        @foreach ($flats as $key => $flat)
 
-                    {{ __('You are logged in!') }}
-                </div>
+        <div class="card col-4">
+            <img class="card-img-top" src="{{$flat->details->image}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{$flat->details->flat_title}}</h5>
+                <p class="card-text">{{$flat->details->description}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
+
+
+
+        @endforeach
     </div>
-</div>
 @endsection
