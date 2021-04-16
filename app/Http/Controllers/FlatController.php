@@ -44,28 +44,14 @@ class FlatController extends Controller
      */
     public function store(Request $request)
     {
+        // Funzione di validazione
+        $this->formValidate($request);
+
         $data = $request->all();
         $id = Auth::id();
 
+        $res = $this->tomtomCall($data);
 
-
-
-
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json', [
-            'query' => [
-                'key' => 'rixwtiTnqMRgKIbbjg9Jgw3IcVKqqvdG', //api key
-                'countryCode' => 'IT',
-                'limit' => '1',
-                'streetNumber' => $data["street_number"],
-                'streetName' => $data["street_name"],
-                'municipality' => $data["municipality"],
-                'countrySecondarySubdivision' => $data["country_secondary_subdivision"],
-                'countrySubdivision' => $data["country_subdivision"],
-                'postalCode' => $data["postal_code"],
-            ]
-        ]);
-        $res = json_decode($response->getBody()->getContents());
         if (empty($res->results)) {
             // Creare pagine per gestione errore
             return "caso";
@@ -80,8 +66,6 @@ class FlatController extends Controller
             $flat->user_id = $id;
             $flat->save();
 
-
-
             $detail = new Detail();
             $detail->flat_id = $flat->id;
             $detail->fill($data);
@@ -91,12 +75,6 @@ class FlatController extends Controller
 
             return redirect()->route("flat.show", compact("flat"));
         }
-
-
-
-
-
-
     }
 
     /**
@@ -132,17 +110,29 @@ class FlatController extends Controller
      */
     public function update(Request $request, Flat $flat)
     {
+        // Funzione di validazione
+        $this->formValidate($request);
 
         $data = $request->all();
         $services = $data["services"];
 
+        $res = $this->tomtomCall($data);
+
+        if (empty($res->results)) {
+            // Creare pagine per gestione errore
+            return "caso";
+        } else {
+        $lat = $res->results[0]->position->lat;
+        $lon = $res->results[0]->position->lon;
+        $flat->lat = $lat;
+        $flat->lon = $lon;
+        $flat->save();
         $flat->update($data);
         $flat->details->update($data);
-
         $flat->services()->sync($services);
 
-
         return redirect()->route("flat.show", compact("flat"));
+        }
     }
 
     /**
@@ -159,5 +149,48 @@ class FlatController extends Controller
         $flat->delete();
 
         return redirect()->route("home");
+    }
+
+
+    protected function tomtomCall($data)
+    {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json', [
+            'query' => [
+                'key' => 'rixwtiTnqMRgKIbbjg9Jgw3IcVKqqvdG', //api key
+                'countryCode' => 'IT',
+                'limit' => '1',
+                'streetNumber' => $data["street_number"],
+                'streetName' => $data["street_name"],
+                'municipality' => $data["municipality"],
+                'countrySecondarySubdivision' => $data["country_secondary_subdivision"],
+                'countrySubdivision' => $data["country_subdivision"],
+                'postalCode' => $data["postal_code"],
+            ]
+        ]);
+        $res = json_decode($response->getBody()->getContents());
+        return $res;
+    }
+
+    protected function formValidate(Request $request)
+    {
+        $request->validate([
+            "street_number" => 'required|max:99999999',
+            "street_name" => 'required',
+            "municipality" => 'required',
+            "country_secondary_subdivision" => 'required',
+            "country_subdivision" => 'required',
+            "postal_code" => 'required|max:99999999',
+            "flat_title" => 'required',
+            "description" => 'required',
+            "image" => 'required|url',
+            "area_sqm" => 'required|numeric',
+            "rooms_quantity" => 'required|numeric',
+            "beds_quantity" => 'required|numeric',
+            "bathrooms_quantity" => 'required|numeric',
+            "price_day" => 'required|numeric',
+            "visible" => 'required|boolean',
+            "services" => 'required'
+        ]);
     }
 }
