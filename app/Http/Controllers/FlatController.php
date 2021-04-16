@@ -11,6 +11,8 @@ use App\Service;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Auth;
+use App\FlatView;
+
 
 class FlatController extends Controller
 {
@@ -84,8 +86,9 @@ class FlatController extends Controller
      * @param  Flat $flat
      * @return \Illuminate\Http\Response
      */
-    public function show(Flat $flat)
+    public function show(Flat $flat , Request $request)
     {
+        $this->getViews($request , $flat->id);
         return view("public.flats.show-flat", compact("flat"));
     }
 
@@ -193,5 +196,17 @@ class FlatController extends Controller
             "visible" => 'required|boolean',
             "services" => 'required'
         ]);
+    }
+
+    protected function getViews(Request $request , $id){
+        $ip = $request->getClientIp();
+        $view = new FlatView();
+        $view->flat_id = $id;
+        $view->viewer_ip = $ip;
+        $viewsRecord = FlatView::where('flat_id', '=', $id)->where('viewer_ip', '=', $ip)->count();
+        if($viewsRecord == 0){
+            $view->save();
+        }
+
     }
 }
