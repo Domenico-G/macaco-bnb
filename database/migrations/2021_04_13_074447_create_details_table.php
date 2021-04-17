@@ -24,7 +24,6 @@ class CreateDetailsTable extends Migration
             $table->unsignedTinyInteger("beds_quantity");
             $table->unsignedTinyInteger("bathrooms_quantity");
             $table->unsignedSmallInteger("price_day");
-            $table->boolean("visible");
             $table->timestamps();
 
 

@@ -42,6 +42,7 @@ class AllOfFlatSeeder extends Seeder
           $flat->country_secondary_subdivision = "Modena";
           $flat->country_subdivision = "Emilia Romagna";
           $flat->postal_code = 20145;
+          $flat->visible = true;
 
           $user->flats()->save($flat);
 
@@ -56,7 +57,6 @@ class AllOfFlatSeeder extends Seeder
           $details->beds_quantity = rand(2, 6);
           $details->price_day = rand(20, 900);
           $details->bathrooms_quantity = rand(1, 3);
-          $details->visible = true;
 
           $flat->details()->save($details);
 

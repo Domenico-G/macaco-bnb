@@ -154,7 +154,7 @@
              <div class="form-group col-12">
                  <div class="form-check">
                      <input class="form-check-input" type="radio" name="visible" id="visible"
-                     @if (isset($flat) && $flat->details->visible === 1)
+                     @if (isset($flat) && $flat->visible === 1)
                          checked
                      @endif
                      value="1">
@@ -164,7 +164,7 @@
                  </div>
                  <div class="form-check">
                      <input class="form-check-input" type="radio" name="visible" id="visible"
-                     @if (isset($flat) && $flat->details->visible === 0)
+                     @if (isset($flat) && $flat->visible === 0)
                          checked
                      @endif
                      value="0">

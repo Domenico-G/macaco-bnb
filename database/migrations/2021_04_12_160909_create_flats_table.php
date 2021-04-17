@@ -24,6 +24,7 @@ class CreateFlatsTable extends Migration
             $table->string("country_secondary_subdivision", 64);
             $table->string("country_subdivision", 32);
             $table->unsignedMediumInteger("postal_code");
+            $table->boolean("visible");
             $table->timestamps();
 
             $table->foreign("user_id")

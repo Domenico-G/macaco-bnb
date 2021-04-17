@@ -13,6 +13,7 @@ class Flat extends Model
         "municipality",
         "country_secondary_subdivision",
         "country_subdivision",
+        "visible",
         "postal_code"
     ];
 

@@ -15,8 +15,7 @@ class Detail extends Model
         "rooms_quantity",
         "beds_quantity",
         "bathrooms_quantity",
-        "price_day",
-        "visible"
+        "price_day"
 
     ];
 
