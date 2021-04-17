@@ -43,4 +43,8 @@ class GuestController extends Controller
         }
 
     }
+
+    protected function searchView(){
+     return view("flatsGuestView.search");
+    }
 }

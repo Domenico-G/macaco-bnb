@@ -24,6 +24,8 @@ Route::post('message', 'MessageController@store')->name('message');
 
 Route::get('flats', 'GuestController@index')->name('public.flats.home');
 Route::get('flats/{flat}', 'GuestController@show')->name('public.flats.show');
+Route::get('search', 'GuestController@searchView')->name('public.flats.search');
+
 
 
 

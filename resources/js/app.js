@@ -8,7 +8,7 @@ import Vue from "vue";
 window.Vue = Vue;
 require("./bootstrap");
 import Chart from "chart.js/auto";
-
+import { method } from "lodash";
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,7 +21,10 @@ import Chart from "chart.js/auto";
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,5 +33,22 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app',
+    el: "#app",
+    data: {
+        query: "",
+        flatsArr: []
+    },
+
+    mounted() {},
+
+    methods: {
+        getFlats: function() {
+            const self = this;
+            axios
+            .get("http://127.0.0.1:8000/api/search?indirizzo=" + this.query)
+                .then(function(resp) {
+                    self.flatsArr = resp.data;
+                });
+        }
+    }
 });
