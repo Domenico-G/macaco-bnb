@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Detail;
 use App\Http\Controllers\Controller;
@@ -24,7 +24,7 @@ class FlatController extends Controller
     public function index()
     {
         $flats = Flat::all();
-        return view("home", compact("flats"));
+        return redirect()->route('public.flats.home', compact("flats"));
     }
 
     /**
@@ -34,9 +34,8 @@ class FlatController extends Controller
      */
     public function create()
     {
-
         $services = Service::all();
-        return view("auth.flats.create", compact("services"));
+        return view("flatsAdminView.create", compact("services"));
     }
 
     /**
@@ -76,7 +75,7 @@ class FlatController extends Controller
 
             $flat->services()->attach($services);
 
-            return redirect()->route("flat.show", compact("flat"));
+            return redirect()->route('public.flats.show', compact("flat"));
         }
     }
 
@@ -89,7 +88,7 @@ class FlatController extends Controller
     public function show(Flat $flat , Request $request)
     {
         $this->getViews($request , $flat->id);
-        return view("public.flats.show-flat", compact("flat"));
+        return redirect()->route('public.flats.show', compact("flat"));
     }
 
     /**
@@ -102,7 +101,7 @@ class FlatController extends Controller
     {
         $services = Service::All();
         $detail = Detail::All();
-        return view("auth.flats.edit", compact("flat", "detail", "services"));
+        return view("flatsAdminView.edit", compact("flat", "detail", "services"));
     }
 
     /**
@@ -135,7 +134,7 @@ class FlatController extends Controller
         $flat->details->update($data);
         $flat->services()->sync($services);
 
-        return redirect()->route("flat.show", compact("flat"));
+        return redirect()->route("public.flats.show", compact("flat"));
         }
     }
 
@@ -147,12 +146,22 @@ class FlatController extends Controller
      */
     public function destroy(Flat $flat)
     {
-
+        $flatViews = $flat->flatViews;
+        foreach($flatViews as $flatView){
+            $flatView->delete();
+        }
+        $messages = $flat->messages;
+        foreach($messages as $message){
+            $message->delete();
+        }
+        $sponsors = $flat->sponsor;
+        foreach($sponsors as $sponsor){
+            $sponsor->delete();
+        }
         $flat->details->delete();
         $flat->services()->detach($flat->services);
         $flat->delete();
-
-        return redirect()->route("home");
+        return redirect()->route("public.flats.home");
     }
 
 

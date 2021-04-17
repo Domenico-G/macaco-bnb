@@ -16,14 +16,18 @@
                 @endforeach
             </ul>
             <div class="card-body">
-                <a href="{{ route('home') }}" class="card-link">Ritorna alla home</a>
-                <a href="{{ route('flat.edit', compact('flat')) }}" class="card-link">Modifica appartamento</a>
+                <a href="{{ route('public.flats.home') }}" class="card-link">Ritorna alla home</a>
 
-                <form action="{{ route('flat.destroy', compact('flat')) }}" class="card-link" method="POST">
-                    @csrf
-                    @method("DELETE")
-                    <button class="btn btn-default" type="submit">Elimina appartamento</button>
-                </form>
+                @auth
+                    <a href="{{ route('flats.edit', compact('flat')) }}" class="card-link">Modifica appartamento</a>
+                    <a href="{{ route('flats.create', compact('flat')) }}" class="card-link">Crea Nuovo</a>
+                    <form action="{{ route('flats.destroy', compact('flat')) }}" class="card-link" method="POST">
+                        @csrf
+                        @method("DELETE")
+                        <button class="btn btn-default" type="submit">Elimina appartamento</button>
+                    </form>
+                @endauth
+
             </div>
         </div>
 

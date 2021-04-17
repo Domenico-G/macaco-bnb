@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-
 @section('content')
 
-@include('auth.flats.flat-form', ["edit" => true])
+@include('flatsAdminView.flat-form', ["create" => true])
 
 @endsection

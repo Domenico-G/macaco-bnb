@@ -15,14 +15,22 @@ use App\Flat;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'GuestController@index');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('message', 'MessageController@store')->name('message');
 
-Route::resource('flat', FlatController::class)->middleware("auth");
+
+Route::get('flats', 'GuestController@index')->name('public.flats.home');
+Route::get('flats/{flat}', 'GuestController@show')->name('public.flats.show');
+
+
+
+// Route::resource('flats', ('Admin\FlatController'))->middleware("auth");
+Route::prefix('admin')
+    ->namespace('Admin')
+    ->middleware('auth')
+    ->group(function(){
+        Route::resource('flats', 'FlatController');
+    });

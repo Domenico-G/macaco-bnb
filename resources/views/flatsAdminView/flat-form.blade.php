@@ -1,12 +1,13 @@
  <?php if (isset($edit) && !empty($edit)) {
- $method = 'PUT';
- $root = route('flat.update', compact('flat'));
- $flag = true;
- } else {
- $method = 'POST';
- $root = route('flat.store');
- $flag = false;
- } ?>
+        $method = 'PUT';
+        $root = route('flats.update', compact('flat'));
+        $flag = true;
+    } else {
+        $method = 'POST';
+        $root = route('flats.store');
+        $flag = false;
+    }
+ ?>
 
  <div class="container">
      <form action={{ $root }} method="POST" enctype="multipart/form-data">
@@ -191,6 +192,11 @@
 
 
              <button type="submit" class="btn btn-primary">Submit</button>
+
+
+            <a href="{{route('public.flats.home')}}">torna alla home</a>
+
+
 
 
 
