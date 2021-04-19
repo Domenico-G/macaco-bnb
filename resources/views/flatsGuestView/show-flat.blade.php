@@ -19,13 +19,15 @@
                 <a href="{{ route('public.flats.home') }}" class="card-link">Ritorna alla home</a>
 
                 @auth
-                    <a href="{{ route('flats.edit', compact('flat')) }}" class="card-link">Modifica appartamento</a>
                     <a href="{{ route('flats.create', compact('flat')) }}" class="card-link">Crea Nuovo</a>
-                    <form action="{{ route('flats.destroy', compact('flat')) }}" class="card-link" method="POST">
-                        @csrf
-                        @method("DELETE")
-                        <button class="btn btn-default" type="submit">Elimina appartamento</button>
-                    </form>
+                    @if(Auth::user()->id == $flat->user_id)
+                        <a href="{{ route('flats.edit', compact('flat')) }}" class="card-link">Modifica appartamento</a>
+                        <form action="{{ route('flats.destroy', compact('flat')) }}" class="card-link" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <button class="btn btn-default" type="submit">Elimina appartamento</button>
+                        </form>
+                    @endif
                 @endauth
 
             </div>
@@ -73,8 +75,10 @@
              </div>
              <button type="submit" class="btn btn-primary">Invia</button>
         </form>
-
-
+        {{-- qui sarà importata la mappa da tomtom --}}
+        <div class="container left">
+            <map-tom-tom></map-tom-tom>
+        </div>
 
     </div>
 
