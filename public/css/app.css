@@ -10959,11 +10959,28 @@ a.text-dark:focus {
 }
 
 #app nav .bnb-container .bnb-logoContainer {
+  position: relative;
   background-color: #fff;
   width: 59px;
   height: 59px;
   margin-right: 15px;
   transition: 1s;
+}
+
+#app nav .bnb-container .bnb-logoContainer .bnb-brandName {
+  position: absolute;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  width: 100px;
+  left: -10%;
+  color: transparent;
+  transition: 2s;
+  top: 0px;
+}
+
+#app nav .bnb-container .bnb-logoContainer:hover .bnb-brandName {
+  transition: 4s;
+  color: #fff;
+  top: 80%;
 }
 
 #app nav .bnb-container .bnb-logoContainer a.logo {
@@ -10987,16 +11004,25 @@ a.text-dark:focus {
   border-radius: 8px;
 }
 
-#app nav .bnb-container a.bnb-text {
+#app nav .bnb-container .bnb-textContainer {
+  text-align: center;
+  transition: 1s;
+}
+
+#app nav .bnb-container .bnb-textContainer a {
   color: #fff;
   transition: 1s;
 }
 
-#app nav .bnb-container a.bnb-text:hover {
+#app nav .bnb-container .bnb-textContainer a:hover {
   transition: 1s;
   color: #000;
+}
+
+#app nav .bnb-container .bnb-textContainer:hover {
+  transition: 1s;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 #app nav .bnb-container .ml-auto li {
@@ -11017,9 +11043,15 @@ a.text-dark:focus {
   align-items: center;
 }
 
-#app footer .bnb-container .bnb-credits {
+#app footer .bnb-container .bnb-creditsContainer .bnb-creaditsCreators {
   color: #ffffff81;
   font-size: 10px;
+  transition: 2s;
+}
+
+#app footer .bnb-container .bnb-creditsContainer .bnb-creaditsCreators:hover {
+  transition: 1s;
+  color: #fff;
 }
 
 #app footer .bnb-container .bnb-rightFoot {
@@ -11031,14 +11063,13 @@ a.text-dark:focus {
   text-decoration: none;
   color: #797979;
   font-size: 20px;
-}
-
-#app footer .bnb-container .bnb-rightFoot a:visited {
-  text-decoration: none;
+  transition: 2s;
 }
 
 #app footer .bnb-container .bnb-rightFoot a:hover {
+  transition: 1s;
   color: #fff;
+  transform: scale(1.3);
 }
 
 

@@ -26,8 +26,12 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container bnb-container">
                 <div class="bnb-logoContainer">
+                    <div class="bnb-brandName">
+                        <span>Macaco B&B</span>
+                    </div>
                     <a class="logo" href="{{ url('/') }}">
                         <img src="logo-img/macaco-bnb-logo.png" alt="">
+
                     </a>
                 </div>
 
@@ -38,9 +42,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li>
-                            <a class="navbar-brand bnb-text" href="{{ url('/') }}">
-                                HOME
+                        <li class="nav-item bnb-textContainer">
+                            <a class="nav-link" href="{{ url('/') }}">
+                               Home
                             </a>
                         </li>
                     </ul>
@@ -56,12 +60,12 @@
                         </li> --}}
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link bnb-text" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <li class="nav-item bnb-textContainer">
+                                <a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link bnb-text" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <li class="nav-item bnb-textContainer">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -96,12 +100,12 @@
 
         <footer >
             <div class="container bnb-container">
-                <div class="col-9 bnb-credits">
-                    <span>
+                <div class="col-9 bnb-creditsContainer">
+                    <div class="bnb-creaditsCreators">
                         Macaco B&B is
                         created by team 6 with &hearts;
                         boolean class #25 &copy; ADGGD
-                    </span>
+                    </div>
                 </div>
                 {{--
                     sezione contatti social con link esterni alle rispettive pagine
