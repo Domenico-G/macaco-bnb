@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container bnb-show">
         <div class="card" style="width: 50%">
             <img class="card-img-top" src="{{ $flat->details->image }}" alt="Card image cap">
             <div class="card-body">
@@ -17,16 +17,15 @@
             </ul>
             <div class="card-body">
                 <a href="{{ route('public.flats.home') }}" class="card-link">Ritorna alla home</a>
-
                 @auth
-                    <a href="{{ route('flats.create', compact('flat')) }}" class="card-link">Crea Nuovo</a>
-                    @if(Auth::user()->id == $flat->user_id)
-                        <a href="{{ route('flats.edit', compact('flat')) }}" class="card-link">Modifica appartamento</a>
-                        <form action="{{ route('flats.destroy', compact('flat')) }}" class="card-link" method="POST">
-                            @csrf
-                            @method("DELETE")
-                            <button class="btn btn-default" type="submit">Elimina appartamento</button>
-                        </form>
+                <a href="{{ route('flats.create', compact('flat')) }}" class="card-link">Crea Nuovo</a>
+                    @if (Auth::user()->id == $flat->user_id)
+                    <a href="{{ route('flats.edit', compact('flat')) }}" class="card-link">Modifica appartamento</a>
+                    <form action="{{ route('flats.destroy', compact('flat')) }}" class="card-link" method="POST">
+                        @csrf
+                        @method("DELETE")
+                        <button class="btn btn-default" type="submit">Elimina appartamento</button>
+                    </form>
                     @endif
                 @endauth
 
@@ -40,7 +39,7 @@
             <div class="form-group col">
                  <label for="sender_mail">Email</label>
                  <input type="text" class="form-control {{ $errors->has('sender_mail') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->sender_mail : '' }}" id="sender_mail" name="sender_mail"
+                     value="{{ Auth::check() ? Auth::user()->email : '' }}" id="sender_mail" name="sender_mail"
                      placeholder="Email">
                  <div class="invalid-feedback">
                      Inserisci un'email valida
@@ -49,7 +48,7 @@
              <div class="form-group col">
                  <label for="sender_name">Nome</label>
                  <input type="text" class="form-control {{ $errors->has('sender_name') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->sender_name : '' }}" id="sender_name" name="sender_name"
+                     value="{{ Auth::check() ? Auth::user()->name : '' }}" id="sender_name" name="sender_name"
                      placeholder="Nome">
                  <div class="invalid-feedback">
                      Inserisci il tuo nome
@@ -58,7 +57,7 @@
              <div class="form-group col">
                  <label for="sender_surname">Cognome</label>
                  <input type="text" class="form-control {{ $errors->has('sender_surname') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->sender_surname : '' }}" id="sender_surname" name="sender_surname"
+                     value="{{ Auth::check() ? Auth::user()->surname : '' }}" id="sender_surname" name="sender_surname"
                      placeholder="Cognome">
                  <div class="invalid-feedback">
                      Inserisci il tuo cognome

@@ -13,13 +13,18 @@ class ApiFlatsController extends Controller
     {
 
         $data = $request->all();
-        $dataVar = rawurlencode($data["indirizzo"]);
+        $address = rawurlencode($data["address"]);
+        $distanceM = $data["distanceKm"] * 1000;
+        $roomsNumber = $data["roomsNumber"];
+        $bedsNumber = $data["bedsNumber"];
+
+
 
         // Prima chiamata APi TomTom che ci fornisce la
         // posizione della via richiesta dall'utente
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', 'https://api.tomtom.com/search/2/geocode/' . $dataVar . '.json', [
+        $response = $client->request('GET', 'https://api.tomtom.com/search/2/geocode/' . $address . '.json', [
             'query' =>  [
                 'key' => 'rixwtiTnqMRgKIbbjg9Jgw3IcVKqqvdG',
                 'limit' => '1',
@@ -53,7 +58,7 @@ class ApiFlatsController extends Controller
             [
                 "type" => "CIRCLE",
                 "position" => $startPosition,
-                "radius" => 100000
+                "radius" => $distanceM
             ]
         ];
 
@@ -83,10 +88,14 @@ class ApiFlatsController extends Controller
 
         $arrFlats = [];
         foreach($filteredFlats as $filteredFlat){
-            $filteredFlat->details;
-            array_push($arrFlats, $filteredFlat);
-
+            $details = $filteredFlat->details;
+            $bedsQuantity = $details->beds_quantity;
+            $roomsQuantity = $details->rooms_quantity;
+            if ($bedsQuantity >= $bedsNumber && $roomsQuantity >= $roomsNumber) {
+                array_push($arrFlats, $filteredFlat);
+            }
         }
+
 
         return json_encode($arrFlats);
     }
