@@ -28,15 +28,25 @@
 
     </div>
     {{-- flats section --}}
-    <div class="container d-flex flex-wrap">
+    <div class="container d-flex flex-wrap bnb-cardContainer">
+
         @foreach ($flats as $key => $flat)
-            <div class="card col-4">
+            <div class="card col-3 bnb-card">
                 <img class="card-img-top" src="{{$flat->details->image}}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{$flat->details->flat_title}}</h5>
-                    <p class="card-text">{{$flat->details->description}}</p>
-                    <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-primary">Visualizza Appartamento</a>
+                <div class=" bnb-cardBody">
+                    <h5 class="bnb-cardTitle">
+                        {{$flat->details->flat_title}}
+                    </h5>
+                    {{--
+                    <p class="bnb-cardText">
+                        {{$flat->details->description}}
+                    </p>
+                    --}}
+
                 </div>
+                <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-primary">
+                    Visualizza Appartamento
+                </a>
             </div>
         @endforeach
     </div>

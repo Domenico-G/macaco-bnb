@@ -89,3 +89,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - grafica del logo della nav-bar e del footer
 
 - creato file _home.scss e importato in app.scss
+- creato jumbotron con video in background 
+- button jumbotron con redirect alla pagina 
+
+- impostazione grafica delle cards

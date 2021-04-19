@@ -11128,4 +11128,36 @@ a.text-dark:focus {
   transform: scale(1.2);
 }
 
+.bnb-cardContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.bnb-cardContainer .bnb-card {
+  margin-right: 10px;
+  height: 400px;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.bnb-cardContainer .bnb-card .bnb-cardBody {
+  position: absolute;
+  background-color: #000000;
+  bottom: 100px;
+  left: -10%;
+  width: 250px;
+  height: 50px;
+  transform: rotate(15deg);
+  padding: 5px;
+  border-radius: 5px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.bnb-cardContainer .bnb-card .bnb-cardBody .bnb-cardTitle {
+  font-size: 12px;
+  color: #fff;
+}
+
 
