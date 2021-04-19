@@ -1922,7 +1922,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
     distanceKm: "20",
     flatsArr: []
   },
-  mounted: function mounted() {},
+  beforeMounted: function beforeMounted() {},
   methods: {
     getFlats: function getFlats() {
       var self = this;

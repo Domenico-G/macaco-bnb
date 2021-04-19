@@ -79,5 +79,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 
-branch-danilo
-test
+
+# Modifiche Danilo
+
+- impostato nel file layout/app.blade.app il
+ <title>@yield('title')</title>, al fine di inserire per ogni pagina il nome della pagina in cui si trova l'utente.

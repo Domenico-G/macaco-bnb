@@ -40,9 +40,11 @@ const app = new Vue({
         bedsNumber: "1",
         distanceKm: "20",
         flatsArr: []
+
     },
 
-    mounted() {},
+    beforeMounted() {
+    },
 
     methods: {
         getFlats: function() {

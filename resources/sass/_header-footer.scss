@@ -1,0 +1,93 @@
+//reset
+
+#app {
+    nav {
+
+        color: #fff;
+        background-color:#000;
+        position : sticky;
+        top:0px;
+        z-index: 10000;
+        .bnb-container {
+            .bnb-buttonStyle {
+                background-color:  #fff;
+                &:hover {
+                    background-color: #fff;
+                }
+            }
+            .bnb-logoContainer {
+                background-color: #fff;
+                width: 59px;
+                height: 59px;
+                margin-right: 15px;
+                transition: 1s;
+                a.logo {
+                    transition: 3s;
+                    img {
+                        width: 60px;
+                    }
+                    &:hover {
+                        transition: 2s;
+                        background-color: rgba(255, 166, 0, 0.438);
+                        border-radius: 100%;
+                        font-size: 35px;
+
+                    }
+                 }
+                &:hover {
+                    transition: 1s;
+                    background-color: $grey-font;
+                    border-radius: 8px;
+                }
+            }
+            a.bnb-text {
+                color: #fff;
+                transition: 1s;
+                &:hover {
+                    transition: 1s;
+                    color: #000;
+                    background-color: #fff;
+                    border-radius: 8px;
+                }
+            }
+            .ml-auto {
+                li {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+
+
+    footer {
+        background-color: $darkGrayFoot;
+        width : 100vw;
+        max-width: 100%;
+        height: 60px;
+        .bnb-container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .bnb-credits {
+                color: #ffffff81;
+                font-size: 10px;
+            }
+            .bnb-rightFoot {
+                display: flex;
+                justify-content: space-between;
+                a {
+                    text-decoration: none;
+                    color: $grey-font;
+                    font-size: 20px;
+                    &:visited {
+                        text-decoration: none;
+                    }
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

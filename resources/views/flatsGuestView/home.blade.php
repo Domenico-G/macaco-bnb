@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Home')
 @section('content')
     <div class="container d-flex flex-wrap">
         @foreach ($flats as $key => $flat)
