@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container bnb-show">
         <div class="card" style="width: 50%">
             <img class="card-img-top" src="{{ $flat->details->image }}" alt="Card image cap">
             <div class="card-body">
