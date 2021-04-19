@@ -4,7 +4,14 @@
 
     <div class="container">
         <div class="search-bar">
-            <input v-model="query" type="text">
+            <label for="">Indirizzo</label>
+            <input v-model="address" type="text">
+            <label for="">Numero stanze</label>
+            <input v-model="roomsNumber" type="number" >
+            <label for="">Numero posti letto</label>
+            <input v-model="bedsNumber" type="number">
+            <label for="">Raggio di ricerca in km</label>
+            <input v-model="distanceKm" type="number">
             <button v-on:click="getFlats()"> cerca</button>
         </div>
         <div class="flats-cards d-flex flex-wrap">
