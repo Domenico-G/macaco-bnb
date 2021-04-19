@@ -51,13 +51,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        {{-- <li>
-                            <button>
-                               <a href="{{route("public.flats.search")}}">
-                                <i class="fas fa-search">cerca</i>
-                            </a>
-                            </button>
-                        </li> --}}
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item bnb-textContainer">

@@ -84,3 +84,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 - impostato nel file layout/app.blade.app il
  <title>@yield('title')</title>, al fine di inserire per ogni pagina il nome della pagina in cui si trova l'utente.
+
+- creato file _header-footer.scss e importato nel file app.scss
+- grafica del logo della nav-bar e del footer
+
+- creato file _home.scss e importato in app.scss
