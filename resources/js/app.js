@@ -38,7 +38,9 @@ const app = new Vue({
         roomsNumber: "1",
         bedsNumber: "1",
         distanceKm: "20",
-        flatsArr: []
+        flatsArr: [],
+        checkedServices:[]
+
     },
 
     mounted() {},
@@ -55,7 +57,9 @@ const app = new Vue({
                         "&roomsNumber=" +
                         this.roomsNumber +
                         "&bedsNumber=" +
-                        this.bedsNumber
+                        this.bedsNumber +
+                        "&checkedServices=" +
+                        String(this.checkedServices)
 
                     //     address: this.address,
                     //     roomsNumber: this.roomsNumber,

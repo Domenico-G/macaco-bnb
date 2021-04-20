@@ -2,16 +2,26 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="search-bar">
-            <label for="">Indirizzo</label>
-            <input v-model="address" type="text">
-            <label for="">Numero stanze</label>
-            <input v-model="roomsNumber" type="number" >
-            <label for="">Numero posti letto</label>
-            <input v-model="bedsNumber" type="number">
-            <label for="">Raggio di ricerca in km</label>
-            <input v-model="distanceKm" type="number">
+    <div class="container bnb-search">
+        <div class="search-bar justify-content-between row">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+             <label for="">indirizzo</label>
+             <input v-model="address" type="text" placeholder="Indirizzo">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+             <label for="">Numero stanze</label>
+             <input v-model="roomsNumber" type="number" >
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+             <label for="">Numero posti letto</label>
+             <input v-model="bedsNumber" type="number">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+             <label for="">Raggio di ricerca in km</label>
+             <input v-model="distanceKm" type="number">
+           </div>
+
+
             <button v-on:click="getFlats()"> cerca</button>
         </div>
         <div class="flats-cards d-flex flex-wrap">
@@ -26,5 +36,20 @@
             </div>
         </div>
     </div>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @foreach ($services as $service )
+            <div class="form-check">
+                <input class="form-check-input" v-model="checkedServices" type="checkbox" value="{{$service->id}}" name="{{$service->service_name}}">
+                <label class="form-check-label" for="{{$service->service_name}}">{{$service->service_name}}</label>
+            </div>
+            @endforeach
+
+        </div>
+      </div>
+
 
 @endsection
