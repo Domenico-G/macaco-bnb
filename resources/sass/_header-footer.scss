@@ -1,4 +1,25 @@
-//reset
+//scroll bar setting
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #555555;
+    border-radius: 50%;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+    cursor: pointer;
+}
 
 #app {
     nav {
@@ -13,6 +34,11 @@
                 background-color:  #fff;
                 &:hover {
                     background-color: #fff;
+                }
+            }
+            .navbar-collapse {
+                .bnb-burgerMenu {
+                    background-color: #00000094 ;
                 }
             }
             .bnb-logoContainer {
@@ -123,3 +149,4 @@
         }//end bnb-container
     }//end footer
 }//end #app
+
