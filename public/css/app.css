@@ -11104,13 +11104,6 @@ a.text-dark:focus {
   transform: scale(1.3);
 }
 
-body {
-  background: linear-gradient(-45deg, #000000, #b9b9b9, #251a1a, #485351);
-  background-size: 400% 400%;
-  -webkit-animation: gradient 15s ease infinite;
-          animation: gradient 15s ease infinite;
-}
-
 @-webkit-keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -11400,6 +11393,68 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
   .bnb-row {
     padding: 50px 15px;
     position: relative;
+  }
+}
+
+.bnb-show .box-image-map-bnb .images-bnb {
+  padding-left: 0;
+}
+
+.bnb-show .box-image-map-bnb .images-bnb img {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  max-height: 440px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background-color: black;
+}
+
+.bnb-show .box-image-map-bnb .map-bnb {
+  width: 100%;
+  background-color: red;
+  border-radius: 3px;
+}
+
+.bnb-show .box-description-service-bnb .description {
+  padding-left: 0;
+}
+
+.bnb-show .box-description-service-bnb .box-desecription-bnb {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: white;
+  padding: 0 5px;
+}
+
+.bnb-show .box-description-service-bnb .box-desecription-bnb h5,
+.bnb-show .box-description-service-bnb .box-desecription-bnb p {
+  margin-left: 5px;
+}
+
+.bnb-show .box-description-service-bnb .box-service-bnb {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.bnb-show .btn {
+  margin: 15px;
+  border: 1px solid black;
+  background-color: #393939;
+  color: white;
+}
+
+@media screen and (max-width: 992px) {
+  .images-bnb {
+    padding: 0;
+  }
+
+  .description {
+    padding: 0;
+  }
+
+  .map-bnb {
+    margin-top: 5px;
   }
 }
 

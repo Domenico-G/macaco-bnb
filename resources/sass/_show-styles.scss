@@ -1,0 +1,60 @@
+.bnb-show{
+   .box-image-map-bnb{
+        .images-bnb{
+            padding-left: 0;
+                img{
+                    border: 1px solid lightgray;
+                    border-radius: 3px;
+                    max-height: 440px;
+                    object-fit: contain;
+                    background-color: black;
+                }
+           }
+           .map-bnb{
+               width: 100%;
+               background-color: red;
+               border-radius: 3px;
+           }
+   }
+   .box-description-service-bnb{
+       .description{
+            padding-left: 0;
+       }
+        .box-desecription-bnb{
+            border: 1px solid lightgray;
+            border-radius: 3px;
+            background-color: white;
+            padding: 0 5px;
+            h5,p{
+                margin-left: 5px;
+            }
+        }
+        .box-service-bnb {
+            border: 1px solid lightgray;
+            border-radius: 3px;
+            background-color: white;
+        }
+    }
+    .btn{
+        margin: 15px;
+        border: 1px solid black;
+        background-color: #393939;
+        color: white;
+    }
+
+}
+@media screen and (max-width:992px) {
+    .images-bnb{
+        padding: 0;
+    }
+    .description{
+        padding: 0;
+     }
+     .map-bnb{
+         margin-top: 5px;
+     }
+}
+
+
+
+
