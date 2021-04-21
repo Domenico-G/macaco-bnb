@@ -161,7 +161,7 @@ class FlatController extends Controller
         $flat->details->delete();
         $flat->services()->detach($flat->services);
         $flat->delete();
-        return redirect()->route("public.flats.home");
+        return redirect()->route("admin.dashboard");
     }
 
 

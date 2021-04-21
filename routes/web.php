@@ -35,4 +35,5 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function(){
         Route::resource('flats', 'FlatController');
+        Route::get('dashboard', 'DashboardController')->name("admin.dashboard");
     });

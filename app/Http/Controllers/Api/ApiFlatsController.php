@@ -94,9 +94,24 @@ class ApiFlatsController extends Controller
             if ($bedsQuantity >= $bedsNumber && $roomsQuantity >= $roomsNumber) {
                 array_push($arrFlats, $filteredFlat);
             }
-        }
+        };
 
 
         return json_encode($arrFlats);
+    }
+
+    public function viewsFlat(Request $request){
+        $data = $request->all();
+        $id = $data["id"];
+        $flats = Flat::where("user_id", "=", $id)->get();
+
+        $viewsArr = [];
+        foreach($flats as $flat){
+            foreach($flat->flatViews as $view){
+                array_push($viewsArr, $view);
+            }
+        };
+
+        return json_encode($viewsArr);
     }
 }
