@@ -2,81 +2,88 @@
 
 @section('content')
     <div class="container bnb-show">
-        <div class="card" style="width: 50%">
-            <img class="card-img-top" src="{{ $flat->details->image }}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{ $flat->details->flat_title }}</h5>
-                <p class="card-text">{{ $flat->details->description }}</p>
+        {{-- parte titolo e via --}}
+        <div class="row">
+            <div class="box-info-bnb col-12">
+                <h1 class="card-title">{{ $flat->details->flat_title }}</h1>
                 <p class="card-text"><b>Indirizzo:</b> {{ $flat->street_name }} {{ $flat->street_number }}
                     {{ $flat->municipality }} ({{ $flat->country_secondary_subdivision }})</p>
             </div>
-            <ul class="list-group list-group-flush">
-                @foreach ($flat->services as $service)
-                    <li class="list-group-item">{{ $service->service_name }}</li>
-                @endforeach
-            </ul>
-            <div class="card-body">
-                <a href="{{ route('public.flats.home') }}" class="card-link">Ritorna alla home</a>
-                @auth
-                <a href="{{ route('flats.create', compact('flat')) }}" class="card-link">Crea Nuovo</a>
-                    @if (Auth::user()->id == $flat->user_id)
-                    <a href="{{ route('flats.edit', compact('flat')) }}" class="card-link">Modifica appartamento</a>
-                    <form action="{{ route('flats.destroy', compact('flat')) }}" class="card-link" method="POST">
-                        @csrf
-                        @method("DELETE")
-                        <button class="btn btn-default" type="submit">Elimina appartamento</button>
-                    </form>
-                    @endif
-                @endauth
-
+        </div>
+        {{-- parte immagine e mappa --}}
+        <div class="row box-image-map-bnb">
+            <div class="images-bnb col-md-12 col-lg-7">
+                <img class="card-img-top" src="{{ $flat->details->image }}" alt="Card image cap">
+            </div>
+            <div class="map-bnb col-md-12 col-lg-5">
+                <p>qui va la mappa</p>
             </div>
         </div>
+        {{-- parte di servizzi e descrizione --}}
+        <div class="row box-description-service-bnb">
+            <div class="description col-md-12 col-lg-7 mt-2">
+                <div class="box-desecription-bnb">
+                    <h5 class="mt-2">Descrizione appartamento</h5>
+                    <p class="">{{ $flat->details->description }}</p>
+                </div>
+            </div>
+            <div class=" box-service-bnb col-md-12 col-lg-5 mt-2">
+                <h5 class="mt-2">Servizzi associati all'appartamento</h5>
 
+                <ul class="list-group list-group-flush">
+                    @foreach ($flat->services as $service)
+                        <li class="list-group-item">{{ $service->service_name }}</li>
+                     @endforeach
+                 </ul>
+            </div>
+        </div>
         {{-- form message --}}
-        <form action={{ route('message', compact("flat"))}} method="POST">
-            @csrf
-            @method("POST")
-            <div class="form-group col">
-                 <label for="sender_mail">Email</label>
-                 <input type="text" class="form-control {{ $errors->has('sender_mail') ? 'is-invalid' : '' }}"
-                     value="{{ Auth::check() ? Auth::user()->email : '' }}" id="sender_mail" name="sender_mail"
-                     placeholder="Email">
-                 <div class="invalid-feedback">
-                     Inserisci un'email valida
-                 </div>
+        <div class="row">
+            <div class="card messages-bnb col-lg-12 mt-2">
+                <h5 class="mt-2">Contatta il proprietario </h5>
+                    <form action={{ route('message', compact("flat"))}} method="POST">
+                        @csrf
+                        @method("POST")
+                        <div class="form-group col mt-2">
+                            <label for="sender_mail">Email</label>
+                            <input type="text" class="form-control {{ $errors->has('sender_mail') ? 'is-invalid' : '' }}"
+                                value="{{ Auth::check() ? Auth::user()->email : '' }}" id="sender_mail" name="sender_mail"
+                                placeholder="Email">
+                            <div class="invalid-feedback">
+                                Inserisci un'email valida
+                            </div>
+                        </div>
+                        <div class="form-group col">
+                            <label for="sender_name">Nome</label>
+                            <input type="text" class="form-control {{ $errors->has('sender_name') ? 'is-invalid' : '' }}"
+                                value="{{ Auth::check() ? Auth::user()->name : '' }}" id="sender_name" name="sender_name"
+                                placeholder="Nome">
+                            <div class="invalid-feedback">
+                                Inserisci il tuo nome
+                            </div>
+                        </div>
+                        <div class="form-group col">
+                            <label for="sender_surname">Cognome</label>
+                            <input type="text" class="form-control {{ $errors->has('sender_surname') ? 'is-invalid' : '' }}"
+                                value="{{ Auth::check() ? Auth::user()->surname : '' }}" id="sender_surname" name="sender_surname"
+                                placeholder="Cognome">
+                            <div class="invalid-feedback">
+                                Inserisci il tuo cognome
+                            </div>
+                        </div>
+                        <div class="form-group col">
+                            <label for="message_content">Messaggio</label>
+                            <textarea type="text" class="form-control {{ $errors->has('message_content') ? 'is-invalid' : '' }}"
+                                value="{{ isset($flat) ? $flat->message_content : '' }}" id="message_content" name="message_content"
+                                placeholder="Messaggio"></textarea>
+                            <div class="invalid-feedback">
+                                Inserisci un'email valida
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Invia</button>
+                    </form>
              </div>
-             <div class="form-group col">
-                 <label for="sender_name">Nome</label>
-                 <input type="text" class="form-control {{ $errors->has('sender_name') ? 'is-invalid' : '' }}"
-                     value="{{ Auth::check() ? Auth::user()->name : '' }}" id="sender_name" name="sender_name"
-                     placeholder="Nome">
-                 <div class="invalid-feedback">
-                     Inserisci il tuo nome
-                 </div>
-             </div>
-             <div class="form-group col">
-                 <label for="sender_surname">Cognome</label>
-                 <input type="text" class="form-control {{ $errors->has('sender_surname') ? 'is-invalid' : '' }}"
-                     value="{{ Auth::check() ? Auth::user()->surname : '' }}" id="sender_surname" name="sender_surname"
-                     placeholder="Cognome">
-                 <div class="invalid-feedback">
-                     Inserisci il tuo cognome
-                 </div>
-             </div>
-             <div class="form-group col">
-                 <label for="message_content">Messaggio</label>
-                 <input type="text" class="form-control {{ $errors->has('message_content') ? 'is-invalid' : '' }}"
-                     value="{{ isset($flat) ? $flat->message_content : '' }}" id="message_content" name="message_content"
-                     placeholder="Messaggio">
-                 <div class="invalid-feedback">
-                     Inserisci un'email valida
-                 </div>
-             </div>
-             <button type="submit" class="btn btn-primary">Invia</button>
-        </form>
-
-
-
+        </div>
     </div>
 
 @endsection
