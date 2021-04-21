@@ -86,6 +86,11 @@
                                     </li>
                                 @endif
                             @else
+                                <li class="nav-item bnb-textContainer  bnb-burgerMenu">
+                                    <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                                    Dashboard
+                                    </a>
+                                </li>
                                 <li class="nav-item dropdown  bnb-burgerMenu">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
