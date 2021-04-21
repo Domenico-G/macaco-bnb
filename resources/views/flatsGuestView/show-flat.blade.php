@@ -74,8 +74,10 @@
              </div>
              <button type="submit" class="btn btn-primary">Invia</button>
         </form>
-
-
+        {{-- qui sarà importata la mappa da tomtom --}}
+        <div class="container left">
+            <map-tom-tom></map-tom-tom>
+        </div>
 
     </div>
 

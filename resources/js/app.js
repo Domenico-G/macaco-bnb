@@ -9,7 +9,6 @@ window.Vue = Vue;
 require("./bootstrap");
 import Chart from "chart.js/auto";
 import { method } from "lodash";
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -22,8 +21,8 @@ import { method } from "lodash";
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component(
-    "example-component",
-    require("./components/ExampleComponent.vue").default
+    "map-tom-tom",
+    require("./components/MapTomTom.vue").default
 );
 
 /**
