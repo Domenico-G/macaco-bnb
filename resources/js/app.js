@@ -39,7 +39,69 @@ const app = new Vue({
         roomsNumber: "1",
         bedsNumber: "1",
         distanceKm: "20",
-        flatsArr: []
+        flatsArr: [],
+
+        /*
+        questi data formano il carousel visibile se il video del jumbotron non dovesse
+        essere supportato dal browser
+        */
+        carouselJumbo: [
+            {
+                imgJumbo: 'imageOfPage/jumbo-carousel/villa2.jpeg',
+                bootStrapAlt: 'Second slide'
+            },
+            {
+                imgJumbo: 'imageOfPage/jumbo-carousel/villa4.jpeg',
+                bootStrapAlt: 'Third slide'
+            },
+            {
+                imgJumbo: 'imageOfPage/jumbo-carousel/villa1.jpeg',
+                bootStrapAlt: 'Fourth slide'
+            }
+        ],
+        mainCarousel: [
+            {
+                imgCarousel: 'imageOfPage/main-carousel/taranto.jpeg',
+                bootStrapAlt: 'Second slide',
+                dataSlideTo: '1'
+            },
+            {
+                imgCarousel: 'imageOfPage/main-carousel/milano.jpeg',
+                bootStrapAlt: 'Third slide',
+                dataSlideTo: '2'
+            },
+            {
+                imgCarousel: 'imageOfPage/main-carousel/catania.jpeg',
+                bootStrapAlt: 'Fourth slide',
+                dataSlideTo: '3'
+            },
+            {
+                imgCarousel: 'imageOfPage/main-carousel/bologna.jpeg',
+                bootStrapAlt: 'Fifth slide',
+                dataSlideTo: '4'
+            },
+            {
+                imgCarousel: 'imageOfPage/main-carousel/tropea.jpeg',
+                bootStrapAlt: 'Sixth slide',
+                dataSlideTo: '5'
+            },
+            {
+                imgCarousel: 'imageOfPage/main-carousel/napoli.jpeg',
+                bootStrapAlt: 'Seventh slide',
+                dataSlideTo: '6'
+            },
+            {
+                imgCarousel: 'imageOfPage/main-carousel/abruzzo.jpeg',
+                bootStrapAlt: 'Eighth slide',
+                dataSlideTo: '7'
+            },
+            {
+                imgCarousel: 'imageOfPage/main-carousel/roma.jpeg',
+                bootStrapAlt: 'Ninth slide',
+                dataSlideTo: '8'
+            },
+        ]
+
 
     },
 

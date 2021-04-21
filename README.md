@@ -91,5 +91,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - creato file _home.scss e importato in app.scss
 - creato jumbotron con video in background 
 - button jumbotron con redirect alla pagina 
+- jumbotron con slider se il browser non supporta il video
 
 - impostazione grafica delle cards
+- creazione e applicazione favicon
+- impostazione slider nel main

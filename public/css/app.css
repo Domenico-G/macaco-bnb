@@ -10945,26 +10945,26 @@ a.text-dark:focus {
 /* width */
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 /* Track */
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: transparent;
 }
 
 /* Handle */
 
 ::-webkit-scrollbar-thumb {
-  background: #555555;
+  background: #000000;
   border-radius: 50%;
 }
 
 /* Handle on hover */
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+  background: #555555;
   cursor: pointer;
 }
 
@@ -11181,7 +11181,7 @@ a.text-dark:focus {
 }
 
 .bnb-flatsContainer .bnb-cardContainer {
-  height: 500px;
+  height: 900px;
   overflow-y: scroll;
 }
 
@@ -11191,8 +11191,10 @@ a.text-dark:focus {
   margin-bottom: 20px;
 }
 
-.bnb-flatsContainer .bnb-cardContainer .bnb-card .bnb-cardContent img {
-  height: 75%;
+.bnb-flatsContainer .bnb-cardContainer .bnb-card .bnb-cardContent .bnb-imgCard {
+  border-radius: 5px;
+  width: 100%;
+  padding-bottom: 40px;
 }
 
 .bnb-flatsContainer .bnb-cardContainer .bnb-card .bnb-cardContent .bnb-cardBody {
@@ -11201,7 +11203,7 @@ a.text-dark:focus {
   background-blend-mode: multiply;
   background-size: 100px 100px;
   bottom: 100px;
-  right: -4%;
+  right: 0;
   width: 250px;
   height: 50px;
   transform: rotate(15deg);
@@ -11218,12 +11220,65 @@ a.text-dark:focus {
 
 .bnb-flatsContainer .bnb-cardContainer .bnb-card .bnb-cardContent .bnb-buttonContainer {
   position: absolute;
-  bottom: 0px;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
 }
 
 .bnb-flatsContainer .bnb-cardContainer .bnb-card .bnb-cardContent .bnb-buttonContainer .bnb-button {
   margin: 0 auto;
 }
+
+.bnb-jumboMain a {
+  color: #000000;
+  text-decoration: none;
+}
+
+/*>>>>>>>>carousel before footer<<<<<<*/
+
+.bnb-row {
+  background-color: #000000;
+  padding: 15px;
+  position: relative;
+}
+
+.bnb-row .bnb-slogan-top {
+  color: #fff;
+  position: absolute;
+  font-family: cursive;
+  left: 3%;
+  top: 10px;
+}
+
+.bnb-row .bnb-carouselIndicators {
+  position: absolute;
+  bottom: 120px;
+}
+
+.bnb-row img {
+  padding: 120px;
+  border-radius: 8px;
+}
+
+.bnb-row .bnb-slogan-bottom {
+  color: #fff;
+  position: absolute;
+  bottom: 10px;
+  right: 4%;
+  font-family: cursive;
+}
+
+.bnb-colorFlagG {
+  color: green;
+}
+
+.bnb-colorFlagR {
+  color: red;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>MEDIA QUERY<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 @media screen and (max-width: 767px) {
   .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent {
@@ -11241,6 +11296,10 @@ a.text-dark:focus {
   .bnb-cardContainer .bnb-card .bnb-cardContent .bnb-cardBody {
     left: 0;
     width: 300px;
+  }
+
+  .bnb-row {
+    padding: 100px 25px;
   }
 }
 
@@ -11270,6 +11329,11 @@ a.text-dark:focus {
 
   .bnb-cardContainer .bnb-card .bnb-cardContent .bnb-cardBody {
     width: 200px;
+  }
+
+  .bnb-row {
+    padding: 50px 15px;
+    position: relative;
   }
 }
 

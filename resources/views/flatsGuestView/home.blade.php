@@ -6,31 +6,26 @@
     <div class="bnb-jumbotron">
         {{-- jumbotron video --}}
         <video playsinline autoplay muted loop>
-            <source src="logo-img/jumbotron-video.mp4" type="video/mp4">
-            <source src="logo-img/jumbotron-video.webm" type="video/webm">
-            <source src="logo-img/jumbotron-video.ogg" type="video/ogg">
+            <source src="imageOfPage/jumbotron-video/jumbotron-video.mp4" type="video/mp4">
+            <source src="imageOfPage/jumbotron-video/jumbotron-video.webm" type="video/webm">
+            <source src="imageOfPage/jumbotron-video/jumbotron-video.ogg" type="video/ogg">
         </video>
         {{--
              Se il browser non dovesse supportare il video compare un carousel
         --}}
         <div class="carousel slide bnb-carousel" data-ride="carousel">
             <div class="carousel-inner bnb-carouselConteiner">
+                {{--
+                    il primo elemento del carousel deve essere sempre esplicitato poichè ha la classe active che serve a bootstrap per far partire il carousel automatico
+                --}}
                 <div class="carousel-item active bnb-carousContent">
-                    <img class=" " src="logo-img/villa3.jpeg" alt="First slide">
+                    <img class=" " src="imageOfPage/jumbo-carousel/villa3.jpeg" alt="First slide">
                 </div>
-                <div class="carousel-item">
-                    <img class=" " src="logo-img/villa2.jpeg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class=" " src="logo-img/villa4.jpeg" alt="Third slide">
-                </div>
-                <div class="carousel-item">
-                    <img class=" " src="logo-img/villa1.jpeg" alt="Fourth slide">
+                <div v-for= "element in carouselJumbo" class="carousel-item">
+                    <img class=" " :src="element.imgJumbo" :alt="element.bootStrapAlt">
                 </div>
             </div>
         </div>
-
-
 
         {{-- jumbotron text --}}
         <div class="bnb-jumboTextContainer">
@@ -57,6 +52,9 @@
     </div>
     {{-- flats section --}}
     <div class="bnb-flatsContainer">
+        <div class="container">
+            <h4>In Primo Piano</h4>
+        </div>
         <div class="container d-flex flex-wrap bnb-cardContainer">
             <div class="row">
                 @foreach ($flats as $key => $flat)
@@ -64,14 +62,14 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class=" card bnb-cardContent">
-                                    <img class="" src="{{$flat->details->image}}" alt="Card image cap">
+                                    <img class="bnb-imgCard" src="{{$flat->details->image}}" alt="Card image cap">
                                     <div class=" bnb-cardBody">
                                         <h5 class="bnb-cardTitle">
                                             {{$flat->details->flat_title}}
                                         </h5>
                                     </div>
                                     <div class="bnb-buttonContainer">
-                                        <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-primary bnb-button">
+                                        <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button">
                                             Visualizza Appartamento
                                         </a>
                                     </div>
@@ -84,6 +82,65 @@
         </div>
     </div>
 
-    {{-- carousel --}}
+    {{-- diventa un Host section --}}
+    <div class="jumbotron jumbotron-fluid bnb-jumboMain">
+        <div class="container">
+          <h1 class="display-4">
+              <a href="{{ route('register') }}">Diventa un HOST</a>
+            </h1>
+          <p class="lead">
+              Condividi il tuo spazio per guadagnare <br/>
+              qualcosa in più e scoprire nuove opportunità.
+            </p>
+        </div>
+      </div>
+
+    {{-- carousel of main page --}}
+    <div class=" bnb-row">
+        <div class="bnb-slogan-top">
+            <h1>
+                <em>
+                    <span class="bnb-colorFlagG">Italia</span>
+                    Da
+                    <span class="bnb-colorFlagR">Scoprire...</span>
+                </em>
+            </h1>
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol  class="carousel-indicators bnb-carouselIndicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li v-for="num in mainCarousel" data-target="#carouselExampleIndicators" :data-slide-to="num.dataSlideTo" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100 " src="imageOfPage/main-carousel/venezia.jpeg" alt="First slide">
+              </div>
+              <div v-for="item in mainCarousel" class="carousel-item">
+                <img class="d-block w-100 " :src="item.imgCarousel" :alt="item.bootStrapAlt">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="bnb-slogan-bottom">
+            <h1>
+                <em>
+                    <span class="bnb-colorFlagG">...Italia</span>
+                    Da
+                    <span class="bnb-colorFlagR">Vivere</span>
+                </em>
+            </h1>
+        </div>
+    </div>
+
+
+
+
 
 @endsection

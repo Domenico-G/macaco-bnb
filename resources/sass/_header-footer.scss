@@ -2,22 +2,22 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
   }
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #000000;
+    background: transparent;
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #555555;
+    background: #000000;
     border-radius: 50%;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #ffffff;
+    background: #555555;
     cursor: pointer;
 }
 

@@ -8,6 +8,16 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Macaco B&B @yield('title')</title>
+
+        {{-- favicon --}}
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_package_v0.16/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon_package_v0.16/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon_package_v0.16/favicon-16x16.png">
+        <link rel="manifest" href="favicon_package_v0.16/site.webmanifest">
+        <link rel="mask-icon" href="favicon_package_v0.16/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -30,7 +40,7 @@
                             <span>Macaco B&B</span>
                         </div>
                         <a class="logo" href="{{ url('/') }}">
-                            <img src="logo-img/macaco-bnb-logo.png" alt="">
+                            <img src="imageOfPage/macaco-bnb-logo.png" alt="">
                         </a>
                     </div>
 
