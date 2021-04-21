@@ -59,15 +59,18 @@
             </div>
         </div>
         {{-- flats --}}
-        <div class="container d-flex flex-wrap bnb-cardContainer">
+        <div class="container d-flex flex-wrap bnb-cardBox">
             <div class="row">
                 @foreach ($flats as $key => $flat)
-                    <div class="col-lg-4 col-md-6 col-xs-12 bnb-card">
+                    <div class="col-lg-4 col-md-6 col-xs-12">
                         <div class="row">
                             <div class="col-12">
-                                <div class=" card bnb-cardContent">
-                                    <img class="bnb-imgCard" src="{{$flat->details->image}}" alt="Card image cap">
-                                    <div class=" bnb-cardBody">
+                                <div class="bnb-card">
+                                    <div class="bnb-imgContainer">
+                                        <img class="bnb-imgCard" src="{{$flat->details->image}}" alt="Card image cap">
+                                    </div>
+
+                                    <div class=" bnb-flatTitleStrip">
                                         <h5 class="bnb-cardTitle">
                                             {{$flat->details->flat_title}}
                                         </h5>

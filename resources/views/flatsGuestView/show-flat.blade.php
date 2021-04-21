@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class=" box-service-bnb col-md-12 col-lg-5 mt-2">
-                <h5 class="mt-2">Servizzi associati all'appartamento</h5>
+                <h5 class="mt-2">Servizi associati all'appartamento</h5>
 
                 <ul class="list-group list-group-flush">
                     @foreach ($flat->services as $service)
@@ -81,7 +81,9 @@
                                 Inserisci un'email valida
                             </div>
                         </div>
-                        <button type="submit" class="btn">Invia</button>
+                        <button type="submit" class="btn" >
+                            Invia
+                        </button>
                     </form>
              </div>
         </div>

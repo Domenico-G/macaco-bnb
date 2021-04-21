@@ -3,20 +3,20 @@
 /* width */
 ::-webkit-scrollbar {
     width: 6px;
-  }
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+/* Track */
+::-webkit-scrollbar-track {
     background: transparent;
-  }
+}
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #000000;
     border-radius: 50%;
-  }
+}
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: #555555;
     cursor: pointer;
 }
@@ -36,11 +36,7 @@
                     background-color: #fff;
                 }
             }
-            .navbar-collapse {
-                .bnb-burgerMenu {
-                    background-color: #00000094 ;
-                }
-            }
+
             .bnb-logoContainer {
                 position: relative;
                 background-color: #fff;
@@ -60,7 +56,7 @@
 
                 }
                 //animazione del brand name
-                &:hover .bnb-brandName{
+                &:hover .bnb-brandName {
                     transition: 4s;
                     color: #fff;
                     top: 80%;
@@ -94,17 +90,42 @@
                         transition: 1s;
                         color: #000;
                     }
-                }
-                //on hover change bg and color of nav-items
-                &:hover {
-                    transition: 1s;
-                    background-color: #fff;
-                    border-radius: 5px;
+                    //on hover change bg and color of nav-items
+                    &:hover {
+                        transition: 1s;
+                        background-color: #fff;
+                        border-radius: 5px;
+                        color: #000;
+                    }
                 }
             }
-            .ml-auto {
-                li {
-                    margin-left: 8px;
+            .navbar-collapse {
+                .bnb-burgerMenu {
+                    background-color: #00000094 ;
+                }
+
+                // menu di logout da terminare
+                .ml-auto {
+                    .bnb-burgerMenu {
+                        height: 100%;
+                        a {
+                            color: #fff;
+                            &:hover {
+                                transition: 1s;
+                                color: #000;
+                            }
+                            //on hover change bg and color of nav-items
+                            &:hover {
+                                transition: 1s;
+                                background-color: #fff;
+                                border-radius: 5px;
+                                color: #000;
+                            }
+                        }
+                    }
+                    li {
+                        margin-left: 8px;
+                    }
                 }
             }
         }//end bnb-container

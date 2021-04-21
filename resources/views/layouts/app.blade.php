@@ -19,7 +19,11 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
 
-        <meta name="user-id" content="{{ Auth::user()->id }}">
+        {{-- !!!!!!!!!!!!!!!!!getIdByUser NON RIMUOVERE!!!!!!!!!!!!!! --}}
+        <meta name="user-id"
+        @if (Auth::user() != null)
+            content="{{ Auth::user()->id }}"
+        @endif >
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,8 +31,6 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-        {{-- FontAwesome vers. 5.15.1 --}}
-        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" /> --}}
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -89,7 +91,7 @@
                                         {{ Auth::user()->name }}
                                     </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu dropdown-menu-right bnb-burgerMenu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
