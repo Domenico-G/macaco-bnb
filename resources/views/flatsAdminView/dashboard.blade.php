@@ -10,7 +10,11 @@
                         <p>Gestisci le tue inserzioni</p>
                     </div>
                     <div class="button-create">
-                        <button type="button" class="btn btn-dark">Aggiungi appartamento</button>
+                        <a href="{{route('flats.create')}}">
+                            <button type="button" class="btn btn-dark">
+                            Aggiungi appartamento
+                            </button>
+                         </a>
                     </div>
                 </div>
             </div>
