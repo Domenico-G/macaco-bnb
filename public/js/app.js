@@ -1945,19 +1945,47 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
     bedsNumber: "1",
     distanceKm: "20",
     flatsArr: [],
-    checkedServices: []
+    checkedServices: [],
+    classDropdownSection: "",
+    titleFlag: false,
+    titleSearchedInput: "",
+    titleNoResultsFlag: false
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {//TODO: chiamata API sponsorizzate
+  },
   methods: {
     getFlats: function getFlats() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://127.0.0.1:8000/api/search?address=" + this.address + "&distanceKm=" + this.distanceKm + "&roomsNumber=" + this.roomsNumber + "&bedsNumber=" + this.bedsNumber + "&checkedServices=" + String(this.checkedServices) //     address: this.address,
-      //     roomsNumber: this.roomsNumber,
-      //     bedsNumber: this.bedsNumber,
-      //     distanceKm: this.distanceKm
-      ).then(function (resp) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://127.0.0.1:8000/api/search", {
+        params: {
+          address: this.address,
+          roomsNumber: this.roomsNumber,
+          bedsNumber: this.bedsNumber,
+          distanceKm: this.distanceKm,
+          checkedServices: String(this.checkedServices)
+        }
+      }).then(function (resp) {
+        self.titleSearchedInput = self.address;
+
+        if (resp.data.length === 0) {
+          self.titleNoResultsFlag = true;
+          self.titleFlag = false;
+        } else {
+          self.titleFlag = true;
+          self.titleNoResultsFlag = false;
+        }
+
         self.flatsArr = resp.data;
       });
+    },
+    toggleDropdownSection: function toggleDropdownSection() {
+      if (this.classDropdownSection === "") {
+        return this.classDropdownSection = "active";
+      }
+
+      if (this.classDropdownSection === "active") {
+        return this.classDropdownSection = "";
+      }
     }
   }
 });

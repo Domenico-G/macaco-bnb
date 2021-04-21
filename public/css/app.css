@@ -10946,4 +10946,178 @@ a.text-dark:focus {
   background-color: red;
 }
 
+main {
+  background-color: #fff;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.btn {
+  cursor: pointer;
+  color: #797979;
+}
+
+.btn:hover {
+  color: #000;
+}
+
+.search-bar .search-input {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 75px;
+  padding: 5px 15px;
+}
+
+.search-bar .search-input i {
+  cursor: pointer;
+  font-size: 26px;
+}
+
+.search-bar .search-input input {
+  border: none;
+  outline: none;
+  width: 400px;
+  font-size: 26px;
+}
+
+.search-bar .search-input input::-moz-placeholder {
+  text-align: center;
+}
+
+.search-bar .search-input input:-ms-input-placeholder {
+  text-align: center;
+}
+
+.search-bar .search-input input::placeholder {
+  text-align: center;
+}
+
+.search-bar .drop-section.btn {
+  font-size: 36px;
+  margin-left: 15px;
+}
+
+.advanced-settings {
+  background-color: #eee;
+  height: 0;
+  overflow: hidden;
+  transition: height 1s;
+  z-index: -1;
+}
+
+@media screen and (min-width: 576px) {
+  .advanced-settings.active {
+    height: 1000px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .advanced-settings.active {
+    height: 590px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .advanced-settings.active {
+    height: 430px;
+  }
+}
+
+.advanced-settings .container .row > * {
+  margin: 15px 0;
+}
+
+.advanced-settings .container .row input[type=range] {
+  vertical-align: middle;
+}
+
+.advanced-settings .container .row input[type=number] {
+  width: 50px;
+}
+
+.advanced-settings .container .row .lift-section.btn {
+  font-size: 25px;
+}
+
+h1 {
+  margin: 15px 0 15px 50px;
+}
+
+@media screen and (min-width: 576px) {
+  .flat {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .flat {
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .flat {
+    height: 250px;
+  }
+}
+
+.flat .row {
+  height: 100%;
+  padding: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.flat .row .flat-img-box {
+  height: 100%;
+}
+
+.flat .row .flat-img-box a img {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.flat .row .flat-info {
+  position: relative;
+}
+
+.flat .row .flat-info a .flat-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flat .row .flat-info a .flat-text {
+  font-size: 17px;
+  color: #797979;
+}
+
+.flat .row .flat-info a .flat-others-info-quantities {
+  font-size: 21px;
+  margin: 30px;
+}
+
+.flat .row .flat-info a .flat-others-info-price {
+  font-size: 21px;
+  text-align: right;
+}
+
 

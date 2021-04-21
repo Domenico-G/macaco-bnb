@@ -17,8 +17,7 @@ class ApiFlatsController extends Controller
         $distanceM = $data["distanceKm"] * 1000;
         $roomsNumber = $data["roomsNumber"];
         $bedsNumber = $data["bedsNumber"];
-
-
+        $servicesId = explode(",", $data["checkedServices"]);
 
         // Prima chiamata APi TomTom che ci fornisce la
         // posizione della via richiesta dall'utente
@@ -29,7 +28,6 @@ class ApiFlatsController extends Controller
                 'key' => 'rixwtiTnqMRgKIbbjg9Jgw3IcVKqqvdG',
                 'limit' => '1',
                 "countryCode" => "IT"
-
             ],
 
         ]);
@@ -91,11 +89,29 @@ class ApiFlatsController extends Controller
             $details = $filteredFlat->details;
             $bedsQuantity = $details->beds_quantity;
             $roomsQuantity = $details->rooms_quantity;
-            if ($bedsQuantity >= $bedsNumber && $roomsQuantity >= $roomsNumber) {
+            $services = $filteredFlat->services;
+            $foundServicesCounter = 0;
+            $servicesFlag = false;
+
+            if($servicesId[0] === ""){
+                $servicesFlag = true;
+            }else{
+                foreach($services as $service){
+                    if(in_array($service->id, $servicesId)){
+                        $foundServicesCounter += 1;
+                    }
+
+                    if($foundServicesCounter === count($servicesId)){
+                        $servicesFlag = true;
+                    }
+                }
+            }
+
+
+            if ($bedsQuantity >= $bedsNumber && $roomsQuantity >= $roomsNumber && $servicesFlag) {
                 array_push($arrFlats, $filteredFlat);
             }
         }
-
 
         return json_encode($arrFlats);
     }

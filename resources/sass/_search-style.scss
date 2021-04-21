@@ -1,1 +1,173 @@
+//provvisorie e utilities da separare
+main {
+    background-color: #fff;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    //TODO
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.btn{
+    cursor: pointer;
+    color: #797979;
+
+    &:hover{
+        color: #000;
+    }
+}
+
+//fine provvisorie e utilities da separare
+
+
+.search-bar {
+
+    .search-input {
+        height: fit-content;
+        background-color: #fff;
+        border: 1px solid #000;
+        border-radius: 75px;
+        padding: 5px 15px;
+
+        i {
+            cursor: pointer;
+            font-size: 26px;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            width: 400px;
+            font-size: 26px;
+
+            &::placeholder{
+                text-align: center;
+            }
+        }
+    }
+
+    .drop-section.btn {
+        font-size: 36px;
+        margin-left: 15px;
+    }
+}
+
+.advanced-settings {
+    background-color: #eee;
+    height: 0;
+    overflow: hidden;
+    transition: height 1s;
+    z-index: -1;
+
+    &.active{
+        @media screen and (min-width: 576px) {
+            height: 1000px;
+        }
+
+        @media screen and (min-width: 768px) {
+            height: 590px;
+        }
+
+        @media screen and (min-width: 992px) {
+            height: 430px;
+        }
+    }
+
+    .container {
+        .row {
+            & > * {
+                margin: 15px 0;
+            }
+
+            input{
+                &[type="range"]{
+                    vertical-align: middle;
+                }
+
+                &[type="number"]{
+                    width: 50px;
+                }
+            }
+
+            .lift-section.btn{
+                font-size: 25px;
+            }
+        }
+    }
+}
+
+h1 {
+    margin: 15px 0 15px 50px;
+}
+
+
+.flat {
+    @media screen and (min-width: 576px) {
+        height: fit-content;
+    }
+
+    @media screen and (min-width: 768px) {
+        height: 300px;
+    }
+
+    @media screen and (min-width: 992px) {
+        height: 250px;
+    }
+
+    .row {
+        height: 100%;
+        padding: 30px;
+        border-bottom: 1px solid #ccc;
+
+        .flat-img-box {
+            height: 100%;
+
+            a {
+                img {
+                    border-radius: 15px;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .flat-info {
+            position: relative;
+            a {
+                .flat-title {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .flat-text {
+                    font-size: 17px;
+                    color: #797979;
+                }
+
+                .flat-others-info {
+                    &-quantities {
+                        font-size: 21px;
+                        margin: 30px;
+                    }
+
+                    &-price {
+                        font-size: 21px;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+}
 
