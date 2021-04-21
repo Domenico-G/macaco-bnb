@@ -1,6 +1,20 @@
-// body {
-//     background-color: black;
-// }
+body {
+	background: linear-gradient(-45deg, #000000, #b9b9b9, #251a1a, #485351);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 
 .bnb-jumbotron {
     width: 100vw;
@@ -71,8 +85,23 @@
     width: 100vw;
     max-width: 100%;
     padding: 10px;
+    .row {
+        max-width: 100%;
+        margin-bottom: 15px;
+        .container-fluid.bnb-titleSection{
+            color: #ffffff;
+            background: linear-gradient(to right, #000000,
+             #0000009a,
+             #00000060,
+             #00000050,
+             #00000000
+             );
+            padding-left: 35px;
+         }
+    }
+
     .bnb-cardContainer {
-        height: 900px;
+        height: calc(100vh - 200px);
         overflow-y: scroll;
         .bnb-card {
             .bnb-cardContent {
@@ -150,41 +179,58 @@
 }
 
 /*>>>>>>>>carousel before footer<<<<<<*/
-.bnb-row {
-    background-color: #000000;
-    padding: 15px;
+div.carousel.slide.bnb-slide {
+    width: 100%;
+    padding-top: 20px;
     position: relative;
-    .bnb-slogan-top {
-        color: #fff;
-        position: absolute;
-        font-family:cursive;
-        left: 3%;
-        top: 10px;
-    }
-    .bnb-carouselIndicators{
-        position: absolute;
-        bottom: 120px;
-    }
-    img {
-        padding: 120px;
-        border-radius: 8px;
-    }
-    .bnb-slogan-bottom {
-        color: #fff;
-        position: absolute;
-        bottom: 10px;
-        right:4%;
-        font-family:cursive;
-    }
-}
-//classi per colorare le scritte dell slide prima del footer
-.bnb-colorFlagG {
-    color: green;
-}
-.bnb-colorFlagR {
-    color: red;
-}
+    margin-bottom: 30px;
+    .carousel-inner{
+        .bnb-buttonContainer {
 
+            .bnb-buttonContent {
+                // height: 100%;
+                // width: 80%;
+                // background-color: #0000004b;
+                // position: relative;
+                // z-index: 99;
+                a {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 100;
+
+                    background-color: #00000065;
+                    color: #fff;
+                    transition: 2s;
+                    &:hover {
+                        transition: 2s;
+                        background-color: #000000;
+                        // transform: scale(1.2);
+                    }
+                }
+            }
+
+        }
+
+        .carousel-item {
+            width: 100% ;
+            height: calc(100vh - 140px);
+
+            img {
+                object-fit:cover;
+                object-position: center;
+                -o-object-fit: cover;
+                -o-object-position: center;
+                height: 100%;
+            }
+        }
+        .bnb-carouselIndicators{
+            position: absolute;
+            z-index: 110;
+        }
+    }
+}
 
 
 
@@ -204,6 +250,7 @@
             .bnb-buttonContainer {
                 a {
                     width: 100vw;
+                    max-width: 100%;
                     text-align: center;
                 }
             }
@@ -246,7 +293,8 @@
             }
             .bnb-buttonContainer {
                 a {
-                    width: 100vw;
+                    width: calc(100vw - 10px);
+                    max-width: 100%;
                     text-align: center;
                 }
             }

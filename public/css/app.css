@@ -11104,6 +11104,41 @@ a.text-dark:focus {
   transform: scale(1.3);
 }
 
+body {
+  background: linear-gradient(-45deg, #000000, #b9b9b9, #251a1a, #485351);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .bnb-jumbotron {
   width: 100vw;
   max-width: 100%;
@@ -11180,8 +11215,23 @@ a.text-dark:focus {
   padding: 10px;
 }
 
+.bnb-flatsContainer .row {
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+
+.bnb-flatsContainer .row .container-fluid.bnb-titleSection,
+.bnb-flatsContainer .row .bnb-titleSection.container-sm,
+.bnb-flatsContainer .row .bnb-titleSection.container-md,
+.bnb-flatsContainer .row .bnb-titleSection.container-lg,
+.bnb-flatsContainer .row .bnb-titleSection.container-xl {
+  color: #ffffff;
+  background: linear-gradient(to right, #000000, #0000009a, #00000060, #00000050, #00000000);
+  padding-left: 35px;
+}
+
 .bnb-flatsContainer .bnb-cardContainer {
-  height: 900px;
+  height: calc(100vh - 200px);
   overflow-y: scroll;
 }
 
@@ -11238,44 +11288,45 @@ a.text-dark:focus {
 
 /*>>>>>>>>carousel before footer<<<<<<*/
 
-.bnb-row {
-  background-color: #000000;
-  padding: 15px;
+div.carousel.slide.bnb-slide {
+  width: 100%;
+  padding-top: 20px;
   position: relative;
+  margin-bottom: 30px;
 }
 
-.bnb-row .bnb-slogan-top {
+div.carousel.slide.bnb-slide .carousel-inner .bnb-buttonContainer .bnb-buttonContent a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: #00000065;
   color: #fff;
+  transition: 2s;
+}
+
+div.carousel.slide.bnb-slide .carousel-inner .bnb-buttonContainer .bnb-buttonContent a:hover {
+  transition: 2s;
+  background-color: #000000;
+}
+
+div.carousel.slide.bnb-slide .carousel-inner .carousel-item {
+  width: 100%;
+  height: calc(100vh - 140px);
+}
+
+div.carousel.slide.bnb-slide .carousel-inner .carousel-item img {
+  object-fit: cover;
+  object-position: center;
+  -o-object-fit: cover;
+  -o-object-position: center;
+  height: 100%;
+}
+
+div.carousel.slide.bnb-slide .carousel-inner .bnb-carouselIndicators {
   position: absolute;
-  font-family: cursive;
-  left: 3%;
-  top: 10px;
-}
-
-.bnb-row .bnb-carouselIndicators {
-  position: absolute;
-  bottom: 120px;
-}
-
-.bnb-row img {
-  padding: 120px;
-  border-radius: 8px;
-}
-
-.bnb-row .bnb-slogan-bottom {
-  color: #fff;
-  position: absolute;
-  bottom: 10px;
-  right: 4%;
-  font-family: cursive;
-}
-
-.bnb-colorFlagG {
-  color: green;
-}
-
-.bnb-colorFlagR {
-  color: red;
+  z-index: 110;
 }
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>MEDIA QUERY<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -11290,6 +11341,7 @@ a.text-dark:focus {
 
   .bnb-jumbotron .bnb-jumboTextContainer .bnb-buttonContainer a {
     width: 100vw;
+    max-width: 100%;
     text-align: center;
   }
 
@@ -11323,7 +11375,8 @@ a.text-dark:focus {
   }
 
   .bnb-jumbotron .bnb-jumboTextContainer .bnb-buttonContainer a {
-    width: 100vw;
+    width: calc(100vw - 10px);
+    max-width: 100%;
     text-align: center;
   }
 

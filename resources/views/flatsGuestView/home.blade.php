@@ -52,8 +52,10 @@
     </div>
     {{-- flats section --}}
     <div class="bnb-flatsContainer">
-        <div class="container">
-            <h4>In Primo Piano</h4>
+        <div class="row">
+            <div class="container-fluid bnb-titleSection">
+                <h4>In Primo Piano</h4>
+            </div>
         </div>
         <div class="container d-flex flex-wrap bnb-cardContainer">
             <div class="row">
@@ -96,48 +98,43 @@
       </div>
 
     {{-- carousel of main page --}}
-    <div class=" bnb-row">
-        <div class="bnb-slogan-top">
-            <h1>
-                <em>
-                    <span class="bnb-colorFlagG">Italia</span>
-                    Da
-                    <span class="bnb-colorFlagR">Scoprire...</span>
-                </em>
-            </h1>
-        </div>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol  class="carousel-indicators bnb-carouselIndicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li v-for="num in mainCarousel" data-target="#carouselExampleIndicators" :data-slide-to="num.dataSlideTo" class=""></li>
-            </ol>
+
+        <div id="carouselExampleIndicators" class="carousel slide bnb-slide" data-ride="carousel">
+
             <div class="carousel-inner">
+                <div class="bnb-buttonContainer">
+                    <p class="lead bnb-buttonContent">
+                        <a class="btn btn-light btn-lg" href="{{route("public.flats.search")}}" role="button">
+                            Cerca il tuo Appartamento
+                        </a>
+                    </p>
+                </div>
               <div class="carousel-item active">
-                <img class="d-block w-100 " src="imageOfPage/main-carousel/venezia.jpeg" alt="First slide">
+                <img class="d-block" style="width: 80%;margin: 0 auto;" src="imageOfPage/main-carousel/venezia.jpeg" alt="First slide">
               </div>
               <div v-for="item in mainCarousel" class="carousel-item">
-                <img class="d-block w-100 " :src="item.imgCarousel" :alt="item.bootStrapAlt">
+                <img class="d-block" style="width: 80%;margin: 0 auto;" :src="item.imgCarousel" :alt="item.bootStrapAlt">
               </div>
+              <ol  class="carousel-indicators bnb-carouselIndicators md-hide">
+                <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                  <li v-for="num in mainCarousel" data-target="#carouselIndicators" :data-slide-to="num.dataSlideTo" class=""></li>
+              </ol>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
             </a>
-          </div>
-          <div class="bnb-slogan-bottom">
-            <h1>
-                <em>
-                    <span class="bnb-colorFlagG">...Italia</span>
-                    Da
-                    <span class="bnb-colorFlagR">Vivere</span>
-                </em>
-            </h1>
+
+
         </div>
-    </div>
+
+
+
+
 
 
 

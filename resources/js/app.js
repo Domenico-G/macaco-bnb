@@ -100,6 +100,11 @@ const app = new Vue({
                 bootStrapAlt: 'Ninth slide',
                 dataSlideTo: '8'
             },
+            {
+                imgCarousel: 'imageOfPage/main-carousel/vicenza.jpeg',
+                bootStrapAlt: 'Tenth slide',
+                dataSlideTo: '9'
+            }
         ]
 
 

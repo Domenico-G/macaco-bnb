@@ -1968,6 +1968,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
       imgCarousel: 'imageOfPage/main-carousel/roma.jpeg',
       bootStrapAlt: 'Ninth slide',
       dataSlideTo: '8'
+    }, {
+      imgCarousel: 'imageOfPage/main-carousel/vicenza.jpeg',
+      bootStrapAlt: 'Tenth slide',
+      dataSlideTo: '9'
     }]
   },
   beforeMounted: function beforeMounted() {},
