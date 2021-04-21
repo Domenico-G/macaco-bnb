@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    {{-- <meta name="user-id" content="{{ Auth::user()->id }}"> --}}
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -80,7 +82,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main >
             @yield("content")
         </main>
 
