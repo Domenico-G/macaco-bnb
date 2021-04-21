@@ -1978,11 +1978,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
   methods: {
     getFlats: function getFlats() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://127.0.0.1:8000/api/search?address=" + this.address + "&distanceKm=" + this.distanceKm + "&roomsNumber=" + this.roomsNumber + "&bedsNumber=" + this.bedsNumber //     address: this.address,
-      //     roomsNumber: this.roomsNumber,
-      //     bedsNumber: this.bedsNumber,
-      //     distanceKm: this.distanceKm
-      ).then(function (resp) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://127.0.0.1:8000/api/search?address=" + this.address + "&distanceKm=" + this.distanceKm + "&roomsNumber=" + this.roomsNumber + "&bedsNumber=" + this.bedsNumber).then(function (resp) {
         self.flatsArr = resp.data;
       });
     }

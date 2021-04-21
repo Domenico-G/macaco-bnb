@@ -172,6 +172,7 @@ body {
 }//end bnb-flatsContainer
 
 .bnb-jumboMain {
+    margin-bottom: 20px;
     a{
         color: #000000;
         text-decoration: none;
@@ -181,18 +182,11 @@ body {
 /*>>>>>>>>carousel before footer<<<<<<*/
 div.carousel.slide.bnb-slide {
     width: 100%;
-    padding-top: 20px;
     position: relative;
     margin-bottom: 30px;
     .carousel-inner{
         .bnb-buttonContainer {
-
             .bnb-buttonContent {
-                // height: 100%;
-                // width: 80%;
-                // background-color: #0000004b;
-                // position: relative;
-                // z-index: 99;
                 a {
                     position: absolute;
                     top: 50%;
@@ -223,12 +217,21 @@ div.carousel.slide.bnb-slide {
                 -o-object-fit: cover;
                 -o-object-position: center;
                 height: 100%;
+                margin: 0 auto;
             }
         }
         .bnb-carouselIndicators{
             position: absolute;
-            z-index: 110;
         }
+    }
+    a.carousel-control-prev.bnb-carouselInd {
+        background-color: #000000a8;
+        margin-top: 15px;
+    }
+    a.carousel-control-next.bnb-carouselInd {
+        background-color: #000000a8;
+        margin-top: 15px;
+
     }
 }
 

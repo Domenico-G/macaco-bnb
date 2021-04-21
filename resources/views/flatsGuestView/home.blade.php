@@ -52,11 +52,13 @@
     </div>
     {{-- flats section --}}
     <div class="bnb-flatsContainer">
+        {{-- titolo della sezione flat --}}
         <div class="row">
             <div class="container-fluid bnb-titleSection">
                 <h4>In Primo Piano</h4>
             </div>
         </div>
+        {{-- flats --}}
         <div class="container d-flex flex-wrap bnb-cardContainer">
             <div class="row">
                 @foreach ($flats as $key => $flat)
@@ -95,49 +97,36 @@
               qualcosa in più e scoprire nuove opportunità.
             </p>
         </div>
-      </div>
+    </div>
 
     {{-- carousel of main page --}}
-
-        <div id="carouselExampleIndicators" class="carousel slide bnb-slide" data-ride="carousel">
-
-            <div class="carousel-inner">
-                <div class="bnb-buttonContainer">
-                    <p class="lead bnb-buttonContent">
-                        <a class="btn btn-light btn-lg" href="{{route("public.flats.search")}}" role="button">
-                            Cerca il tuo Appartamento
-                        </a>
-                    </p>
-                </div>
-              <div class="carousel-item active">
-                <img class="d-block" style="width: 80%;margin: 0 auto;" src="imageOfPage/main-carousel/venezia.jpeg" alt="First slide">
-              </div>
-              <div v-for="item in mainCarousel" class="carousel-item">
-                <img class="d-block" style="width: 80%;margin: 0 auto;" :src="item.imgCarousel" :alt="item.bootStrapAlt">
-              </div>
-              <ol  class="carousel-indicators bnb-carouselIndicators md-hide">
-                <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-                  <li v-for="num in mainCarousel" data-target="#carouselIndicators" :data-slide-to="num.dataSlideTo" class=""></li>
-              </ol>
+    <div id="carouselExampleIndicators" class="carousel slide bnb-slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {{-- button center carousel --}}
+            <div class="bnb-buttonContainer">
+                <p class="lead bnb-buttonContent">
+                    <a class="btn btn-light btn-lg" href="{{route("public.flats.search")}}" role="button">
+                        Cerca il tuo Appartamento
+                    </a>
+                </p>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-
-
+            {{-- carousel photo --}}
+            <div class="carousel-item active">
+                <img class="d-block"  src="imageOfPage/main-carousel/venezia.jpeg" alt="First slide">
+            </div>
+            <div v-for="item in mainCarousel" class="carousel-item">
+                <img class="d-block"  :src="item.imgCarousel" :alt="item.bootStrapAlt">
+            </div>
+            {{-- carousel indicatori scorrimento foto cliccabili --}}
+            <ol  class="carousel-indicators bnb-carouselIndicators md-hide">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li v-for="num in mainCarousel" data-target="#carouselExampleIndicators" :data-slide-to="num.dataSlideTo" class=""></li>
+            </ol>
         </div>
-
-
-
-
-
-
-
-
-
+        {{-- carousel lati attivi per far scorrere le foto al click --}}
+        <a class="carousel-control-prev bnb-carouselInd" href="#carouselExampleIndicators " role="button" data-slide="prev">
+        </a>
+        <a class="carousel-control-next bnb-carouselInd" href="#carouselExampleIndicators " role="button" data-slide="next">
+        </a>
+    </div>
 @endsection

@@ -11281,6 +11281,10 @@ body {
   margin: 0 auto;
 }
 
+.bnb-jumboMain {
+  margin-bottom: 20px;
+}
+
 .bnb-jumboMain a {
   color: #000000;
   text-decoration: none;
@@ -11290,7 +11294,6 @@ body {
 
 div.carousel.slide.bnb-slide {
   width: 100%;
-  padding-top: 20px;
   position: relative;
   margin-bottom: 30px;
 }
@@ -11322,11 +11325,21 @@ div.carousel.slide.bnb-slide .carousel-inner .carousel-item img {
   -o-object-fit: cover;
   -o-object-position: center;
   height: 100%;
+  margin: 0 auto;
 }
 
 div.carousel.slide.bnb-slide .carousel-inner .bnb-carouselIndicators {
   position: absolute;
-  z-index: 110;
+}
+
+div.carousel.slide.bnb-slide a.carousel-control-prev.bnb-carouselInd {
+  background-color: #000000a8;
+  margin-top: 15px;
+}
+
+div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
+  background-color: #000000a8;
+  margin-top: 15px;
 }
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>MEDIA QUERY<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
