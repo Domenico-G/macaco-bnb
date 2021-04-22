@@ -125,7 +125,7 @@
             </nav>
 
             {{-- MAIN SECTION --}}
-            <main>
+            <main >
                 @yield("content")
             </main>
 

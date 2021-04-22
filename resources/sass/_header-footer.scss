@@ -22,6 +22,7 @@
 }
 
 #app {
+    min-width: 360px;//limite minimo oltre il quale la pagina non si rimpicciolirà più
     nav {
         color: #fff;
         background-color:#000;
@@ -53,7 +54,6 @@
                     color: transparent;
                     transition: 2s;
                     top:0px;
-
                 }
                 //animazione del brand name
                 &:hover .bnb-brandName {
@@ -66,14 +66,14 @@
                     img {
                         width: 60px;
                     }
-                       // sun in background of logoimg
-                    &:hover {
-                        transition: 2s;
-                        background-color: rgba(255, 166, 0, 0.438);
-                        border-radius: 100%;
-                        font-size: 35px;
-                    }
+
                  }
+                 &:hover a.logo{ // sun in background of logo-img
+                    transition: 2s;
+                    background-color: rgba(255, 166, 0, 0.438);
+                    border-radius: 100%;
+                    font-size: 35px;
+                }
                 &:hover {
                     transition: 1s;
                     background-color: $grey-font;
@@ -137,6 +137,7 @@
         background-color: $darkGrayFoot;
         width : 100vw;
         max-width: 100%;
+        min-width: 360px;//limite minimo oltre il quale la pagina non si rimpicciolirà più
         height: 60px;
         bottom: 0px;
         .bnb-container {
