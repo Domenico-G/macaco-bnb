@@ -11086,6 +11086,10 @@ a.text-dark:focus {
   margin-left: 8px;
 }
 
+#app main {
+  min-height: calc(100vh - 140px);
+}
+
 #app footer {
   background-color: #393939;
   width: 100vw;
@@ -11633,10 +11637,6 @@ ul {
 
 .bnb-btn:hover {
   color: #000;
-}
-
-.bnb-search {
-  min-height: calc(100vh - 140px);
 }
 
 .bnb-search .search-bar {

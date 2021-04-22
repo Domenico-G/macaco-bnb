@@ -130,6 +130,9 @@
             }
         }//end bnb-container
     }//end nav section
+    main {
+        min-height: calc(100vh - 140px);
+    }
     footer {
         background-color: $darkGrayFoot;
         width : 100vw;
