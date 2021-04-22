@@ -11612,4 +11612,179 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+ul {
+  list-style: none;
+}
+
+.bnb-btn {
+  cursor: pointer;
+  color: #797979;
+}
+
+.bnb-btn:hover {
+  color: #000;
+}
+
+.bnb-search {
+  min-height: calc(100vh - 140px);
+}
+
+.bnb-search .search-bar .search-input {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 75px;
+  padding: 5px 15px;
+}
+
+.bnb-search .search-bar .search-input i {
+  cursor: pointer;
+  font-size: 26px;
+}
+
+.bnb-search .search-bar .search-input input {
+  border: none;
+  outline: none;
+  width: 400px;
+  font-size: 26px;
+}
+
+.bnb-search .search-bar .search-input input::-moz-placeholder {
+  text-align: center;
+}
+
+.bnb-search .search-bar .search-input input:-ms-input-placeholder {
+  text-align: center;
+}
+
+.bnb-search .search-bar .search-input input::placeholder {
+  text-align: center;
+}
+
+.bnb-search .search-bar .drop-section.bnb-btn {
+  font-size: 36px;
+  margin-left: 15px;
+}
+
+.bnb-search .advanced-settings {
+  background-color: #eee;
+  height: 0;
+  overflow: hidden;
+  transition: height 1s;
+  z-index: -1;
+}
+
+@media screen and (min-width: 576px) {
+  .bnb-search .advanced-settings.active {
+    height: 1000px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bnb-search .advanced-settings.active {
+    height: 590px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .bnb-search .advanced-settings.active {
+    height: 430px;
+  }
+}
+
+.bnb-search .advanced-settings .container .row > * {
+  margin: 15px 0;
+}
+
+.bnb-search .advanced-settings .container .row input[type=range] {
+  vertical-align: middle;
+}
+
+.bnb-search .advanced-settings .container .row input[type=number] {
+  width: 50px;
+}
+
+.bnb-search .advanced-settings .container .row .lift-section.bnb-btn {
+  font-size: 25px;
+  text-align: center;
+}
+
+.bnb-search h1 {
+  margin: 15px 0 15px 50px;
+}
+
+.bnb-search .flat a,
+.bnb-search .flat a:link,
+.bnb-search .flat a:visited,
+.bnb-search .flat a:hover,
+.bnb-search .flat a:active {
+  text-decoration: none;
+  color: #000;
+}
+
+@media screen and (min-width: 576px) {
+  .bnb-search .flat {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bnb-search .flat {
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .bnb-search .flat {
+    height: 250px;
+  }
+}
+
+.bnb-search .flat .row {
+  height: 100%;
+  padding: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.bnb-search .flat .row .flat-img-box {
+  height: 100%;
+}
+
+.bnb-search .flat .row .flat-img-box a img {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.bnb-search .flat .row .flat-info {
+  position: relative;
+}
+
+.bnb-search .flat .row .flat-info a .flat-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bnb-search .flat .row .flat-info a .flat-text {
+  font-size: 17px;
+  color: #797979;
+}
+
+.bnb-search .flat .row .flat-info a .flat-others-info-quantities {
+  font-size: 21px;
+  margin: 30px;
+}
+
+.bnb-search .flat .row .flat-info a .flat-others-info-price {
+  font-size: 21px;
+  text-align: right;
+}
+
 

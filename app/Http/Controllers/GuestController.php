@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Flat;
 use App\FlatView;
+use App\Service;
 
 class GuestController extends Controller
 {
@@ -45,6 +46,8 @@ class GuestController extends Controller
     }
 
     protected function searchView(){
-     return view("flatsGuestView.search");
+        $services = Service::all();
+        return view("flatsGuestView.search", compact("services"));
+
     }
 }
