@@ -1,5 +1,5 @@
 @extends("layouts.app")
-@section('title', 'Dashboard{{ Auth::user()->name }}')
+@section('title', ('Dashboard di ' . Auth::user()->name))
 @section('content')
     <div class="container">
         <div class="row">

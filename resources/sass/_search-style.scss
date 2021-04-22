@@ -6,7 +6,7 @@ ul {
 
 .bnb-btn {
     cursor: pointer;
-    color: #797979;
+    color: $grey-font;
 
     &:hover {
         color: #000;
@@ -18,12 +18,22 @@ ul {
     min-height: calc(100vh - 140px);
 
     .search-bar {
+        padding-top: 15px;
+
         .search-input {
             height: fit-content;
             background-color: #fff;
             border: 1px solid #000;
             border-radius: 75px;
             padding: 5px 15px;
+
+            @media screen and (min-width: 576px) {
+                width: 100%;
+            }
+
+            @media screen and (min-width: 768px) {
+                width: fit-content;
+            }
 
             i {
                 cursor: pointer;
@@ -33,8 +43,13 @@ ul {
             input {
                 border: none;
                 outline: none;
-                width: 400px;
                 font-size: 26px;
+                width: calc(100% - 31px);
+
+
+                @media screen and (min-width: 768px) {
+                    width: 400px;
+                }
 
                 &::placeholder {
                     text-align: center;
@@ -149,13 +164,23 @@ ul {
 
                     .flat-text {
                         font-size: 17px;
-                        color: #797979;
+                        color: $grey-font;
                     }
 
                     .flat-others-info {
                         &-quantities {
                             font-size: 21px;
                             margin: 30px;
+                        }
+
+                        .services{
+                            div{
+                                margin-right: 15px;
+                                border: 1px solid #000;
+                                border-radius: 15px;
+                                text-align: center;
+                                padding: 0 10px;
+                            }
                         }
 
                         &-price {

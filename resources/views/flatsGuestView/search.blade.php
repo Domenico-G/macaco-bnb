@@ -9,7 +9,7 @@
         {{-- search input --}}
         <div class="row">
             <div class="col-12 d-flex justify-content-center align-items-center search-bar">
-                <div class="search-input">
+                <div class="search-input d-flex justify-content-between align-items-center">
                     <input v-model="address" v-on:keyup.enter="getFlats()" type="text" placeholder="Dove ti porta il cuore?">
 
                     <i class="fas fa-search" v-on:click="getFlats()"></i>
@@ -121,6 +121,12 @@
                                                     @{{ flat . details . rooms_quantity }}
                                                 </li>
                                             </ul>
+                                        </div>
+
+                                        <div class="services d-flex">
+                                            <div v-for="service in flat.services">
+                                                @{{service.service_name}}
+                                            </div>
                                         </div>
 
                                         <div class="flat-others-info-price">

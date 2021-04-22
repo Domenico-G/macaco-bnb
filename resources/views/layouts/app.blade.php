@@ -72,6 +72,13 @@
                                 Home
                                 </a>
                             </li>
+
+                            <li class="nav-item bnb-textContainer  bnb-burgerMenu">
+                                <a class="nav-link" href="{{ route("public.flats.search") }}">
+                                <i class="fas fa-search"></i>
+                                <span>Cerca</span>
+                                </a>
+                            </li>
                         </ul>
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto ">
