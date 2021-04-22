@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title',  $flat->details->flat_title)
-
 @section('content')
     <div class="container bnb-show">
         {{-- parte titolo e via --}}

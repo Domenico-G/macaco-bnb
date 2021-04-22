@@ -16,50 +16,65 @@
          <div class="form-row">
              <div class="form-group col-3">
                  <label for="street_name">Indirizzo</label>
+
                  <input type="text" class="form-control {{ $errors->has('street_name') ? 'is-invalid' : '' }}"
                      value="{{ isset($flat) ? $flat->street_name : '' }}" id="street_name" name="street_name"
                      placeholder="Indirizzo">
+
                  <div class="invalid-feedback">
                      Inserisci un indirizzo valido
                  </div>
              </div>
+
              <div class="form-group col">
                  <label for="street_number">Numero civico</label>
+
                  <input type="text" class="form-control {{ $errors->has('street_number') ? 'is-invalid' : '' }}"
                      value="{{ isset($flat) ? $flat->street_number : '' }}" id="street_number" name="street_number"
                      placeholder="Numero civico">
+
                  <div class="invalid-feedback">
                      Inserisci un numero civico valido
                  </div>
              </div>
+
              <div class="form-group col">
                  <label for="municipality">Comune</label>
+
                  <input type="text" class="form-control {{ $errors->has('municipality') ? 'is-invalid' : '' }}"
                      value="{{ isset($flat) ? $flat->municipality : '' }}" id="municipality" name="municipality"
                      placeholder="Comune">
+
                  <div class="invalid-feedback">
                      Inserisci un Comune valido
                  </div>
              </div>
+
              <div class="form-group col">
                  <label for="country_secondary_subdivision">Provincia</label>
+
                  <input type="text"
                      class="form-control {{ $errors->has('country_secondary_subdivision') ? 'is-invalid' : '' }}"
                      value="{{ isset($flat) ? $flat->country_secondary_subdivision : '' }}"
                      id="country_secondary_subdivision" name="country_secondary_subdivision" placeholder="Provincia">
+
                  <div class="invalid-feedback">
                      Inserisci un Comune valido
                  </div>
              </div>
+
              <div class="form-group col">
                  <label for="country_subdivision">Regione</label>
+
                  <input type="text" class="form-control {{ $errors->has('country_subdivision') ? 'is-invalid' : '' }}"
                      value="{{ isset($flat) ? $flat->country_subdivision : '' }}" id="country_subdivision"
                      name="country_subdivision" placeholder="Regione">
+
                  <div class="invalid-feedback">
                      Inserisci un Comune valido
                  </div>
              </div>
+
              <div class="form-group col">
                  <label for="postal_code">CAP</label>
                  <input type="number" class="form-control {{ $errors->has('postal_code') ? 'is-invalid' : '' }}"

@@ -88,7 +88,8 @@ class FlatController extends Controller
     public function show(Flat $flat , Request $request)
     {
         $this->getViews($request , $flat->id);
-        return redirect()->route('public.flats.show', compact("flat"));
+
+        return redirect()->route('public.flats.show',  compact("flat"));
     }
 
     /**

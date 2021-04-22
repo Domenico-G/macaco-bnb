@@ -123,7 +123,7 @@
                                             </ul>
                                         </div>
 
-                                        <div class="services d-flex">
+                                        <div class="services d-flex flex-wrap">
                                             <div v-for="service in flat.services">
                                                 @{{service.service_name}}
                                             </div>

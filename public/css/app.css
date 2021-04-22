@@ -11768,13 +11768,13 @@ ul {
 
 @media screen and (min-width: 768px) {
   .bnb-search .flat {
-    height: 300px;
+    height: 320px;
   }
 }
 
 @media screen and (min-width: 992px) {
   .bnb-search .flat {
-    height: 250px;
+    height: 270px;
   }
 }
 
@@ -11817,7 +11817,7 @@ ul {
 }
 
 .bnb-search .flat .row .flat-info a .flat-others-info .services div {
-  margin-right: 15px;
+  margin: 0 15px 15px 0;
   border: 1px solid #000;
   border-radius: 15px;
   text-align: center;

@@ -14,7 +14,7 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Flat $flat)
+    public function store(Request $request)
     {
         // Funzione di validazione
         $this->formValidate($request);
@@ -24,6 +24,10 @@ class MessageController extends Controller
         $message->fill($data);
         $message->flat_id = $data["flat"];
         $message->save();
+
+        $flat = $data["flat"];
+
+        return redirect()->route('public.flats.show', compact("flat"));
     }
 
     protected function formValidate(Request $request)
