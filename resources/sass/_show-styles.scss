@@ -9,6 +9,9 @@
    .box-image-map-bnb{
         .images-bnb{
             padding-left: 0;
+            @media screen and (max-width:992px){
+                padding: 0;
+            }
                 img{
                     border: 1px solid #ccc;
                     border-radius: 3px;
@@ -19,18 +22,28 @@
            }
            .map-bnb{
                width: 100%;
-               max-height: 440px;
-               min-height: 300px;
+               height: 440px;
                border-radius: 3px;
+               @media screen and (max-width:992px){
+                margin-top: 5px;
+               }
+               @media screen and (max-width:767px){
+                height: 360px;
+               }
                #map-div {
                    width: 100%;
                    height: 100%;
+                   border-radius: 8px;
+
                }
            }
    }
    .box-description-service-bnb{
        .description{
             padding-left: 0;
+            @media screen and (max-width:992px){
+                padding: 0;
+            }
        }
         .box-desecription-bnb{
             border: 1px solid #ccc;
@@ -53,17 +66,6 @@
         background-color: $darkGrayFoot;
         color: #fff;
     }
-}
-@media screen and (max-width:992px) {
-    .images-bnb{
-        padding: 0;
-    }
-    .description{
-        padding: 0;
-     }
-     .map-bnb{
-         margin-top: 5px;
-     }
 }
 
 

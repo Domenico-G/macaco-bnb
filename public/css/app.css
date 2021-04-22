@@ -11170,6 +11170,7 @@ a.text-dark:focus {
 .bnb-jumbotron {
   width: 100vw;
   max-width: 100%;
+  min-width: 360px;
   height: calc(100vh - 80px);
   position: relative;
   margin-bottom: 25px;
@@ -11209,13 +11210,37 @@ a.text-dark:focus {
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 767px) {
+  .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent {
+    padding-top: 130px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent {
+    padding-top: 140px;
+  }
+}
+
 .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent h1 {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   margin-bottom: 50px;
 }
 
+@media screen and (max-width: 576px) {
+  .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent h1 {
+    font-size: 38px;
+  }
+}
+
 .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent p {
   padding-left: 55px;
+}
+
+@media screen and (max-width: 576px) {
+  .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent p {
+    font-size: 16px;
+  }
 }
 
 .bnb-jumbotron .bnb-jumboTextContainer .bnb-buttonContainer {
@@ -11235,6 +11260,20 @@ a.text-dark:focus {
   transition: 2s;
   background-color: #00000077;
   transform: scale(1.2);
+}
+
+@media screen and (max-width: 767px) {
+  .bnb-jumbotron .bnb-jumboTextContainer .bnb-buttonContainer a {
+    width: 100vw;
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .bnb-jumbotron .bnb-jumboTextContainer .bnb-buttonContainer a {
+    width: calc(100vw - 10px);
+  }
 }
 
 .bnb-flatsContainer {
@@ -11394,65 +11433,6 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>MEDIA QUERY<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
-@media screen and (max-width: 767px) {
-  .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent {
-    color: #ffffff;
-    padding: 35px;
-    padding-top: 100px;
-    margin-bottom: 60px;
-  }
-
-  .bnb-jumbotron .bnb-jumboTextContainer .bnb-buttonContainer a {
-    width: 100vw;
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .bnb-cardContainer .bnb-card .bnb-cardContent .bnb-cardBody {
-    left: 0;
-    width: 300px;
-  }
-
-  .bnb-row {
-    padding: 100px 25px;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent {
-    color: #ffffff;
-    padding: 35px;
-    padding-top: 120px;
-    margin-bottom: 60px;
-  }
-
-  .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent h1 {
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    margin-bottom: 50px;
-    font-size: 25px;
-  }
-
-  .bnb-jumbotron .bnb-jumboTextContainer .bnb-textContent p {
-    padding-left: 55px;
-    font-size: 16px;
-  }
-
-  .bnb-jumbotron .bnb-jumboTextContainer .bnb-buttonContainer a {
-    width: calc(100vw - 10px);
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .bnb-cardContainer .bnb-card .bnb-cardContent .bnb-cardBody {
-    width: 200px;
-  }
-
-  .bnb-row {
-    padding: 50px 15px;
-    position: relative;
-  }
-}
-
 .bnb-show {
   margin-bottom: 15px;
 }
@@ -11463,6 +11443,12 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
 
 .bnb-show .box-image-map-bnb .images-bnb {
   padding-left: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .bnb-show .box-image-map-bnb .images-bnb {
+    padding: 0;
+  }
 }
 
 .bnb-show .box-image-map-bnb .images-bnb img {
@@ -11476,18 +11462,36 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
 
 .bnb-show .box-image-map-bnb .map-bnb {
   width: 100%;
-  max-height: 440px;
-  min-height: 300px;
+  height: 440px;
   border-radius: 3px;
+}
+
+@media screen and (max-width: 992px) {
+  .bnb-show .box-image-map-bnb .map-bnb {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .bnb-show .box-image-map-bnb .map-bnb {
+    height: 360px;
+  }
 }
 
 .bnb-show .box-image-map-bnb .map-bnb #map-div {
   width: 100%;
   height: 100%;
+  border-radius: 8px;
 }
 
 .bnb-show .box-description-service-bnb .description {
   padding-left: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .bnb-show .box-description-service-bnb .description {
+    padding: 0;
+  }
 }
 
 .bnb-show .box-description-service-bnb .box-desecription-bnb {
@@ -11513,20 +11517,6 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
   border: 1px solid #000;
   background-color: #393939;
   color: #fff;
-}
-
-@media screen and (max-width: 992px) {
-  .images-bnb {
-    padding: 0;
-  }
-
-  .description {
-    padding: 0;
-  }
-
-  .map-bnb {
-    margin-top: 5px;
-  }
 }
 
 .heard-dashoboard {
