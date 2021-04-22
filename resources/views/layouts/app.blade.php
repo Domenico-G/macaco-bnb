@@ -25,6 +25,9 @@
             content="{{ Auth::user()->id }}"
         @endif >
 
+        {{-- cdn tomtomMaps.css --}}
+            <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.64.0/maps/maps.css'>
+
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -156,5 +159,8 @@
                 </div>
             </footer>
         </div>
+        {{-- tomtom --}}
+            <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.64.0/maps/maps-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.64.0/services/services-web.min.js"></script>
     </body>
 </html>

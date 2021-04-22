@@ -24,6 +24,8 @@ Vue.prototype.$userId = document
     .querySelector("meta[name='user-id']")
     .getAttribute("content");
 
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -46,6 +48,7 @@ const app = new Vue({
         titleNoResultsFlag: false,
         chartViewInstce: null,
         viewsArr: [],
+        map: null,
 
         /*
         questi data formano il carousel visibile se il video del jumbotron non dovesse
@@ -114,13 +117,22 @@ const app = new Vue({
         ]
     },
 
-    beforeMounted() {
-
-    },
-
     mounted() {
-        //TODO: chiamata API sponsorizzate
+       const pos = { lng: -122.47483, lat: 37.80776 };
+    //    var mapDiv = document.getElementById("map-div");
+
+
+       this.map = tt.map({
+           key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
+           container: "map-div",
+           style: "tomtom://vector/1/basic-main",
+           center: pos,
+           zoom: 12
+       });
+       console.log(this.map);
     },
+
+
     methods: {
         getFlats: function () {
             const self = this;
