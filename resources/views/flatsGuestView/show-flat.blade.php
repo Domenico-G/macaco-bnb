@@ -17,7 +17,9 @@
                 <img class="card-img-top" src="{{ $flat->details->image }}" alt="Card image cap">
             </div>
             <div class="map-bnb col-md-12 col-lg-5">
-                <p>qui va la mappa</p>
+
+                   <div id="map-div"> </div>
+
             </div>
         </div>
         {{-- parte di servizzi e descrizione --}}

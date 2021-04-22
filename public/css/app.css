@@ -11086,6 +11086,10 @@ a.text-dark:focus {
   margin-left: 8px;
 }
 
+#app main {
+  min-height: calc(100vh - 140px);
+}
+
 #app footer {
   background-color: #393939;
   width: 100vw;
@@ -11467,8 +11471,12 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
 
 .bnb-show .box-image-map-bnb .map-bnb {
   width: 100%;
-  background-color: #f00;
   border-radius: 3px;
+}
+
+.bnb-show .box-image-map-bnb .map-bnb #map-div {
+  width: 100px;
+  height: 100px;
 }
 
 .bnb-show .box-description-service-bnb .description {
@@ -11633,10 +11641,6 @@ ul {
 
 .bnb-btn:hover {
   color: #000;
-}
-
-.bnb-search {
-  min-height: calc(100vh - 140px);
 }
 
 .bnb-search .search-bar {

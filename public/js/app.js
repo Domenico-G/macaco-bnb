@@ -1895,6 +1895,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     titleNoResultsFlag: false,
     chartViewInstce: null,
     viewsArr: [],
+    map: null,
 
     /*
     questi data formano il carousel visibile se il video del jumbotron non dovesse
@@ -1948,8 +1949,20 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       dataSlideTo: '9'
     }]
   },
-  beforeMounted: function beforeMounted() {},
-  mounted: function mounted() {//TODO: chiamata API sponsorizzate
+  mounted: function mounted() {
+    var pos = {
+      lng: -122.47483,
+      lat: 37.80776
+    }; //    var mapDiv = document.getElementById("map-div");
+
+    this.map = tt.map({
+      key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
+      container: "map-div",
+      style: "tomtom://vector/1/basic-main",
+      center: pos,
+      zoom: 12
+    });
+    console.log(this.map);
   },
   methods: {
     getFlats: function getFlats() {

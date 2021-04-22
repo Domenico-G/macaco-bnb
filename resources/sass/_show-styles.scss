@@ -19,8 +19,12 @@
            }
            .map-bnb{
                width: 100%;
-               background-color: #f00;
                border-radius: 3px;
+
+               #map-div {
+                   width: 100px;
+                   height: 100px;
+               }
            }
    }
    .box-description-service-bnb{
