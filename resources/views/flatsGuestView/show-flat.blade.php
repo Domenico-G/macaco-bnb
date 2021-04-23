@@ -3,7 +3,7 @@
 
 @section('content')
     {{-- onload mi permette di attivare una funzione di vue al caricamento della pagina  --}}
-    <div class="container bnb-show" :onload="getInfoForMarker({{$flat->lon}}, {{$flat->lat}}, '{{$flat->details->flat_title}}', '{{$flat->details->price_day}}')">
+    <div class="container bnb-show" :onload="getInfoForMarker({{$flat->lon}}, {{$flat->lat}}, '{{$flat->details->flat_title}}', '{{$flat->details->price_day}}', '{{ $flat->street_name }} {{ $flat->street_number }} {{ $flat->municipality }}')">
         {{-- parte titolo e via --}}
         <div class="row">
             <div class="box-info-bnb col-12">
@@ -19,7 +19,7 @@
             </div>
             {{-- map rendering --}}
             <div class="map-bnb col-md-12 col-lg-5">
-                   <div id="map-div"> </div>
+                   <div id="map-div"></div>
             </div>
         </div>
         {{-- parte di servizzi e descrizione --}}

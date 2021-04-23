@@ -120,7 +120,8 @@ const app = new Vue({
         lonMapMarker:'',//data per i marker della mappa
         latMapMarker:'',//data per i marker della mappa
         titleFlatMarker:'',//data per i marker della mappa
-        priceMapMarker:''//data per i marker della mappa
+        priceMapMarker:'',//data per i marker della mappa
+        addressMarker: ''
     },
 
     mounted() {
@@ -149,10 +150,11 @@ const app = new Vue({
 
     methods: {
         //al caricamento della pagina prende la lat e la lon per creare il marker sulla mappa in maniera dinamica e le informazioni del flat
-        getInfoForMarker: function(paramLon, paramLat, title, price) {
+        getInfoForMarker: function(paramLon, paramLat, title, price,address) {
             this.lonMapMarker = paramLon;
             this.latMapMarker = paramLat;
             this.titleFlatMarker = title;
+            this.addressMarker = address;
             this.priceMapMarker = price;
         },
 
@@ -173,6 +175,7 @@ const app = new Vue({
              //questa variabile popolerà la modale che si apre al click sul marker della mappa
              var popup = new tt.Popup({offset: popupOffsets})
              .setHTML( '<h5 style="font-size:13px;">' + this.titleFlatMarker + '</h5>'
+                + '<div style="color:#797979; font-style: italic">' + this.addressMarker + '</div>'
                 + ' price: ' + this.priceMapMarker + ' €');
              marker.setPopup(popup).togglePopup();
         },
