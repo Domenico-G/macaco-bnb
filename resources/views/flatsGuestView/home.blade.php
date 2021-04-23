@@ -76,7 +76,7 @@
                                         </h5>
                                     </div>
                                     <div class="bnb-buttonContainer">
-                                        <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button">
+                                        <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button" >
                                             Visualizza Appartamento
                                         </a>
                                     </div>

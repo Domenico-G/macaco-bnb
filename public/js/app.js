@@ -1895,6 +1895,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     titleNoResultsFlag: false,
     chartViewInstce: null,
     viewsArr: [],
+    map: null,
 
     /*
     questi data formano il carousel visibile se il video del jumbotron non dovesse
@@ -1946,12 +1947,70 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       imgCarousel: 'imageOfPage/main-carousel/vicenza.jpeg',
       bootStrapAlt: 'Tenth slide',
       dataSlideTo: '9'
-    }]
+    }],
+    lonMapMarker: '',
+    //data per i marker della mappa
+    latMapMarker: '',
+    //data per i marker della mappa
+    titleFlatMarker: '',
+    //data per i marker della mappa
+    priceMapMarker: '',
+    //data per i marker della mappa
+    addressMarker: ''
   },
-  beforeMounted: function beforeMounted() {},
-  mounted: function mounted() {//TODO: chiamata API sponsorizzate
+  mounted: function mounted() {
+    /* >>>>>>MAP TOMTOM IMPORT <<<<< */
+    //la const pos passa le coordinate della posizione di riferimento
+    var pos = {
+      lng: this.lonMapMarker,
+      lat: this.latMapMarker
+    }; //    var mapDiv = document.getElementById("map-div");
+
+    this.map = tt.map({
+      key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
+      container: "map-div",
+      style: "tomtom://vector/1/basic-main",
+      //center importa la posizione di riferimento della ricerca
+      center: pos,
+      zoom: 10
+    }); //funzione che abilita il tasto full screen
+
+    this.map.addControl(new tt.FullscreenControl()); //funzione che abilita i tasti per navigare la mappa (zoom in out e bussola)
+
+    this.map.addControl(new tt.NavigationControl()); //aggiunge la funzione che renderizza il marker sulla mappa
+
+    this.addMarker(this.map);
+    /* >>>>>>END MAP TOMTOM IMPORT <<<<< */
   },
   methods: {
+    //al caricamento della pagina prende la lat e la lon per creare il marker sulla mappa in maniera dinamica e le informazioni del flat
+    getInfoForMarker: function getInfoForMarker(paramLon, paramLat, title, price, address) {
+      this.lonMapMarker = paramLon;
+      this.latMapMarker = paramLat;
+      this.titleFlatMarker = title;
+      this.addressMarker = address;
+      this.priceMapMarker = price;
+    },
+    //funzione di tomtom per aggiugere i marker alla mappa
+    addMarker: function addMarker(map) {
+      var tt = window.tt; //qui bisogna inserire la coordinata del marker nell'ordine lon e lat
+
+      var location = [this.lonMapMarker, this.latMapMarker];
+      var popupOffsets = {
+        top: [0, 0],
+        bottom: [0, -30],
+        'bottom-right': [0, -30],
+        'bottom-left': [0, -30],
+        left: [25, -35],
+        right: [-25, -35]
+      };
+      var marker = new tt.Marker().setLngLat(location).addTo(map); //questa variabile popolerà la modale che si apre al click sul marker della mappa
+
+      var popup = new tt.Popup({
+        offset: popupOffsets
+      }).setHTML('<h5 style="font-size:13px;">' + this.titleFlatMarker + '</h5>' + '<div style="color:#797979; font-style: italic">' + this.addressMarker + '</div>' + ' price: ' + this.priceMapMarker + ' €');
+      marker.setPopup(popup).togglePopup();
+    },
     getFlats: function getFlats() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/search", {

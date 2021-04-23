@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title',  $flat->details->flat_title)
 @section('content')
-    <div class="container bnb-show">
+    {{-- onload mi permette di attivare una funzione di vue al caricamento della pagina  --}}
+    <div class="container bnb-show" :onload="getInfoForMarker({{$flat->lon}}, {{$flat->lat}}, '{{$flat->details->flat_title}}', '{{$flat->details->price_day}}', '{{ $flat->street_name }} {{ $flat->street_number }} {{ $flat->municipality }}')">
         {{-- parte titolo e via --}}
         <div class="row">
             <div class="box-info-bnb col-12">
@@ -15,8 +16,9 @@
             <div class="images-bnb col-md-12 col-lg-7">
                 <img class="card-img-top" src="{{ $flat->details->image }}" alt="Card image cap">
             </div>
+            {{-- map rendering --}}
             <div class="map-bnb col-md-12 col-lg-5">
-                <p>qui va la mappa</p>
+                   <div id="map-div"></div>
             </div>
         </div>
         {{-- parte di servizzi e descrizione --}}
