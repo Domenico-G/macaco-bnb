@@ -36,4 +36,6 @@ Route::prefix('admin')
     ->group(function(){
         Route::resource('flats', 'FlatController');
         Route::get('dashboard', 'DashboardController')->name("admin.dashboard");
+        Route::get('sponsor/{flat}', 'SponsorController@create')->name("admin.sponsor.create");
+        Route::post('sponsor', 'SponsorController@store')->name("admin.sponsor.store");
     });

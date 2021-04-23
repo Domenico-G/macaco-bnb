@@ -17,8 +17,7 @@ class CreateSponsorsTable extends Migration
             $table->id();
             $table->unsignedBigInteger("flat_id");
             $table->unsignedBigInteger("sponsor_type_id");
-            $table->date("sponsor_start");
-            $table->date("sponsor_end");
+            $table->dateTime("sponsor_end");
             $table->timestamps();
 
             $table->foreign("flat_id")

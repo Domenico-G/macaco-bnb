@@ -32,7 +32,7 @@ class SponsorServicesSeeder extends Seeder
          $sponsoType->sponsor_name = "Diamante";
          $sponsoType->save();
 
-        $services = ["Wi-Fi", "Posto Macchina", "Piscina", "Sauna", "Essenziali", "Aria condizionart", "Riscaldamento", "Ingressp privato", "Tv", "Colazione", "Portinaria", "Vista Mare" ];
+        $services = ["Wi-Fi", "Posto Macchina", "Piscina", "Sauna", "Essenziali", "Aria condizionata", "Riscaldamento", "Ingresso privato", "Tv", "Colazione", "Portineria", "Vista Mare" ];
 
         // Seeder per tabella Service
         foreach($services as $serviceTag) {

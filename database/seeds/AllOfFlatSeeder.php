@@ -72,7 +72,6 @@ class AllOfFlatSeeder extends Seeder
 
           // Seeder per tabella Sponsor
           $sponsor = new Sponsor;
-          $sponsor->sponsor_start = "2020-04-14";
           $sponsor->sponsor_end = "2020-09-14";
           $sponsor->sponsor_type_id = rand(1,3);
           $flat->sponsor()->save($sponsor);
