@@ -24,8 +24,6 @@ Vue.prototype.$userId = document
     .querySelector("meta[name='user-id']")
     .getAttribute("content");
 
-
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -56,85 +54,83 @@ const app = new Vue({
         */
         carouselJumbo: [
             {
-                imgJumbo: 'imageOfPage/jumbo-carousel/villa2.jpeg',
-                bootStrapAlt: 'Second slide'
+                imgJumbo: "imageOfPage/jumbo-carousel/villa2.jpeg",
+                bootStrapAlt: "Second slide"
             },
             {
-                imgJumbo: 'imageOfPage/jumbo-carousel/villa4.jpeg',
-                bootStrapAlt: 'Third slide'
+                imgJumbo: "imageOfPage/jumbo-carousel/villa4.jpeg",
+                bootStrapAlt: "Third slide"
             },
             {
-                imgJumbo: 'imageOfPage/jumbo-carousel/villa1.jpeg',
-                bootStrapAlt: 'Fourth slide'
+                imgJumbo: "imageOfPage/jumbo-carousel/villa1.jpeg",
+                bootStrapAlt: "Fourth slide"
             }
         ],
         mainCarousel: [
             {
-                imgCarousel: 'imageOfPage/main-carousel/taranto.jpeg',
-                bootStrapAlt: 'Second slide',
-                dataSlideTo: '1'
+                imgCarousel: "imageOfPage/main-carousel/taranto.jpeg",
+                bootStrapAlt: "Second slide",
+                dataSlideTo: "1"
             },
             {
-                imgCarousel: 'imageOfPage/main-carousel/milano.jpeg',
-                bootStrapAlt: 'Third slide',
-                dataSlideTo: '2'
+                imgCarousel: "imageOfPage/main-carousel/milano.jpeg",
+                bootStrapAlt: "Third slide",
+                dataSlideTo: "2"
             },
             {
-                imgCarousel: 'imageOfPage/main-carousel/catania.jpeg',
-                bootStrapAlt: 'Fourth slide',
-                dataSlideTo: '3'
+                imgCarousel: "imageOfPage/main-carousel/catania.jpeg",
+                bootStrapAlt: "Fourth slide",
+                dataSlideTo: "3"
             },
             {
-                imgCarousel: 'imageOfPage/main-carousel/bologna.jpeg',
-                bootStrapAlt: 'Fifth slide',
-                dataSlideTo: '4'
+                imgCarousel: "imageOfPage/main-carousel/bologna.jpeg",
+                bootStrapAlt: "Fifth slide",
+                dataSlideTo: "4"
             },
             {
-                imgCarousel: 'imageOfPage/main-carousel/tropea.jpeg',
-                bootStrapAlt: 'Sixth slide',
-                dataSlideTo: '5'
+                imgCarousel: "imageOfPage/main-carousel/tropea.jpeg",
+                bootStrapAlt: "Sixth slide",
+                dataSlideTo: "5"
             },
             {
-                imgCarousel: 'imageOfPage/main-carousel/napoli.jpeg',
-                bootStrapAlt: 'Seventh slide',
-                dataSlideTo: '6'
+                imgCarousel: "imageOfPage/main-carousel/napoli.jpeg",
+                bootStrapAlt: "Seventh slide",
+                dataSlideTo: "6"
             },
             {
-                imgCarousel: 'imageOfPage/main-carousel/abruzzo.jpeg',
-                bootStrapAlt: 'Eighth slide',
-                dataSlideTo: '7'
+                imgCarousel: "imageOfPage/main-carousel/abruzzo.jpeg",
+                bootStrapAlt: "Eighth slide",
+                dataSlideTo: "7"
             },
             {
-                imgCarousel: 'imageOfPage/main-carousel/roma.jpeg',
-                bootStrapAlt: 'Ninth slide',
-                dataSlideTo: '8'
+                imgCarousel: "imageOfPage/main-carousel/roma.jpeg",
+                bootStrapAlt: "Ninth slide",
+                dataSlideTo: "8"
             },
             {
-                imgCarousel: 'imageOfPage/main-carousel/vicenza.jpeg',
-                bootStrapAlt: 'Tenth slide',
-                dataSlideTo: '9'
+                imgCarousel: "imageOfPage/main-carousel/vicenza.jpeg",
+                bootStrapAlt: "Tenth slide",
+                dataSlideTo: "9"
             }
         ]
     },
 
     mounted() {
-       const pos = { lng: -122.47483, lat: 37.80776 };
-    //    var mapDiv = document.getElementById("map-div");
+        const pos = { lng: -122.47483, lat: 37.80776 };
+        //    var mapDiv = document.getElementById("map-div");
 
-
-       this.map = tt.map({
-           key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
-           container: "map-div",
-           style: "tomtom://vector/1/basic-main",
-           center: pos,
-           zoom: 12
-       });
-       console.log(this.map);
+        this.map = tt.map({
+            key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
+            container: "map-div",
+            style: "tomtom://vector/1/basic-main",
+            center: pos,
+            zoom: 12
+        });
+        console.log(this.map);
     },
 
-
     methods: {
-        getFlats: function () {
+        getFlats: function() {
             const self = this;
             axios
                 .get("http://127.0.0.1:8000/api/search", {
@@ -146,7 +142,7 @@ const app = new Vue({
                         checkedServices: String(this.checkedServices)
                     }
                 })
-                .then(function (resp) {
+                .then(function(resp) {
                     self.titleSearchedInput = self.address;
 
                     if (resp.data.length === 0) {
@@ -161,49 +157,46 @@ const app = new Vue({
                     self.flatsArr = resp.data;
                 });
         },
-        getChar: function (id) {
+        getChar: function(id) {
             console.log(id);
             const self = this;
             axios
                 .get("http://127.0.0.1:8000/api/views?id=" + this.$userId)
-                .then(function (resp) {
+                .then(function(resp) {
                     self.viewsArr = resp.data;
                     if (self.count > 1) {
                         self.chartViewInstce.destroy();
                     }
 
+                    // creo dinamicamente la lista dei mesi
+                    const moment = require("moment");
+                    var m = moment().month();
+                    var monthList = moment.months().slice(0, m + 1);
+
+
+
+                    // Instanzio il grafico per ogni appartamento
                     const chart = document.getElementById("chartView");
                     self.chartViewInstce = new Chart(chart, {
-                        type: "bar",
+                        type: "line",
+                        type: "line",
                         data: {
-                            labels: [
-                                "Red",
-                                "Blue",
-                                "Yellow",
-                                "Green",
-                                "Purple",
-                                "Orange"
-                            ],
+                            labels: monthList,
                             datasets: [
                                 {
-                                    label: "# of Votes",
-                                    data: [self.count, 19, 3, 5, 2, 3],
+                                    label: "#N° Visualizzazzioni",
+                                    data: self.filterChar(self.viewsArr[1], id, moment),
                                     backgroundColor: [
-                                        "rgba(255, 99, 132, 0.2)",
-                                        "rgba(54, 162, 235, 0.2)",
-                                        "rgba(255, 206, 86, 0.2)",
-                                        "rgba(75, 192, 192, 0.2)",
-                                        "rgba(153, 102, 255, 0.2)",
-                                        "rgba(255, 159, 64, 0.2)"
+                                        "rgba(54, 162, 235, 0.2)"
                                     ],
-                                    borderColor: [
-                                        "rgba(255, 99, 132, 1)",
-                                        "rgba(54, 162, 235, 1)",
-                                        "rgba(255, 206, 86, 1)",
-                                        "rgba(75, 192, 192, 1)",
-                                        "rgba(153, 102, 255, 1)",
-                                        "rgba(255, 159, 64, 1)"
-                                    ],
+                                    borderColor: ["rgba(54, 162, 235, 1)"],
+                                    borderWidth: 1
+                                },
+                                {
+                                    label: "#N° Messaggi",
+                                    data: self.filterChar(self.viewsArr[0], id, moment),
+                                    backgroundColor: ["#ffe0cc"],
+                                    borderColor: ["#ff8533"],
                                     borderWidth: 1
                                 }
                             ]
@@ -218,14 +211,47 @@ const app = new Vue({
                     });
                 });
         },
-        toggleDropdownSection: function () {
+
+        filterChar: function(arr, id, date) {
+            let dataArrChar = [
+                { month: "January", views: 0 },
+                { month: "February", views: 0 },
+                { month: "March", views: 0 },
+                { month: "April", views: 0 },
+                { month: "May", views: 0 },
+                { month: "June", views: 0 },
+                { month: "July", views: 0 },
+                { month: "August", views: 0 },
+                { month: "September", views: 0 },
+                { month: "October", views: 0 },
+                { month: "November", views: 0 },
+                { month: "December", views: 0 }
+            ];
+
+            // Raccolgo solo le visualizzazzioni della stanza selezionata
+            arr.forEach(item => {
+                if (id === item.flat_id) {
+                    let viewMonth = date(item.updated_at);
+
+                    dataArrChar.forEach(el => {
+                        if (el.month == viewMonth.format("MMMM")) {
+                            el.views += 1;
+                        }
+                    });
+                }
+            });
+
+            return dataArrChar.map(item => item.views);
+        },
+
+        toggleDropdownSection: function() {
             if (this.classDropdownSection === "") {
-                return this.classDropdownSection = "active"
+                return (this.classDropdownSection = "active");
             }
 
             if (this.classDropdownSection === "active") {
-                return this.classDropdownSection = ""
+                return (this.classDropdownSection = "");
             }
         }
-    },
+    }
 });

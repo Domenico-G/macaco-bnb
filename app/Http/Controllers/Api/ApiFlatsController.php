@@ -128,6 +128,18 @@ class ApiFlatsController extends Controller
             }
         };
 
-        return json_encode($viewsArr);
+        $messagesArr = [];
+        foreach ($flats as $flat) {
+            foreach ($flat->messages as $message) {
+                array_push($messagesArr, $message);
+            }
+        };
+
+        $allViewsArr = [];
+        array_push($allViewsArr, $messagesArr);
+        array_push($allViewsArr, $viewsArr);
+
+
+        return json_encode($allViewsArr);
     }
 }
