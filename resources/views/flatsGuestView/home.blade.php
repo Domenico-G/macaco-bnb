@@ -62,28 +62,30 @@
         <div class="container d-flex flex-wrap bnb-cardBox">
             <div class="row">
                 @foreach ($flats as $key => $flat)
-                    <div class="col-lg-4 col-md-6 col-xs-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="bnb-card">
-                                    <div class="bnb-imgContainer">
-                                        <img class="bnb-imgCard" src="{{$flat->details->image}}" alt="Card image cap">
-                                    </div>
+                    {{-- @if($flat->sponsor[0]->sponsor_end <= date("Y-m-d H:i:s")) --}}
+                        <div class="col-lg-4 col-md-6 col-xs-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="bnb-card">
+                                        <div class="bnb-imgContainer">
+                                            <img class="bnb-imgCard" src="{{$flat->details->image}}" alt="Card image cap">
+                                        </div>
 
-                                    <div class=" bnb-flatTitleStrip">
-                                        <h5 class="bnb-cardTitle">
-                                            {{$flat->details->flat_title}}
-                                        </h5>
-                                    </div>
-                                    <div class="bnb-buttonContainer">
-                                        <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button" >
-                                            Visualizza Appartamento
-                                        </a>
+                                        <div class=" bnb-flatTitleStrip">
+                                            <h5 class="bnb-cardTitle">
+                                                {{$flat->details->flat_title}}
+                                            </h5>
+                                        </div>
+                                        <div class="bnb-buttonContainer">
+                                            <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button" >
+                                                Visualizza Appartamento
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {{-- @endif --}}
                 @endforeach
             </div>
         </div>

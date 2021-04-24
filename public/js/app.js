@@ -1898,7 +1898,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     chartViewInstce: null,
     viewsArr: [],
     map: null,
-    paymentFlag: false,
 
     /*
     questi data formano il carousel visibile se il video del jumbotron non dovesse
@@ -2144,9 +2143,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       if (this.classDropdownSection === "active") {
         return this.classDropdownSection = "";
       }
-    },
-    changeFlag: function changeFlag() {
-      this.paymentFlag = true;
     }
   }
 });
