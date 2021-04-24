@@ -25,3 +25,9 @@
 //import della ricerca appartamento
 
 @import 'search-style';
+
+
+.disabled-payment{
+    pointer-events: none;
+    opacity: 0.5;
+}

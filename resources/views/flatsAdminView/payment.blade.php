@@ -17,7 +17,6 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <script src="{{ asset('js/app.js') }}" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://js.braintreegateway.com/web/dropin/1.8.1/js/dropin.min.js"></script>
@@ -25,32 +24,41 @@
 </head>
 
 <body>
-    <div id="app">
-        @yield('payment')
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div id="dropin-container"></div>
-                    <button id="submit-button" v-on:click="changeFlag()">Request payment method</button>
-                </div>
+    @yield('payment')
+    <div id="payment-container" class="container disabled-payment">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div id="dropin-container"></div>
+                <button id="submit-button" v-on:click="changeFlag()">Request payment method</button>
             </div>
         </div>
-
     </div>
 
     <script>
+
+
         var button = document.querySelector('#submit-button');
+
         var flat = {{ $flat->id }};
-        var values = document.getElementsByClassName('sponsor-type');
+
+        var radioButtons = document.getElementsByClassName('sponsor-type');
+
+        for (let y = 0; y < radioButtons.length; y++) {
+            radioButtons[y].addEventListener('click', function(){
+                document.getElementById('payment-container').classList.remove('disabled-payment')
+            })
+        }
+
         var value;
+
         braintree.dropin.create({
             authorization: "{{ Braintree\ClientToken::generate() }}",
             container: '#dropin-container'
         }, function(createErr, instance) {
             button.addEventListener('click', function() {
-                for (let x = 0; x < values.length; x++) {
-                    if (values[x].checked) {
-                        value = values[x].value;
+                for (let x = 0; x < radioButtons.length; x++) {
+                    if (radioButtons[x].checked) {
+                        value = radioButtons[x].value;
                     }
                 }
                 instance.requestPaymentMethod(function(err, payload) {
