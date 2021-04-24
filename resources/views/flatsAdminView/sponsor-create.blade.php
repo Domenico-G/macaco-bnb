@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('flatsAdminView.payment')
 
 @section('title', 'Sponsorizza il tuo appartamento')
 
-@section('content')
+@section('payment')
     <div class="container">
         <div>
             <h1>Sponsorizza il tuo appartamento!</h1>
@@ -30,12 +30,9 @@
         @endphp
 
         @if (!$sponsorActiveFlag)
-        <form action="{{ route('admin.sponsor.store', compact('flat')) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('POST')
             @foreach ($sponsorTypes as $sponsorType)
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sponsor-type" id="sponsor-type"
+                    <input class="form-check-input sponsor-type" type="radio" v-on:click="changeFlag()" name="sponsor-type" id="sponsor-type{{ $sponsorType->id }}"
                         value="{{ $sponsorType->id }}">
 
                     <label class="form-check-label" for="sponsor-type">
@@ -44,9 +41,6 @@
                     </label>
                 </div>
             @endforeach
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
         @endif
 
         @if ($sponsorActiveFlag)

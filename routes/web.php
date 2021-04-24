@@ -26,8 +26,11 @@ Route::get('flats', 'GuestController@index')->name('public.flats.home');
 Route::get('flats/{flat}', 'GuestController@show')->name('public.flats.show');
 Route::get('search', 'GuestController@searchView')->name('public.flats.search');
 
+Route::get('/payment', function () {
+    return view('flatsAdminView.payment');
+});
 
-
+Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
 
 // Route::resource('flats', ('Admin\FlatController'))->middleware("auth");
 Route::prefix('admin')

@@ -47,6 +47,7 @@ const app = new Vue({
         chartViewInstce: null,
         viewsArr: [],
         map: null,
+        paymentFlag: false,
 
         /*
         questi data formano il carousel visibile se il video del jumbotron non dovesse
@@ -299,6 +300,10 @@ const app = new Vue({
             if (this.classDropdownSection === "active") {
                 return (this.classDropdownSection = "");
             }
-        }
+        },
+
+        changeFlag: function() {
+            this.paymentFlag = true;
+        },
     }
 });
