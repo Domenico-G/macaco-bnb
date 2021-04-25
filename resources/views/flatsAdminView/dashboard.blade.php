@@ -1,5 +1,5 @@
 @extends("layouts.app")
-@section('title', ('Dashboard di ' . Auth::user()->name))
+@section('title', 'Dashboard di ' . Auth::user()->name)
 @section('content')
     <div class="container">
         <div class="row">
@@ -10,32 +10,32 @@
                         <p>Gestisci le tue inserzioni</p>
                     </div>
                     <div class="button-create">
-                        <a href="{{route('flats.create')}}">
+                        <a href="{{ route('flats.create') }}">
                             <button type="button" class="btn btn-dark">
-                            Aggiungi appartamento
+                                Aggiungi appartamento
                             </button>
-                         </a>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="row card-row">
                     @foreach (auth()->user()->flats as $flat)
-                        <div class="card-box col-lg-6 col-md-12 col-xs-12">
-                            <div class="content-card">
-                                <div class="img-card">
+                        <div class="card-box col-lg-12 ">
+                            <div class="content-card row">
+                                <div class="img-card col-lg-5 col-md-12">
                                     <img src="{{ $flat->details->image }}" alt="Card image cap">
                                     <div class="detais-views">
                                         <div class="message" type="button" data-toggle="modal"
                                             data-target="#messageModal{{ $flat->id }}"><i class="far fa-envelope"></i>
                                         </div>
-                                        <div class="chart-button" v-on:click="getChar({{$flat->id}}); count += 1" type="button" data-toggle="modal"
-                                            data-target="#chartModal"><i class="fas fa-chart-line"></i>
+                                        <div class="chart-button" v-on:click="getChar({{ $flat->id }})" type="button"
+                                            data-toggle="modal" data-target="#chartModal"><i class="fas fa-chart-line"></i>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="card-text">
+                                <div class="card-text col-lg-6 col-md-12">
                                     <h5 class="card-title">{{ $flat->details->flat_title }}</h5>
                                     <hr>
                                     <div class="info-card">
@@ -54,11 +54,44 @@
                                     <div class="button-container">
                                         <a href="{{ route('flats.edit', compact('flat')) }}"
                                             class="btn btn-dark">Modifica</a>
+                                        <a href="{{ route('flats.show', compact('flat')) }}"
+                                            class="btn btn-dark">Visualizza</a>
+                                        <a href="{{ route('admin.sponsor.create', compact('flat')) }}"
+                                            class="btn btn-dark">Sposnosrizza</a>
+                                        <button class="btn btn-dark" data-toggle="modal" data-target="#deleteModal"
+                                            type="submit">
+                                            Elimina
+                                        </button>
+
+
+                                        {{-- <form action="{{ route('flats.destroy', compact('flat')) }}" method="POST">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button class="btn btn-dark" type="submit">Elimina</button>
+                                        </form> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Delete Modal -->
+                        <div class="modal fade" id="deleteModal" aria-labelledby="exampleModalCenterTitle"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-delete modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mx-auto" id="exampleModalLongTitle">Sei Sicuro di voler eliminare
+                                            l'appartamento?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-footer">
                                         <form action="{{ route('flats.destroy', compact('flat')) }}" method="POST">
                                             @csrf
                                             @method("DELETE")
                                             <button class="btn btn-dark" type="submit">Elimina</button>
                                         </form>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
                                     </div>
                                 </div>
                             </div>
@@ -95,8 +128,8 @@
                             </div>
                         </div>
                         <!-- Chart Modal -->
-                        <div class="modal fade" id="chartModal"
-                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal fade" id="chartModal" aria-labelledby="exampleModalCenterTitle"
+                            aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -106,7 +139,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                       <canvas id="chartView"></canvas>
+                                        <canvas id="chartView"></canvas>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
