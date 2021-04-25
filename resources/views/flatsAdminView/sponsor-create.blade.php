@@ -46,5 +46,9 @@
         @if ($sponsorActiveFlag)
             <h2>Questo appartamento ha già una sponsorizzazione attiva in scadenza il {{$sponsorEnd}}</h2>
         @endif
+
     </div>
+    <a class="nav-link" href="{{ route('admin.dashboard') }}">
+        Torna alla Dashboard
+    </a>
 @endsection
