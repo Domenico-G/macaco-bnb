@@ -195,7 +195,16 @@
                         @foreach ($services as $service)
                             <div class="col-lg-3 col-md-6 col-sm-12 form-check form-control {{ $errors->has('services') ? 'is-invalid' : '' }}" >
                                 <input class="form-check-input" type="checkbox"
-                                value="{{ $service->id }}" id="checkbox-{{ $service->id }}" name="services[]" >
+                                value="{{ $service->id }}"
+                                @if(isset($flat))
+                                    @foreach($flat->services as $activeService)
+                                        @if ($activeService->id == $service->id)
+                                            checked
+                                        @endif
+                                    @endforeach
+                                @endif
+
+                                id="checkbox-{{ $service->id }}" name="services[]" >
                                 <label class="form-check-label"
                                 for="checkbox-{{ $service->id }}">{{ $service->service_name }}</label>
                             </div>

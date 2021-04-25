@@ -60,15 +60,13 @@
         </div>
         {{-- flats sponsorizzati --}}
         <div class="container-fluid d-flex flex-wrap bnb-cardBox">
-            <div class="d-flex flex-row-reverse">
-                @foreach ($flats as $key => $flat)
-                    @if(isset($flat->sponsor[0]) && $flat->sponsor[0]->sponsor_end>=date("Y-m-d H:i:s"))
-
+            <div class="d-flex flex-row">
+                @foreach ($sponsoredFlats as $flat)
+                    @if($flat->sponsor_end>=date("Y-m-d H:i:s"))
                         <div class="bnb-card">
                             <div class="bnb-imgContainer">
                                 <img class="bnb-imgCard" src="{{$flat->details->image}}" alt="Card image cap">
                             </div>
-
                             <div class=" bnb-flatTitleStrip">
                                 <h5 class="bnb-cardTitle">
                                     {{$flat->details->flat_title}}
@@ -141,7 +139,7 @@
         <div class="container d-flex flex-wrap bnb-cardBoxAll">
             <div class="d-flex flex-row-reverse">
                 @foreach ($flats as $key => $flat)
-                    @if(!isset($flat->sponsor[0]) || isset($flat->sponsor[0]) && $flat->sponsor[0]->sponsor_end<date("Y-m-d H:i:s"))
+                    @if(!isset($flat->sponsor[0]) || (isset($flat->sponsor[0]) && $flat->sponsor[count($flat->sponsor)-1]->sponsor_end<date("Y-m-d H:i:s")))
                         <div class="bnb-card">
                             <div class="bnb-imgContainer">
                                 <img class="bnb-imgCard" src="{{$flat->details->image}}" alt="Card image cap">

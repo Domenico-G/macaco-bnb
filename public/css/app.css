@@ -11933,6 +11933,190 @@ ul {
   margin-bottom: 25px;
 }
 
+.bnb-pageWrapper .bnb-navVW {
+  background-color: #000;
+  width: 100vw;
+  height: 80px;
+  max-width: 100%;
+  min-width: 360px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav {
+  color: #fff;
+  background-color: #000;
+  height: 100%;
+  position: sticky;
+  top: 0px;
+  z-index: 10000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-buttonStyle {
+  background-color: #fff;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-buttonStyle:hover {
+  background-color: #fff;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer {
+  position: relative;
+  background-color: #fff;
+  width: 59px;
+  height: 59px;
+  margin-right: 25px;
+  transition: 1s;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer .bnb-brandName {
+  position: absolute;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  width: 100px;
+  left: -10%;
+  color: transparent;
+  transition: 2s;
+  top: 0px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer:hover .bnb-brandName {
+  transition: 4s;
+  color: #fff;
+  top: 80%;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer a.logo {
+  transition: 3s;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer a.logo img {
+  width: 60px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer:hover a.logo {
+  transition: 2s;
+  background-color: rgba(255, 166, 0, 0.438);
+  border-radius: 100%;
+  font-size: 35px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer:hover {
+  transition: 1s;
+  background-color: #797979;
+  border-radius: 8px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-textContainer {
+  text-align: center;
+  transition: 1s;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-textContainer a {
+  color: #fff;
+  transition: 1s;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-textContainer a:hover {
+  transition: 1s;
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-textContainer a:hover {
+  transition: 1s;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .mr-auto .bnb-burgerMenu {
+  background-color: #00000094;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .mr-auto .bnb-burgerMenu a {
+  color: #fff;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .mr-auto .bnb-burgerMenu a:hover {
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto .bnb-burgerMenu {
+  height: 100%;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto .bnb-burgerMenu a {
+  color: #fff;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto .bnb-burgerMenu a:hover {
+  transition: 1s;
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto .bnb-burgerMenu a:hover {
+  transition: 1s;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto li {
+  margin-left: 8px;
+}
+
+.bnb-pageWrapper .bnb-totalMain {
+  height: calc(100vh - 140px);
+  overflow-y: scroll;
+}
+
+.bnb-pageWrapper .bnb-totalMain .bnb-mainPayment .bnb-totalContainer {
+  height: 100%;
+  background-color: red;
+}
+
+.bnb-pageWrapper footer {
+  background-color: #393939;
+  width: 100vw;
+  max-width: 100%;
+  min-width: 360px;
+  height: 60px;
+  bottom: 0px;
+}
+
+.bnb-pageWrapper footer .bnb-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-creditsContainer .bnb-creaditsCreators {
+  color: #ffffff81;
+  font-size: 10px;
+  transition: 2s;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-creditsContainer .bnb-creaditsCreators:hover {
+  transition: 1s;
+  color: #fff;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-rightFoot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-rightFoot a {
+  text-decoration: none;
+  color: #797979;
+  font-size: 20px;
+  transition: 2s;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-rightFoot a:hover {
+  transition: 1s;
+  color: #fff;
+  transform: scale(1.3);
+}
+
 .disabled-payment {
   pointer-events: none;
   opacity: 0.5;
