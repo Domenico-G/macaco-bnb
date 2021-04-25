@@ -24,7 +24,7 @@
                         <div class="card-box col-lg-12 ">
                             <div class="content-card row">
                                 <div class="img-card col-lg-5 col-md-12">
-                                    <img src="{{ $flat->details->image }}" alt="Card image cap">
+                                    <img src="{{ asset($flat->details->image) }}" alt="Card image cap">
                                     <div class="detais-views">
                                         <div class="message" type="button" data-toggle="modal"
                                             data-target="#messageModal{{ $flat->id }}"><i class="far fa-envelope"></i>

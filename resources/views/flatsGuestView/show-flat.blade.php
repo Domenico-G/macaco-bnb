@@ -14,7 +14,7 @@
         {{-- parte immagine e mappa --}}
         <div class="row box-image-map-bnb">
             <div class="images-bnb col-md-12 col-lg-7">
-                <img class="card-img-top" src="{{ $flat->details->image }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset($flat->details->image) }}" alt="Card image cap">
             </div>
             {{-- map rendering --}}
             <div class="map-bnb col-md-12 col-lg-5">

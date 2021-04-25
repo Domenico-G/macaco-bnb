@@ -65,7 +65,7 @@
                     @if($flat->sponsor_end>=date("Y-m-d H:i:s"))
                         <div class="bnb-card">
                             <div class="bnb-imgContainer">
-                                <img class="bnb-imgCard" src="{{$flat->details->image}}" alt="Card image cap">
+                                <img class="bnb-imgCard" src="{{asset($flat->details->image)}}" alt="Card image cap">
                             </div>
                             <div class=" bnb-flatTitleStrip">
                                 <h5 class="bnb-cardTitle">

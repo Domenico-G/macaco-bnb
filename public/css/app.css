@@ -11719,6 +11719,10 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+[v-cloak] {
+  display: none;
+}
+
 ul {
   list-style: none;
 }

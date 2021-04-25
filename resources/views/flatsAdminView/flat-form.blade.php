@@ -108,11 +108,11 @@
 
 
             <div class="form-group col-12">
-                <input type="text" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"
+                <input type="file" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"
                     value="{{ isset($flat) ? $flat->details->image : '' }}" id="image" name="image"
                     placeholder="Inserisci un'immagine">
                 <div class="invalid-feedback">
-                    Inserisci un url
+                    Carica un'immagine
                 </div>
             </div>
 

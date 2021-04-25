@@ -10,7 +10,6 @@ class Detail extends Model
     [
         "flat_title",
         "description",
-        "image",
         "area_sqm",
         "rooms_quantity",
         "beds_quantity",

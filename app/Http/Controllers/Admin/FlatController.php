@@ -69,8 +69,11 @@ class FlatController extends Controller
             $flat->user_id = $id;
             $flat->save();
 
+            $path = $request->file("image")->store("public");
+
             $detail = new Detail();
             $detail->flat_id = $flat->id;
+            $detail->image = $path;
             $detail->fill($data);
             $detail->save();
 
@@ -198,7 +201,7 @@ class FlatController extends Controller
             "postal_code" => 'required|max:8',
             "flat_title" => 'required',
             "description" => 'required',
-            "image" => 'required|url',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "area_sqm" => 'required|numeric',
             "rooms_quantity" => 'required|numeric',
             "beds_quantity" => 'required|numeric',

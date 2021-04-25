@@ -24,7 +24,7 @@
 
         {{-- search advanced settings --}}
         <div :class="'row advanced-settings ' + classDropdownSection">
-            <div class="container">
+            <div class="container" v-cloak>
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <label for="numero-stanze">Numero stanze</label>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-12">
                         <div class="container">
-                            <div class="row">
+                            <div class="row v-cloak">
                                 <div class="col-lg-12">
                                     <h3>Servizi:</h3>
                                 </div>
@@ -73,7 +73,7 @@
         {{-- end searchbar --}}
 
         {{-- results section --}}
-        <div class="row">
+        <div class="row" v-cloak>
             <div class="col-12">
                 <div class="container">
                     <h1 v-if="titleFlag">Risultati per @{{titleSearchedInput}}</h1>
