@@ -1889,7 +1889,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     roomsNumber: "1",
     bedsNumber: "1",
     distanceKm: "20",
-    flatsArr: [],
+    normalFlats: [],
+    sponsoredFlats: [],
     checkedServices: [],
     classDropdownSection: "",
     titleFlag: false,
@@ -1898,7 +1899,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     chartViewInstce: null,
     viewsArr: [],
     map: null,
-    paymentFlag: false,
 
     /*
     questi data formano il carousel visibile se il video del jumbotron non dovesse
@@ -2027,7 +2027,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       }).then(function (resp) {
         self.titleSearchedInput = self.address;
 
-        if (resp.data.length === 0) {
+        if (resp.data.normals.length === 0) {
           self.titleNoResultsFlag = true;
           self.titleFlag = false;
         } else {
@@ -2035,7 +2035,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
           self.titleNoResultsFlag = false;
         }
 
-        self.flatsArr = resp.data;
+        self.normalFlats = resp.data.normals;
+        self.sponsoredFlats = resp.data.sponsoreds;
       });
     },
     getChar: function getChar(id) {
@@ -2144,9 +2145,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       if (this.classDropdownSection === "active") {
         return this.classDropdownSection = "";
       }
-    },
-    changeFlag: function changeFlag() {
-      this.paymentFlag = true;
     }
   }
 });

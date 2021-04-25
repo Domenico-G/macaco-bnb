@@ -38,7 +38,8 @@ const app = new Vue({
         roomsNumber: "1",
         bedsNumber: "1",
         distanceKm: "20",
-        flatsArr: [],
+        normalFlats: [],
+        sponsoredFlats: [],
         checkedServices: [],
         classDropdownSection: "",
         titleFlag: false,
@@ -191,7 +192,7 @@ const app = new Vue({
                 .then(function(resp) {
                     self.titleSearchedInput = self.address;
 
-                    if (resp.data.length === 0) {
+                    if (resp.data.normals.length === 0) {
                         self.titleNoResultsFlag = true;
 
                         self.titleFlag = false;
@@ -200,7 +201,9 @@ const app = new Vue({
 
                         self.titleNoResultsFlag = false;
                     }
-                    self.flatsArr = resp.data;
+                    self.normalFlats = resp.data.normals;
+
+                    self.sponsoredFlats = resp.data.sponsoreds;
                 });
         },
 

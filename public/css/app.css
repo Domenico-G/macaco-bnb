@@ -11750,6 +11750,10 @@ ul {
   margin: 15px 0 15px 50px;
 }
 
+.bnb-search .flat {
+  overflow: hidden;
+}
+
 .bnb-search .flat a,
 .bnb-search .flat a:link,
 .bnb-search .flat a:visited,
@@ -11818,7 +11822,7 @@ ul {
 }
 
 .bnb-search .flat .row .flat-info a .flat-others-info .services div {
-  margin: 0 15px 15px 0;
+  margin: 0 15px 20px 0;
   border: 1px solid #000;
   border-radius: 15px;
   text-align: center;
