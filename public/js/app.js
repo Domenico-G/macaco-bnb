@@ -1849,6 +1849,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
@@ -1958,7 +1970,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     //data per i marker della mappa
     priceMapMarker: '',
     //data per i marker della mappa
-    addressMarker: ''
+    addressMarker: '',
+    sponsoredFlats: []
   },
   mounted: function mounted() {
     /* >>>>>>MAP TOMTOM IMPORT <<<<< */
@@ -2084,40 +2097,40 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     },
     filterChar: function filterChar(arr, id, date) {
       var dataArrChar = [{
-        month: "January",
+        month: "Gennaio",
         views: 0
       }, {
-        month: "February",
+        month: "Febbraio",
         views: 0
       }, {
-        month: "March",
+        month: "Marzo",
         views: 0
       }, {
-        month: "April",
+        month: "Aprile",
         views: 0
       }, {
-        month: "May",
+        month: "Maggio",
         views: 0
       }, {
-        month: "June",
+        month: "Giugno",
         views: 0
       }, {
-        month: "July",
+        month: "Luglio",
         views: 0
       }, {
-        month: "August",
+        month: "Agosto",
         views: 0
       }, {
-        month: "September",
+        month: "Settembre",
         views: 0
       }, {
-        month: "October",
+        month: "Ottobre",
         views: 0
       }, {
-        month: "November",
+        month: "Novembre",
         views: 0
       }, {
-        month: "December",
+        month: "Dicembre",
         views: 0
       }]; // Raccolgo solo le visualizzazzioni della stanza selezionata
 
@@ -2143,6 +2156,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       if (this.classDropdownSection === "active") {
         return this.classDropdownSection = "";
       }
+    },
+    getFlatsBySponsor: function getFlatsBySponsor(flat) {
+      this.sponsoredFlats = [].concat(_toConsumableArray(this.sponosoredFlats), _toConsumableArray(flat));
     }
   }
 });

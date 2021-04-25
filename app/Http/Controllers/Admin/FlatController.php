@@ -24,6 +24,7 @@ class FlatController extends Controller
     public function index()
     {
         $flats = Flat::all();
+
         return redirect()->route('public.flats.home', compact("flats"));
     }
 

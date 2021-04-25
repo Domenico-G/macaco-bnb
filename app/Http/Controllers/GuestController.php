@@ -18,7 +18,9 @@ class GuestController extends Controller
     public function index()
     {
         $flats = Flat::all();
-        return view("flatsGuestView.home", compact("flats"));
+
+        $sponsoredFlats = Flat::join('sponsors', 'flats.id', '=' , 'sponsors.flat_id')->orderBy('sponsor_end', 'asc')->get();
+        return view("flatsGuestView.home", compact("flats", "sponsoredFlats"));
     }
 
     /**

@@ -45,14 +45,12 @@
 
                         <span>@{{distanceKm}}</span>
                     </div>
-
                     <div class="col-12">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h3>Servizi:</h3>
                                 </div>
-
                                 @foreach ($services as $service)
                                 <div class="col-lg-3 col-md-6 col-sm-12 form-check">
                                     <input class="form-check-input" v-model="checkedServices" type="checkbox"
@@ -65,7 +63,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div v-on:click="toggleDropdownSection()" class="col-12 lift-section bnb-btn">
                         <i class="fas fa-angle-up"></i>
                     </div>

@@ -3,10 +3,9 @@
 @section('title', 'Sponsorizza il tuo appartamento')
 
 @section('payment')
-    <div class="container">
-        <div>
+    <div class="container bnb-totalContainer">
+        <div class="bnb-text">
             <h1>Sponsorizza il tuo appartamento!</h1>
-
             <p>
                 Sponsorizza ora il tuo appartamento e questo verrà mostrato per primo nella homepage o se corrisponde ad una
                 ricerca!
@@ -46,5 +45,9 @@
         @if ($sponsorActiveFlag)
             <h2>Questo appartamento ha già una sponsorizzazione attiva in scadenza il {{$sponsorEnd}}</h2>
         @endif
+
     </div>
+    <a class="nav-link" href="{{ route('admin.dashboard') }}">
+        Torna alla Dashboard
+    </a>
 @endsection

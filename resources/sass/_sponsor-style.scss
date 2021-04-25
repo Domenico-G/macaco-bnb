@@ -1,0 +1,180 @@
+
+.bnb-pageWrapper {
+    .bnb-navVW {
+        background-color: #000;
+        width : 100vw;
+        height: 80px;
+        max-width: 100%;
+        min-width: 360px;//limite minimo oltre il quale la pagina non si rimpicciolirà più
+        nav {
+            color: #fff;
+            background-color:#000;
+            height: 100%;
+            position : sticky;
+            top:0px;
+            z-index: 10000;
+            .bnb-container {
+                .bnb-buttonStyle {
+                    background-color:  #fff;
+                    &:hover {
+                        background-color: #fff;
+                    }
+                }
+
+                .bnb-logoContainer {
+                    position: relative;
+                    background-color: #fff;
+                    width: 59px;
+                    height: 59px;
+                    margin-right: 25px;
+                    transition: 1s;
+
+                    .bnb-brandName {
+                        position: absolute;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        width: 100px;
+                        left: -10%;
+                        color: transparent;
+                        transition: 2s;
+                        top:0px;
+                    }
+                    //animazione del brand name
+                    &:hover .bnb-brandName {
+                        transition: 4s;
+                        color: #fff;
+                        top: 80%;
+                    }
+                    a.logo {
+                        transition: 3s;
+                        img {
+                            width: 60px;
+                        }
+
+                     }
+                     &:hover a.logo{ // sun in background of logo-img
+                        transition: 2s;
+                        background-color: rgba(255, 166, 0, 0.438);
+                        border-radius: 100%;
+                        font-size: 35px;
+                    }
+                    &:hover {
+                        transition: 1s;
+                        background-color: $grey-font;
+                        border-radius: 8px;
+                    }
+                }//end bnb-logoContainer
+                .bnb-textContainer {
+                    text-align: center;
+                    transition: 1s;
+                    a {
+                        color: #fff;
+                        transition: 1s;
+                        &:hover {
+                            transition: 1s;
+                            color: #000;
+                        }
+                        //on hover change bg and color of nav-items
+                        &:hover {
+                            transition: 1s;
+                            background-color: #fff;
+                            border-radius: 5px;
+                            color: #000;
+                        }
+                    }
+                }
+                .navbar-collapse {
+                    .mr-auto{
+                        .bnb-burgerMenu {
+                            background-color: #00000094;
+                            a {
+                                color:#fff;
+                                &:hover {
+                                    color: #000;
+                                }
+                            }
+                        }
+                    }
+
+
+                    // menu di logout da terminare
+                    .ml-auto {
+                        .bnb-burgerMenu {
+                            height: 100%;
+                            a {
+                                color: #fff;
+                                &:hover {
+                                    transition: 1s;
+                                    color: #000;
+                                }
+                                //on hover change bg and color of nav-items
+                                &:hover {
+                                    transition: 1s;
+                                    background-color: #fff;
+                                    border-radius: 5px;
+                                    color: #000;
+                                }
+                            }
+                        }
+                        li {
+                            margin-left: 8px;
+                        }
+                    }
+                }
+            }//end bnb-container
+        }//end nav section
+
+    }
+
+    .bnb-totalMain {
+        height: calc(100vh - 140px);
+        overflow-y: scroll;
+        .bnb-mainPayment {
+               .bnb-totalContainer { //TODO STYLE
+                   height: 100%;
+                   background-color: red;
+               }
+           }
+    }
+
+    footer {
+        background-color: $darkGrayFoot;
+        width : 100vw;
+        max-width: 100%;
+        min-width: 360px;//limite minimo oltre il quale la pagina non si rimpicciolirà più
+        height: 60px;
+        bottom: 0px;
+        .bnb-container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .bnb-creditsContainer {
+                .bnb-creaditsCreators {
+                    color: #ffffff81;
+                    font-size: 10px;
+                    transition: 2s;
+                    &:hover{
+                        transition: 1s;
+                        color: #fff;
+                    }
+                }
+            }
+            .bnb-rightFoot {
+                display: flex;
+                justify-content: space-between;
+                a {
+                    text-decoration: none;
+                    color: $grey-font;
+                    font-size: 20px;
+                    transition: 2s;
+                    &:hover {
+                        transition: 1s;
+                        color: #fff;
+                        transform: scale(1.3);
+                    }
+                }
+            }
+        }//end bnb-container
+    }//end footer
+
+}

@@ -24,61 +24,181 @@
 </head>
 
 <body>
-    @yield('payment')
-    <div id="payment-container" class="container disabled-payment">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div id="dropin-container"></div>
-                <button id="submit-button" v-on:click="changeFlag()">Request payment method</button>
+    <div class="bnb-pageWrapper">
+        <div class="bnb-navVW">
+            <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+                <div class="container bnb-container">
+                    <div class="bnb-logoContainer">
+                        <div class="bnb-brandName">
+                            <span>Macaco B&B</span>
+                        </div>
+                        <a class="logo" href="{{ url('/') }}">
+                            <img src="{{asset('imageOfPage/macaco-bnb-logo.png')}}" alt="">
+                        </a>
+                    </div>
+
+                    {{-- burger menu button --}}
+                    <button class="navbar-toggler bnb-buttonStyle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    {{-- menu a tendina --}}
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item bnb-textContainer  bnb-burgerMenu">
+                                <a class="nav-link" href="{{ url('/') }}">
+                                Home
+                                </a>
+                            </li>
+
+                            <li class="nav-item bnb-textContainer  bnb-burgerMenu">
+                                <a class="nav-link" href="{{ route("public.flats.search") }}">
+                                <i class="fas fa-search"></i>
+                                <span>Cerca</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ml-auto ">
+                            <!-- Authentication Links -->
+                            @guest
+                                <li class="nav-item bnb-textContainer  bnb-burgerMenu">
+                                    <a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                                @if (Route::has('register'))
+                                    <li class="nav-item bnb-textContainer  bnb-burgerMenu">
+                                        <a class="nav-link" href="{{ route('register') }}">Registrati</a>
+                                    </li>
+                                @endif
+                            @else
+                                <li class="nav-item bnb-textContainer  bnb-burgerMenu">
+                                    <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                                    Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown  bnb-burgerMenu">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right bnb-burgerMenu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endguest
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="container bnb-totalMain">
+            {{-- yield degli sponsor --}}
+            <div class="bnb-mainPayment">
+                @yield('payment')
+            </div>
+            {{-- container pagamento --}}
+            <div id="payment-container" class="container disabled-payment">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div id="dropin-container"></div>
+                        <button class="btn btn-dark" id="submit-button">Invia Pagamento</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <script>
+            var button = document.querySelector('#submit-button');
+            var flat = {{ $flat->id }};
+            var radioButtons = document.getElementsByClassName('sponsor-type');
+            for (let y = 0; y < radioButtons.length; y++) {
+                radioButtons[y].addEventListener('click', function(){
+                    document.getElementById('payment-container').classList.remove('disabled-payment')
+                })
+            }
 
-    <script>
+            var value;
 
+            braintree.dropin.create({
+                authorization: "{{ Braintree\ClientToken::generate() }}",
+                container: '#dropin-container',
+                translations: {
+                    payWithCard: 'Pagamento con Carta di Credito/Debito',
+                    cardNumberLabel: 'Numero Carta',
+                    expirationDateLabel: 'Data Di Scadenza',
+                    expirationDateLabelSubheading: '(MM/AA)',
+                    expirationDatePlaceholder: 'MM/AA',
+                    fieldEmptyForNumber: 'Iserire il numero della carta.',
+                    fieldInvalidForNumber: 'Il numero della carta non è valido.',
+                    fieldEmptyForExpirationDate: 'Inserire la data di scadenza della carta.',
+                    fieldInvalidForExpirationDate: 'La data di scadenza non è valida.',
+                    hostedFieldsFieldsInvalidError: 'Per favore controlla i dati inseriti e riprova.'
 
-        var button = document.querySelector('#submit-button');
-
-        var flat = {{ $flat->id }};
-
-        var radioButtons = document.getElementsByClassName('sponsor-type');
-
-        for (let y = 0; y < radioButtons.length; y++) {
-            radioButtons[y].addEventListener('click', function(){
-                document.getElementById('payment-container').classList.remove('disabled-payment')
-            })
-        }
-
-        var value;
-
-        braintree.dropin.create({
-            authorization: "{{ Braintree\ClientToken::generate() }}",
-            container: '#dropin-container'
-        }, function(createErr, instance) {
-            button.addEventListener('click', function() {
-                for (let x = 0; x < radioButtons.length; x++) {
-                    if (radioButtons[x].checked) {
-                        value = radioButtons[x].value;
-                    }
                 }
-                instance.requestPaymentMethod(function(err, payload) {
-                    $.get('{{ route('payment.make') }}', {
-                            payload,
-                            value,
-                            flat
-                        },
-                        function(response) {
-                            if (response.success) {
-                                alert('Payment successfull!');
-                                location.reload();
-                            } else {
-                                alert('Payment failed');
-                            }
-                        }, 'json');
+            }, function(createErr, instance) {
+                button.addEventListener('click', function() {
+                    for (let x = 0; x < radioButtons.length; x++) {
+                        if (radioButtons[x].checked) {
+                            value = radioButtons[x].value;
+                        }
+                    }
+                    instance.requestPaymentMethod(function(err, payload) {
+                        $.get('{{ route('payment.make') }}', {
+                                payload,
+                                value,
+                                flat
+                            },
+                            function(response) {
+                                if (response.success) {
+                                    alert('Payment successfull!');
+                                    location.reload();
+                                } else {
+                                    alert('Payment failed');
+                                }
+                            }, 'json');
+                    });
                 });
             });
-        });
-    </script>
+        </script>
+         <footer >
+            <div class="container bnb-container">
+                <div class="col-lg-9 bnb-creditsContainer">
+                    <div class="bnb-creaditsCreators">
+                        Macaco B&B is
+                        created by team 6 with &hearts;
+                        boolean class #25 &copy; ADGGD
+                    </div>
+                </div>
+                {{--
+                    sezione contatti social con link esterni alle rispettive pagine
+                --}}
+                <div class="col-lg-3 bnb-rightFoot">
+                    <a href="https://www.facebook.com">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    <a href="https://www.instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-twitter-square"></i>
+                    </a>
+                    <a href="https://www.linkedin.com">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
 </body>
 
 </html>

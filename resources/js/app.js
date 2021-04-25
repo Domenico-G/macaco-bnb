@@ -119,7 +119,8 @@ const app = new Vue({
         latMapMarker:'',//data per i marker della mappa
         titleFlatMarker:'',//data per i marker della mappa
         priceMapMarker:'',//data per i marker della mappa
-        addressMarker: ''
+        addressMarker: '',
+        sponsoredFlats:[]
     },
 
     mounted() {
@@ -261,18 +262,18 @@ const app = new Vue({
 
         filterChar: function(arr, id, date) {
             let dataArrChar = [
-                { month: "January", views: 0 },
-                { month: "February", views: 0 },
-                { month: "March", views: 0 },
-                { month: "April", views: 0 },
-                { month: "May", views: 0 },
-                { month: "June", views: 0 },
-                { month: "July", views: 0 },
-                { month: "August", views: 0 },
-                { month: "September", views: 0 },
-                { month: "October", views: 0 },
-                { month: "November", views: 0 },
-                { month: "December", views: 0 }
+                { month: "Gennaio", views: 0 },
+                { month: "Febbraio", views: 0 },
+                { month: "Marzo", views: 0 },
+                { month: "Aprile", views: 0 },
+                { month: "Maggio", views: 0 },
+                { month: "Giugno", views: 0 },
+                { month: "Luglio", views: 0 },
+                { month: "Agosto", views: 0 },
+                { month: "Settembre", views: 0 },
+                { month: "Ottobre", views: 0 },
+                { month: "Novembre", views: 0 },
+                { month: "Dicembre", views: 0 }
             ];
 
             // Raccolgo solo le visualizzazzioni della stanza selezionata
@@ -299,6 +300,9 @@ const app = new Vue({
             if (this.classDropdownSection === "active") {
                 return (this.classDropdownSection = "");
             }
+        },
+        getFlatsBySponsor(flat){
+            this.sponsoredFlats=[...this.sponosoredFlats,...flat];
         }
     }
 });

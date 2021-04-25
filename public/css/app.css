@@ -11285,6 +11285,7 @@ a.text-dark:focus {
   width: 100vw;
   max-width: 100%;
   padding: 0px 10px 10px 10px;
+  min-width: 360px;
 }
 
 .bnb-flatsContainer .row {
@@ -11310,7 +11311,7 @@ a.text-dark:focus {
 
 .bnb-flatsContainer .bnb-cardBox .bnb-card {
   position: relative;
-  margin-bottom: 20px;
+  margin-right: 20px;
   width: 300px;
   height: 400px;
   border: 1px solid lightgray;
@@ -11322,13 +11323,12 @@ a.text-dark:focus {
   padding: 15px;
   width: 100%;
   height: 350px;
-  display: flex;
-  justify-content: center;
 }
 
 .bnb-flatsContainer .bnb-cardBox .bnb-card .bnb-imgContainer .bnb-imgCard {
   border-radius: 5px;
   width: 100%;
+  height: 100%;
   border: 1px solid #1f022225;
 }
 
@@ -11337,15 +11337,13 @@ a.text-dark:focus {
   background: repeating-linear-gradient(-45deg, transparent 0, transparent 25%, #020e1a 0, #13181d 50%), repeating-linear-gradient(45deg, transparent 0, transparent 25%, #000000 0, #474747 50%), repeating-linear-gradient(transparent 0, transparent 25%, rgba(110, 106, 83, 0.171) 0, rgba(44, 38, 3, 0.37) 50%), #0000004b;
   background-blend-mode: multiply;
   background-size: 100px 100px;
-  bottom: 100px;
-  right: 0;
-  width: 250px;
-  height: 50px;
   transform: rotate(15deg);
   padding: 5px;
   border-radius: 5px;
-  border-top-right-radius: 15px;
-  border-bottom-left-radius: 15px;
+  height: 50px;
+  bottom: 100px;
+  right: 0;
+  width: 250px;
 }
 
 .bnb-flatsContainer .bnb-cardBox .bnb-card .bnb-flatTitleStrip .bnb-cardTitle {
@@ -11375,16 +11373,14 @@ a.text-dark:focus {
   text-decoration: none;
 }
 
-/*>>>>>>>>carousel before footer<<<<<<*/
+/*>>>>>>>>carousel <<<<<<*/
 
 div.carousel.slide.bnb-slide {
-  background: linear-gradient(-45deg, #000000, #b9b9b9, #251a1a, #485351);
-  background-size: 400% 400%;
-  -webkit-animation: gradient 15s ease infinite;
-          animation: gradient 15s ease infinite;
+  background-color: #7a7a7a9d;
   width: 100%;
   position: relative;
   margin-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 div.carousel.slide.bnb-slide .carousel-inner .bnb-buttonContainer .bnb-buttonContent a {
@@ -11400,6 +11396,7 @@ div.carousel.slide.bnb-slide .carousel-inner .bnb-buttonContainer .bnb-buttonCon
 
 div.carousel.slide.bnb-slide .carousel-inner .bnb-buttonContainer .bnb-buttonContent a:hover {
   transition: 2s;
+  border-radius: 20px;
   background-color: #000000;
 }
 
@@ -11424,14 +11421,105 @@ div.carousel.slide.bnb-slide .carousel-inner .bnb-carouselIndicators {
 div.carousel.slide.bnb-slide a.carousel-control-prev.bnb-carouselInd {
   background-color: #000000a8;
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
   background-color: #000000a8;
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-/*>>>>>>>>>>>>>>>>>>>>>>>>>>MEDIA QUERY<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+.bnb-flatsContainerB {
+  background: linear-gradient(-45deg, #000000, #b9b9b9, #251a1a, #485351);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+  margin-bottom: 20px;
+  width: 100vw;
+  max-width: 100%;
+  padding: 0px 10px 10px 10px;
+  min-width: 360px;
+}
+
+.bnb-flatsContainerB .row {
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+
+.bnb-flatsContainerB .row .container-fluid.bnb-titleSection,
+.bnb-flatsContainerB .row .bnb-titleSection.container-sm,
+.bnb-flatsContainerB .row .bnb-titleSection.container-md,
+.bnb-flatsContainerB .row .bnb-titleSection.container-lg,
+.bnb-flatsContainerB .row .bnb-titleSection.container-xl {
+  color: #ffffff;
+  background: linear-gradient(to right, #000000, #0000009a, #00000060, #00000050, #00000000);
+  padding-left: 35px;
+}
+
+.bnb-flatsContainerB .bnb-cardBoxAll {
+  height: 250px;
+  overflow-x: scroll;
+  padding-top: 15px;
+  min-width: 360px;
+}
+
+.bnb-flatsContainerB .bnb-cardBoxAll .bnb-card {
+  position: relative;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  width: 150px;
+  height: 200px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.bnb-flatsContainerB .bnb-cardBoxAll .bnb-card .bnb-imgContainer {
+  padding: 15px;
+  width: 100%;
+  height: 200px;
+}
+
+.bnb-flatsContainerB .bnb-cardBoxAll .bnb-card .bnb-imgContainer .bnb-imgCard {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #1f022225;
+}
+
+.bnb-flatsContainerB .bnb-cardBoxAll .bnb-card .bnb-flatTitleStrip {
+  position: absolute;
+  background: repeating-linear-gradient(-45deg, transparent 0, transparent 25%, #020e1a 0, #13181d 50%), repeating-linear-gradient(45deg, transparent 0, transparent 25%, #000000 0, #474747 50%), repeating-linear-gradient(transparent 0, transparent 25%, rgba(110, 106, 83, 0.171) 0, rgba(44, 38, 3, 0.37) 50%), #0000004b;
+  background-blend-mode: multiply;
+  background-size: 100px 100px;
+  transform: rotate(15deg);
+  padding: 5px;
+  border-radius: 5px;
+  height: 60px;
+  bottom: 50px;
+  width: 145px;
+  left: 0;
+}
+
+.bnb-flatsContainerB .bnb-cardBoxAll .bnb-card .bnb-flatTitleStrip .bnb-cardTitle {
+  font-size: 12px;
+  color: #fff;
+}
+
+.bnb-flatsContainerB .bnb-cardBoxAll .bnb-card .bnb-buttonContainer {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
+}
+
+.bnb-flatsContainerB .bnb-cardBoxAll .bnb-card .bnb-buttonContainer .bnb-button {
+  font-size: 10px;
+  margin: 0 auto;
+}
 
 .bnb-show {
   margin-bottom: 15px;
@@ -11832,6 +11920,205 @@ ul {
 .bnb-search .flat .row .flat-info a .flat-others-info-price {
   font-size: 21px;
   text-align: right;
+}
+
+.container.bnb-containerForm {
+  margin-bottom: 25px;
+}
+
+.container.bnb-containerForm form {
+  margin-bottom: 25px;
+  min-width: 360px;
+  width: 100vw;
+  max-width: 100%;
+}
+
+.container.bnb-containerForm form .bnb-formFlatDetails {
+  margin-bottom: 25px;
+}
+
+.bnb-pageWrapper .bnb-navVW {
+  background-color: #000;
+  width: 100vw;
+  height: 80px;
+  max-width: 100%;
+  min-width: 360px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav {
+  color: #fff;
+  background-color: #000;
+  height: 100%;
+  position: sticky;
+  top: 0px;
+  z-index: 10000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-buttonStyle {
+  background-color: #fff;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-buttonStyle:hover {
+  background-color: #fff;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer {
+  position: relative;
+  background-color: #fff;
+  width: 59px;
+  height: 59px;
+  margin-right: 25px;
+  transition: 1s;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer .bnb-brandName {
+  position: absolute;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  width: 100px;
+  left: -10%;
+  color: transparent;
+  transition: 2s;
+  top: 0px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer:hover .bnb-brandName {
+  transition: 4s;
+  color: #fff;
+  top: 80%;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer a.logo {
+  transition: 3s;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer a.logo img {
+  width: 60px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer:hover a.logo {
+  transition: 2s;
+  background-color: rgba(255, 166, 0, 0.438);
+  border-radius: 100%;
+  font-size: 35px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-logoContainer:hover {
+  transition: 1s;
+  background-color: #797979;
+  border-radius: 8px;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-textContainer {
+  text-align: center;
+  transition: 1s;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-textContainer a {
+  color: #fff;
+  transition: 1s;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-textContainer a:hover {
+  transition: 1s;
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .bnb-textContainer a:hover {
+  transition: 1s;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .mr-auto .bnb-burgerMenu {
+  background-color: #00000094;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .mr-auto .bnb-burgerMenu a {
+  color: #fff;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .mr-auto .bnb-burgerMenu a:hover {
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto .bnb-burgerMenu {
+  height: 100%;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto .bnb-burgerMenu a {
+  color: #fff;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto .bnb-burgerMenu a:hover {
+  transition: 1s;
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto .bnb-burgerMenu a:hover {
+  transition: 1s;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000;
+}
+
+.bnb-pageWrapper .bnb-navVW nav .bnb-container .navbar-collapse .ml-auto li {
+  margin-left: 8px;
+}
+
+.bnb-pageWrapper .bnb-totalMain {
+  height: calc(100vh - 140px);
+  overflow-y: scroll;
+}
+
+.bnb-pageWrapper .bnb-totalMain .bnb-mainPayment .bnb-totalContainer {
+  height: 100%;
+  background-color: red;
+}
+
+.bnb-pageWrapper footer {
+  background-color: #393939;
+  width: 100vw;
+  max-width: 100%;
+  min-width: 360px;
+  height: 60px;
+  bottom: 0px;
+}
+
+.bnb-pageWrapper footer .bnb-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-creditsContainer .bnb-creaditsCreators {
+  color: #ffffff81;
+  font-size: 10px;
+  transition: 2s;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-creditsContainer .bnb-creaditsCreators:hover {
+  transition: 1s;
+  color: #fff;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-rightFoot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-rightFoot a {
+  text-decoration: none;
+  color: #797979;
+  font-size: 20px;
+  transition: 2s;
+}
+
+.bnb-pageWrapper footer .bnb-container .bnb-rightFoot a:hover {
+  transition: 1s;
+  color: #fff;
+  transform: scale(1.3);
 }
 
 .disabled-payment {
