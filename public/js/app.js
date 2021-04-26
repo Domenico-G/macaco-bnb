@@ -1951,15 +1951,17 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       bootStrapAlt: "Tenth slide",
       dataSlideTo: "9"
     }],
-    lonMapMarker: '',
+    lonMapMarker: '12.55251545667927',
     //data per i marker della mappa
-    latMapMarker: '',
+    latMapMarker: '42.090241374915855',
     //data per i marker della mappa
-    titleFlatMarker: '',
+    titleFlatMarker: 'Dove ti porta il cuore?',
     //data per i marker della mappa
     priceMapMarker: '',
     //data per i marker della mappa
-    addressMarker: ''
+    addressMarker: '',
+    zoomView: 5,
+    multiMarker: []
   },
   mounted: function mounted() {
     /* >>>>>>MAP TOMTOM IMPORT <<<<< */
@@ -1967,35 +1969,72 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     var pos = {
       lng: this.lonMapMarker,
       lat: this.latMapMarker
-    }; //    var mapDiv = document.getElementById("map-div");
-
+    };
+    var newZoom = parseInt(this.zoomView);
+    var mapDiv = document.getElementById("map-div");
     this.map = tt.map({
       key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
       container: "map-div",
       style: "tomtom://vector/1/basic-main",
       //center importa la posizione di riferimento della ricerca
       center: pos,
-      zoom: 10
+      zoom: newZoom
     }); //funzione che abilita il tasto full screen
 
     this.map.addControl(new tt.FullscreenControl()); //funzione che abilita i tasti per navigare la mappa (zoom in out e bussola)
 
     this.map.addControl(new tt.NavigationControl()); //aggiunge la funzione che renderizza il marker sulla mappa
 
-    this.addMarker(this.map);
+    this.addMarker2(this.map);
     /* >>>>>>END MAP TOMTOM IMPORT <<<<< */
   },
   methods: {
+    mapRendering: function mapRendering() {
+      /* >>>>>>MAP TOMTOM IMPORT <<<<< */
+      //la const pos passa le coordinate della posizione di riferimento
+      var pos;
+
+      if (this.sponsoredFlats.length > 0) {
+        pos = {
+          lng: this.sponsoredFlats[0].lon,
+          lat: this.sponsoredFlats[0].lat
+        };
+      } else {
+        pos = {
+          lng: this.normalFlats[0].lon,
+          lat: this.normalFlats[0].lat
+        };
+      }
+
+      var mapDiv = document.getElementById("map-div");
+      this.map = tt.map({
+        key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
+        container: "map-div",
+        style: "tomtom://vector/1/basic-main",
+        //center importa la posizione di riferimento della ricerca
+        center: pos,
+        zoom: 10
+      }); //funzione che abilita il tasto full screen
+
+      this.map.addControl(new tt.FullscreenControl()); //funzione che abilita i tasti per navigare la mappa (zoom in out e bussola)
+
+      this.map.addControl(new tt.NavigationControl()); //aggiunge la funzione che renderizza il marker sulla mappa
+      //    this.addMarker(this.map);
+
+      /* >>>>>>END MAP TOMTOM IMPORT <<<<< */
+
+      this.getDataForMarker();
+    },
     //al caricamento della pagina prende la lat e la lon per creare il marker sulla mappa in maniera dinamica e le informazioni del flat
-    getInfoForMarker: function getInfoForMarker(paramLon, paramLat, title, price, address) {
+    getInfoForMarker: function getInfoForMarker(paramLon, paramLat, title, price, address, zoom) {
       this.lonMapMarker = paramLon;
       this.latMapMarker = paramLat;
       this.titleFlatMarker = title;
       this.addressMarker = address;
       this.priceMapMarker = price;
+      this.zoomView = zoom;
     },
-    //funzione di tomtom per aggiugere i marker alla mappa
-    addMarker: function addMarker(map) {
+    addMarker2: function addMarker2(map) {
       var tt = window.tt; //qui bisogna inserire la coordinata del marker nell'ordine lon e lat
 
       var location = [this.lonMapMarker, this.latMapMarker];
@@ -2013,6 +2052,54 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
         offset: popupOffsets
       }).setHTML('<h5 style="font-size:13px;">' + this.titleFlatMarker + '</h5>' + '<div style="color:#797979; font-style: italic">' + this.addressMarker + '</div>' + ' price: ' + this.priceMapMarker + ' €');
       marker.setPopup(popup).togglePopup();
+    },
+    //funzione di tomtom per aggiugere i marker alla mappa
+    addMarker: function addMarker(map) {
+      for (var x = 0; x < this.multiMarker.length; x++) {
+        var element = this.multiMarker[x];
+        var _tt = window.tt; //qui bisogna inserire la coordinata del marker nell'ordine lon e lat
+
+        var location = [element.lon, element.lat];
+        var popupOffsets = {
+          top: [0, 0],
+          bottom: [0, -30],
+          'bottom-right': [0, -30],
+          'bottom-left': [0, -30],
+          left: [25, -35],
+          right: [-25, -35]
+        };
+        var marker = new _tt.Marker().setLngLat(location).addTo(map); //questa variabile popolerà la modale che si apre al click sul marker della mappa
+
+        var popup = new _tt.Popup({
+          offset: popupOffsets
+        }).setHTML('<h5 style="font-size:13px;">' + element.title + '</h5>' + '<div style="color:#797979; font-style: italic">' + element.address + '</div>' + ' price: ' + element.price + ' €');
+        marker.setPopup(popup).togglePopup();
+      }
+    },
+    getDataForMarker: function getDataForMarker() {
+      this.multiMarker = [];
+
+      for (var index = 0; index < this.normalFlats.length; index++) {
+        this.multiMarker.push({
+          lat: this.normalFlats[index].lat,
+          lon: this.normalFlats[index].lon,
+          title: this.normalFlats[index].details['flat_title'],
+          price: this.normalFlats[index].details['price_day'],
+          address: this.normalFlats[index].street_name + ' ' + this.normalFlats[index].street_number
+        });
+      }
+
+      for (var _index = 0; _index < this.sponsoredFlats.length; _index++) {
+        this.multiMarker.push({
+          lat: this.sponsoredFlats[_index].lat,
+          lon: this.sponsoredFlats[_index].lon,
+          title: this.sponsoredFlats[_index].details['flat_title'],
+          price: this.sponsoredFlats[_index].details['price_day'],
+          address: this.sponsoredFlats[_index].street_name + ' ' + this.sponsoredFlats[_index].street_number
+        });
+      }
+
+      this.addMarker(this.map);
     },
     getFlats: function getFlats() {
       var self = this;
@@ -2037,10 +2124,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
 
         self.normalFlats = resp.data.normals;
         self.sponsoredFlats = resp.data.sponsoreds;
+        self.mapRendering();
       });
     },
     getChar: function getChar(id) {
-      console.log(id);
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/views?id=" + this.$userId).then(function (resp) {
         var _Chart;
@@ -2086,40 +2173,40 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     },
     filterChar: function filterChar(arr, id, date) {
       var dataArrChar = [{
-        month: "January",
+        month: "Gennaio",
         views: 0
       }, {
-        month: "February",
+        month: "Febbraio",
         views: 0
       }, {
-        month: "March",
+        month: "Marzo",
         views: 0
       }, {
-        month: "April",
+        month: "Aprile",
         views: 0
       }, {
-        month: "May",
+        month: "Maggio",
         views: 0
       }, {
-        month: "June",
+        month: "Giugno",
         views: 0
       }, {
-        month: "July",
+        month: "Luglio",
         views: 0
       }, {
-        month: "August",
+        month: "Agosto",
         views: 0
       }, {
-        month: "September",
+        month: "Settembre",
         views: 0
       }, {
-        month: "October",
+        month: "Ottobre",
         views: 0
       }, {
-        month: "November",
+        month: "Novembre",
         views: 0
       }, {
-        month: "December",
+        month: "Dicembre",
         views: 0
       }]; // Raccolgo solo le visualizzazzioni della stanza selezionata
 
@@ -2144,6 +2231,16 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
 
       if (this.classDropdownSection === "active") {
         return this.classDropdownSection = "";
+      }
+    },
+    thereIsResponse: function thereIsResponse() {
+      //todo
+      if (this.normalFlats.length > 0 || this.sponsoredFlats.length > 0) {
+        return true;
+      }
+
+      if (this.normalFlats.length === 0 || this.sponsoredFlats.length === 0) {
+        return false;
       }
     }
   }

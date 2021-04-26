@@ -20,6 +20,18 @@
     background: #555555;
     cursor: pointer;
 }
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 
 #app {
     min-width: 360px;//limite minimo oltre il quale la pagina non si rimpicciolirà più
@@ -106,9 +118,13 @@
 
                 // menu di logout da terminare
                 .ml-auto {
+                    text-align: center;
                     .bnb-burgerMenu {
                         height: 100%;
+                        padding: 0;
                         a {
+                            text-align: center;
+
                             color: #fff;
                             &:hover {
                                 transition: 1s;
@@ -123,26 +139,36 @@
                             }
                         }
                     }
-                    li {
-                        margin-left: 8px;
-                    }
+
                 }
             }
         }//end bnb-container
     }//end nav section
     main {
-        min-height: calc(100vh - 140px);
+
+        max-width: 100%;
+        min-width: 360px;
+        max-height: calc(100vh - 90px);
+        overflow-y: scroll;
     }
     footer {
-        background-color: $darkGrayFoot;
+        background: linear-gradient(-45deg, #000000, #1316d8e5, #10d3c35d, #ffffff);
+        background-size: 200% 200%;
+	    animation: gradient 15s ease infinite;
+        overflow: hidden;
+        position: fixed;
         width : 100vw;
         max-width: 100%;
         min-width: 360px;//limite minimo oltre il quale la pagina non si rimpicciolirà più
-        height: 60px;
+        height: 10px;
         bottom: 0px;
+        z-index: 1;
+        border-top: 4px solid $darkGrayFoot;
+        border-bottom: 4px solid $darkGrayFoot;
         .bnb-container {
+            display: none;
             height: 100%;
-            display: flex;
+            // display: flex;
             justify-content: center;
             align-items: center;
             .bnb-creditsContainer {
@@ -172,6 +198,19 @@
                 }
             }
         }//end bnb-container
+        &:hover {
+            // background-color: $darkGrayFoot;
+            border: none;
+            height: 60px;
+            transition: 2s;
+            background: linear-gradient($darkGrayFoot,$darkGrayFoot,$darkGrayFoot,$darkGrayFoot);
+            background-size: 200% 200%;
+	        animation: gradient 1s ease infinite;
+        }
+        &:hover .bnb-container{
+            display: flex;
+
+        }
     }//end footer
 }//end #app
 

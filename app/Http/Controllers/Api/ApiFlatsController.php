@@ -11,7 +11,6 @@ class ApiFlatsController extends Controller
 
     public function filterFlats(Request $request)
     {
-
         $data = $request->all();
         $address = rawurlencode($data["address"]);
         $distanceM = $data["distanceKm"] * 1000;

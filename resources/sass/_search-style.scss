@@ -106,90 +106,125 @@ ul {
         }
     }
 
-    h1 {
-        margin: 15px 0 15px 50px;
-    }
-
-    .flat {
+    .all-flats{
+        height: calc(100vh - 175px);
         overflow: hidden;
 
-        & a,
-        & a:link,
-        & a:visited,
-        & a:hover,
-        & a:active {
-            //TODO
-            text-decoration: none;
-            color: #000;
-        }
-
-        @media screen and (min-width: 576px) {
-            height: fit-content;
-        }
-
-        @media screen and (min-width: 768px) {
-            height: 320px;
-        }
-
-        @media screen and (min-width: 992px) {
-            height: 270px;
-        }
-
-        .row {
+        .sponsored-flats{
             height: 100%;
-            padding: 30px;
-            border-bottom: 1px solid #ccc;
+            overflow-y: auto;
+        }
 
-            .flat-img-box {
+        .searched-flats{
+            height: 100%;
+            overflow-y: auto;
+
+            &-left{
                 height: 100%;
+                overflow-y: auto;
+            }
+        }
 
-                a {
-                    img {
-                        border-radius: 15px;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
+        h1 {
+            margin: 15px 0 15px 50px;
+        }
+
+        .flat {
+            overflow: hidden;
+
+            & a,
+            & a:link,
+            & a:visited,
+            & a:hover,
+            & a:active {
+                //TODO
+                text-decoration: none;
+                color: #000;
+            }
+
+            @media screen and (min-width: 576px) {
+                height: fit-content;
+            }
+
+            @media screen and (min-width: 768px) {
+                height: 320px;
+            }
+
+            @media screen and (min-width: 992px) {
+                height: 270px;
+            }
+
+            .row {
+                height: 100%;
+                padding: 30px;
+                border-bottom: 1px solid #ccc;
+
+                .flat-img-box {
+                    height: 100%;
+
+                    a {
+                        img {
+                            border-radius: 15px;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+                .flat-info {
+                    position: relative;
+                    a {
+                        .flat-title {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        .flat-text {
+                            font-size: 17px;
+                            color: $grey-font;
+                        }
+
+                        .flat-others-info {
+                            &-quantities {
+                                font-size: 21px;
+                                margin: 30px;
+                            }
+
+                            .services{
+                                div{
+                                    margin: 0 15px 20px 0;
+                                    border: 1px solid #000;
+                                    border-radius: 15px;
+                                    text-align: center;
+                                    padding: 0 10px;
+                                }
+                            }
+
+                            &-price {
+                                font-size: 21px;
+                                text-align: right;
+                            }
+                        }
                     }
                 }
             }
-
-            .flat-info {
-                position: relative;
-                a {
-                    .flat-title {
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
-
-                    .flat-text {
-                        font-size: 17px;
-                        color: $grey-font;
-                    }
-
-                    .flat-others-info {
-                        &-quantities {
-                            font-size: 21px;
-                            margin: 30px;
-                        }
-
-                        .services{
-                            div{
-                                margin: 0 15px 20px 0;
-                                border: 1px solid #000;
-                                border-radius: 15px;
-                                text-align: center;
-                                padding: 0 10px;
-                            }
-                        }
-
-                        &-price {
-                            font-size: 21px;
-                            text-align: right;
-                        }
-                    }
+        }
+        .bnb-mapCol {
+            padding: 0;
+            .bnb-map-container {
+                width: 100%;
+                height:100%;
+                position: sticky;
+                top: 0;
+                #map-div {
+                    width: 100%;
+                    height: 100%;
                 }
             }
         }
     }
+
 }
+
