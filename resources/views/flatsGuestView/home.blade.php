@@ -62,23 +62,21 @@
         <div class="container-fluid d-flex flex-wrap bnb-cardBox">
             <div class="d-flex flex-row">
                 @foreach ($sponsoredFlats as $flat)
-                    @if($flat->sponsor_end>=date("Y-m-d H:i:s"))
-                        <div class="bnb-card">
-                            <div class="bnb-imgContainer">
-                                <img class="bnb-imgCard" src="{{asset($flat->details->image)}}" alt="Card image cap">
-                            </div>
-                            <div class=" bnb-flatTitleStrip">
-                                <h5 class="bnb-cardTitle">
-                                    {{$flat->details->flat_title}}
-                                </h5>
-                            </div>
-                            <div class="bnb-buttonContainer">
-                                <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button" >
-                                    Visualizza Appartamento
-                                </a>
-                            </div>
+                    <div class="bnb-card">
+                        <div class="bnb-imgContainer">
+                            <img class="bnb-imgCard" src="{{asset($flat->details->image)}}" alt="Card image cap">
                         </div>
-                    @endif
+                        <div class=" bnb-flatTitleStrip">
+                            <h5 class="bnb-cardTitle">
+                                {{$flat->details->flat_title}}
+                            </h5>
+                        </div>
+                        <div class="bnb-buttonContainer">
+                            <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button" >
+                                Visualizza Appartamento
+                            </a>
+                        </div>
+                    </div>
                  @endforeach
             </div>
         </div>
@@ -136,28 +134,25 @@
             </div>
         </div>
         {{-- tutti i flats --}}
-        <div class="container d-flex flex-wrap bnb-cardBoxAll">
+        <div class="container-fluid d-flex flex-wrap bnb-cardBoxAll">
             <div class="d-flex flex-row-reverse">
-                @foreach ($flats as $key => $flat)
-                    @if(!isset($flat->sponsor[0]) || (isset($flat->sponsor[0]) && $flat->sponsor[count($flat->sponsor)-1]->sponsor_end<date("Y-m-d H:i:s")))
-                        <div class="bnb-card">
-                            <div class="bnb-imgContainer">
-                                <img class="bnb-imgCard" src="{{ asset($flat->details->image)}}" alt="Card image cap">
-                            </div>
-
-                            <div class=" bnb-flatTitleStrip">
-                                <h5 class="bnb-cardTitle">
-                                    {{$flat->details->flat_title}}
-                                </h5>
-                            </div>
-                            <div class="bnb-buttonContainer">
-                                <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button" >
-                                    Visualizza
-                                </a>
-                            </div>
+                @foreach ($normalFlats as $flat)
+                    <div class="bnb-card">
+                        <div class="bnb-imgContainer">
+                            <img class="bnb-imgCard" src="{{ asset($flat->details->image)}}" alt="Card image cap">
                         </div>
 
-                    @endif
+                        <div class=" bnb-flatTitleStrip">
+                            <h5 class="bnb-cardTitle">
+                                {{$flat->details->flat_title}}
+                            </h5>
+                        </div>
+                        <div class="bnb-buttonContainer">
+                            <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button" >
+                                Visualizza
+                            </a>
+                        </div>
+                    </div>
                  @endforeach
             </div>
         </div>

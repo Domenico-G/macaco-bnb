@@ -3,8 +3,8 @@
 @section('title', 'Cerca un appartamento')
 
 @section('content')
-<div class="container-fluid bnb-search">
-    {{-- searchbar --}}
+    <div class="container-fluid bnb-search">
+        {{-- searchbar --}}
         {{-- search input --}}
         <div class="row">
             <div class="col-12 d-flex justify-content-center align-items-center search-bar">
@@ -83,68 +83,65 @@
                         <h1>Prima di cercare da un'occhiata a questi appartamenti in evidenza</h1>
 
                         {{-- sponsored flats --}}
-                        @foreach ($flats as $flat)
+                        @foreach ($sponsoredFlats as $flat)
+                            <div class="container flat">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 flat-img-box">
+                                        <a href="{{ route('public.flats.show', ['flat' => $flat->id]) }}">
+                                            <img src="{{ $flat->details->image }}"
+                                                alt="{{ $flat->details->flat_title }}">
+                                        </a>
+                                    </div>
 
-                            @if ($flat->sponsor_end>=date("Y-m-d H:i:s"))
-                                <div class="container flat">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-12 flat-img-box">
-                                            <a href="{{ route('public.flats.show', ['flat' => $flat->id]) }}">
-                                                <img src="{{ $flat->details->image }}"
-                                                    alt="{{ $flat->details->flat_title }}">
-                                            </a>
-                                        </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-12 flat-info">
+                                        <a href="{{ route('public.flats.show', ['flat' => $flat->id]) }}">
+                                            <h3 class="flat-title">
+                                                {{ $flat->details->flat_title }}
+                                            </h3>
 
-                                        <div class="col-lg-8 col-md-8 col-sm-12 flat-info">
-                                            <a href="{{ route('public.flats.show', ['flat' => $flat->id]) }}">
-                                                <h3 class="flat-title">
-                                                    {{ $flat->details->flat_title }}
-                                                </h3>
+                                            <p class="flat-text">
+                                                {{ $flat->street_name }} {{ $flat->street_number }},
+                                                {{ $flat->municipality }} {{ $flat->country_subdivision }}
+                                            </p>
 
-                                                <p class="flat-text">
-                                                    {{ $flat->street_name }} {{ $flat->street_number }},
-                                                    {{ $flat->municipality }} {{ $flat->country_subdivision }}
-                                                </p>
+                                            <div class="flat-others-info">
+                                                <div class="flat-others-info-quantities">
+                                                    <ul class="d-flex justify-content-between">
+                                                        <li title="Area in metri quadri">
+                                                            <i class="fas fa-home"></i>
+                                                            {{ $flat->details->area_sqm }}
+                                                        </li>
 
-                                                <div class="flat-others-info">
-                                                    <div class="flat-others-info-quantities">
-                                                        <ul class="d-flex justify-content-between">
-                                                            <li title="Area in metri quadri">
-                                                                <i class="fas fa-home"></i>
-                                                                {{ $flat->details->area_sqm }}
-                                                            </li>
+                                                        <li title="Posti letto">
+                                                            <i class="fas fa-bed"></i>
+                                                            {{ $flat->details->beds_quantity }}
+                                                        </li>
 
-                                                            <li title="Posti letto">
-                                                                <i class="fas fa-bed"></i>
-                                                                {{ $flat->details->beds_quantity }}
-                                                            </li>
+                                                        <li title="Stanze">
+                                                            <i class="fas fa-vector-square"></i>
+                                                            {{ $flat->details->rooms_quantity }}
+                                                        </li>
+                                                    </ul>
+                                                </div>
 
-                                                            <li title="Stanze">
-                                                                <i class="fas fa-vector-square"></i>
-                                                                {{ $flat->details->rooms_quantity }}
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="services d-flex flex-wrap">
-                                                        @foreach ($flat->services as $service)
-                                                            <div>
-                                                                {{ $service->service_name }}
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-
-                                                    <div class="flat-others-info-price">
+                                                <div class="services d-flex flex-wrap">
+                                                    @foreach ($flat->services as $service)
                                                         <div>
-                                                            <strong>{{ $flat->details->price_day }}&euro;</strong>/notte
+                                                            {{ $service->service_name }}
                                                         </div>
+                                                    @endforeach
+                                                </div>
+
+                                                <div class="flat-others-info-price">
+                                                    <div>
+                                                        <strong>{{ $flat->details->price_day }}&euro;</strong>/notte
                                                     </div>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                            @endif
+                            </div>
                         @endforeach
                         {{-- end sponsored flats --}}
                     </div>
@@ -284,11 +281,11 @@
                 <div class="col-lg-6 col-sm-12 bnb-mapCol">
                     <div class="bnb-map-container">
                         <div id="map-div"></div>
-                     </div>
+                    </div>
                 </div>
             </div>
             {{-- end results section --}}
         </div>
 
-</div>
+    </div>
 @endsection

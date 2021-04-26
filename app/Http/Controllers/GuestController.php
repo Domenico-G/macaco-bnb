@@ -17,11 +17,33 @@ class GuestController extends Controller
      */
     public function index()
     {
-        $flats = Flat::all();
+        $flats = Flat::where("visible", "=", 1)->get();
 
-        $sponsoredFlats = Flat::join('sponsors', 'flats.id', '=' , 'sponsors.flat_id')->orderBy('sponsor_end', 'asc')->get();
+        $sponsoredFlats = [];
 
-        return view("flatsGuestView.home", compact("flats", "sponsoredFlats"));
+        $normalFlats = [];
+
+        foreach($flats as $flat){
+            $sponsors = $flat->sponsor;
+
+            if (count($flat->sponsor) == 0) {
+                $sponsorFlag = false;
+            } else {
+                if ($sponsors[count($sponsors) - 1]->sponsor_end > date('Y-m-d H:i:s')) {
+                    $sponsorFlag = true;
+                } else {
+                    $sponsorFlag = false;
+                }
+            }
+
+            if($sponsorFlag){
+            array_push($sponsoredFlats, $flat);
+            }else{
+            array_push($normalFlats, $flat);
+            }
+        }
+
+        return view("flatsGuestView.home", compact("sponsoredFlats", "normalFlats"));
     }
 
     /**
@@ -51,8 +73,28 @@ class GuestController extends Controller
     protected function searchView(){
         $services = Service::all();
 
-        $flats = Flat::join('sponsors', 'flats.id', '=' , 'sponsors.flat_id')->orderBy('sponsor_end', 'asc')->get();
+        $flats = Flat::where("visible", "=", 1)->get();
 
-        return view("flatsGuestView.search", compact("services", "flats"));
+        $sponsoredFlats = [];
+
+        foreach($flats as $flat){
+            $sponsors = $flat->sponsor;
+
+            if (count($flat->sponsor) == 0) {
+                $sponsorFlag = false;
+            } else {
+                if ($sponsors[count($sponsors) - 1]->sponsor_end > date('Y-m-d H:i:s')) {
+                    $sponsorFlag = true;
+                } else {
+                    $sponsorFlag = false;
+                }
+            }
+
+            if($sponsorFlag){
+            array_push($sponsoredFlats, $flat);
+            }
+        }
+
+        return view("flatsGuestView.search", compact("services", "sponsoredFlats"));
     }
 }

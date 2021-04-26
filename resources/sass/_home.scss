@@ -185,6 +185,7 @@
                     border-radius: 5px;
                     width: 100%;
                     height: 100%;
+                    object-fit: cover;
                     border: 1px solid #1f022225;
                 }
             }
@@ -288,7 +289,7 @@ div.carousel.slide.bnb-slide {
          }
     }
     .bnb-cardBoxAll {
-        height: 250px;
+        height: 265px;
         overflow-x: scroll;
         padding-top: 15px;
         min-width: 360px;
@@ -309,6 +310,7 @@ div.carousel.slide.bnb-slide {
                     border-radius: 5px;
                     width: 100%;
                     height: 100%;
+                    object-fit: cover;
                     border: 1px solid #1f022225;
                 }
             }
