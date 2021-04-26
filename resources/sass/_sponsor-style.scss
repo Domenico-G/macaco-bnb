@@ -1,11 +1,14 @@
-
+#bodyPayment123456789{
+    background-color: #0000003d;
+}
 .bnb-pageWrapper {
-    .bnb-navVW {
+    .bnb-navWide {
         background-color: #000;
         width : 100vw;
         height: 80px;
         max-width: 100%;
         min-width: 360px;//limite minimo oltre il quale la pagina non si rimpicciolirà più
+        margin-bottom: 15px;
         nav {
             color: #fff;
             background-color:#000;
@@ -20,7 +23,6 @@
                         background-color: #fff;
                     }
                 }
-
                 .bnb-logoContainer {
                     position: relative;
                     background-color: #fff;
@@ -94,13 +96,18 @@
                             }
                         }
                     }
-
-
                     // menu di logout da terminare
-                    .ml-auto {
+                    .ml-auto.bnb-mlAuto-payment {
+                        text-align: center;
                         .bnb-burgerMenu {
+                            padding: 0;
                             height: 100%;
+                            width: 100%;
+                            background-color: #00000094;
                             a {
+                                text-align: center;
+                                width: 100%;
+                                height: 100%;
                                 color: #fff;
                                 &:hover {
                                     transition: 1s;
@@ -108,6 +115,7 @@
                                 }
                                 //on hover change bg and color of nav-items
                                 &:hover {
+                                    height: 100%;
                                     transition: 1s;
                                     background-color: #fff;
                                     border-radius: 5px;
@@ -115,9 +123,7 @@
                                 }
                             }
                         }
-                        li {
-                            margin-left: 8px;
-                        }
+
                     }
                 }
             }//end bnb-container
@@ -126,14 +132,43 @@
     }
 
     .bnb-totalMain {
-        height: calc(100vh - 140px);
+        height: calc(100vh - 155px);
         overflow-y: scroll;
+        padding-bottom: 20px;
         .bnb-mainPayment {
-               .bnb-totalContainer { //TODO STYLE
-                   height: 100%;
-                   background-color: red;
-               }
-           }
+            .bnb-totalContainer { //TODO STYLE
+                .bnb-text {
+                height: 80px;
+                h1 {
+                    font-size: 28px;
+                }
+                }
+                .bnb-formCheck {
+                    margin-bottom: 10px;
+                    label {
+                    border: 1px solid #00000086;
+                    border-radius: 8px;
+                    padding-left: 5px;
+                    height: 30px;
+                    width: 55%;
+                    &:hover {
+                        background-color: #fff;
+                    }
+                    }
+                    input[type="radio"] {
+                        cursor: pointer;
+                    }
+                    input[type="radio"]:checked ~ label{
+                        background-color: #fff;
+                        padding-left: -5px;
+                        border-radius: 8px;
+                    }
+                }
+                h2.advertice {
+                    font-size: 20px;
+                }
+            }
+        }
     }
 
     footer {

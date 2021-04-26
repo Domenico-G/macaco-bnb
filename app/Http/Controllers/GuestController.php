@@ -49,6 +49,8 @@ class GuestController extends Controller
 
     protected function searchView(){
         $services = Service::all();
+
+
         return view("flatsGuestView.search", compact("services"));
 
     }

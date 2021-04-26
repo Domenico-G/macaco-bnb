@@ -115,49 +115,74 @@ const app = new Vue({
         ],
 
 
-        lonMapMarker:'',//data per i marker della mappa
-        latMapMarker:'',//data per i marker della mappa
-        titleFlatMarker:'',//data per i marker della mappa
+        lonMapMarker:'12.55251545667927',//data per i marker della mappa
+        latMapMarker:'42.090241374915855',//data per i marker della mappa
+        titleFlatMarker:'Dove ti porta il cuore?',//data per i marker della mappa
         priceMapMarker:'',//data per i marker della mappa
         addressMarker: '',
-        sponsoredFlats:[]
+        zoomView: 5,
+
+        multiMarker: []
     },
 
     mounted() {
         /* >>>>>>MAP TOMTOM IMPORT <<<<< */
         //la const pos passa le coordinate della posizione di riferimento
-       const pos = { lng: this.lonMapMarker, lat: this.latMapMarker };
-    //    var mapDiv = document.getElementById("map-div");
+       const pos ={ lng: this.lonMapMarker, lat: this.latMapMarker };
+       let newZoom=parseInt(this.zoomView);
+
+       var mapDiv = document.getElementById("map-div");
        this.map = tt.map({
            key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
            container: "map-div",
            style: "tomtom://vector/1/basic-main",
            //center importa la posizione di riferimento della ricerca
            center: pos,
-           zoom: 10
+           zoom: newZoom
        });
        //funzione che abilita il tasto full screen
        this.map.addControl(new tt.FullscreenControl());
        //funzione che abilita i tasti per navigare la mappa (zoom in out e bussola)
        this.map.addControl(new tt.NavigationControl());
        //aggiunge la funzione che renderizza il marker sulla mappa
-       this.addMarker(this.map);
-
+       this.addMarker2(this.map);
           /* >>>>>>END MAP TOMTOM IMPORT <<<<< */
      },
     methods: {
+    mapRendering: function(){
+                /* >>>>>>MAP TOMTOM IMPORT <<<<< */
+        //la const pos passa le coordinate della posizione di riferimento
+       const pos ={ lng: this.flatsArr[0].lon, lat: this.flatsArr[0].lat };
+
+           var mapDiv = document.getElementById("map-div");
+            this.map = tt.map({
+                key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
+                container: "map-div",
+                style: "tomtom://vector/1/basic-main",
+                //center importa la posizione di riferimento della ricerca
+                center: pos,
+                zoom: 10
+            });
+            //funzione che abilita il tasto full screen
+            this.map.addControl(new tt.FullscreenControl());
+            //funzione che abilita i tasti per navigare la mappa (zoom in out e bussola)
+            this.map.addControl(new tt.NavigationControl());
+            //aggiunge la funzione che renderizza il marker sulla mappa
+        //    this.addMarker(this.map);
+            /* >>>>>>END MAP TOMTOM IMPORT <<<<< */
+            this.getDataForMarker();
+        },
         //al caricamento della pagina prende la lat e la lon per creare il marker sulla mappa in maniera dinamica e le informazioni del flat
-        getInfoForMarker: function(paramLon, paramLat, title, price,address) {
+        getInfoForMarker: function(paramLon, paramLat, title, price,address, zoom) {
             this.lonMapMarker = paramLon;
             this.latMapMarker = paramLat;
             this.titleFlatMarker = title;
             this.addressMarker = address;
             this.priceMapMarker = price;
+            this.zoomView = zoom;
         },
-
-        //funzione di tomtom per aggiugere i marker alla mappa
-        addMarker: function(map){
-            const tt = window.tt;
+        addMarker2: function(map){
+             const tt = window.tt;
             //qui bisogna inserire la coordinata del marker nell'ordine lon e lat
              var location = [this.lonMapMarker, this.latMapMarker];
              var popupOffsets = {
@@ -177,6 +202,48 @@ const app = new Vue({
              marker.setPopup(popup).togglePopup();
         },
 
+        //funzione di tomtom per aggiugere i marker alla mappa
+        addMarker: function(map){
+
+            for (let x = 0; x < this.multiMarker.length; x++) {
+                const element = this.multiMarker[x];
+                const tt = window.tt;
+                //qui bisogna inserire la coordinata del marker nell'ordine lon e lat
+                 var location = [element.lon, element.lat];
+                 var popupOffsets = {
+                   top: [0, 0],
+                   bottom: [0, -30],
+                   'bottom-right': [0, -30],
+                   'bottom-left': [0, -30],
+                   left: [25, -35],
+                   right: [-25, -35]
+                 }
+                 var marker = new tt.Marker().setLngLat(location).addTo(map);
+                 //questa variabile popolerà la modale che si apre al click sul marker della mappa
+                 var popup = new tt.Popup({offset: popupOffsets})
+                 .setHTML( '<h5 style="font-size:13px;">' + element.title + '</h5>'
+                    + '<div style="color:#797979; font-style: italic">' + element.address + '</div>'
+                    + ' price: ' + element.price + ' €');
+                 marker.setPopup(popup).togglePopup();
+            }
+
+        },
+        getDataForMarker: function(){
+            this.multiMarker=[];
+            for (let index = 0; index < this.flatsArr.length; index++) {
+                this.multiMarker.push({
+                    lat: this.flatsArr[index].lat,
+                    lon: this.flatsArr[index].lon,
+                    title: this.flatsArr[index].details['flat_title'],
+                    price: this.flatsArr[index].details['price_day'],
+                    address: this.flatsArr[index].street_name + ' ' + this.flatsArr[index].street_number
+                })
+
+            }
+            this.addMarker(this.map)
+
+        },
+
         getFlats: function () {
             const self = this;
             axios
@@ -191,7 +258,6 @@ const app = new Vue({
                 })
                 .then(function(resp) {
                     self.titleSearchedInput = self.address;
-
                     if (resp.data.length === 0) {
                         self.titleNoResultsFlag = true;
 
@@ -202,11 +268,12 @@ const app = new Vue({
                         self.titleNoResultsFlag = false;
                     }
                     self.flatsArr = resp.data;
+
+                    self.mapRendering();
                 });
         },
 
         getChar: function (id) {
-            console.log(id);
             const self = this;
             axios
                 .get("http://127.0.0.1:8000/api/views?id=" + this.$userId)
@@ -300,9 +367,7 @@ const app = new Vue({
             if (this.classDropdownSection === "active") {
                 return (this.classDropdownSection = "");
             }
-        },
-        getFlatsBySponsor(flat){
-            this.sponsoredFlats=[...this.sponosoredFlats,...flat];
         }
+
     }
 });

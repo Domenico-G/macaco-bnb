@@ -4,7 +4,7 @@ ul {
     list-style: none;
 }
 
-.bnb-btn {
+.bnb-btnSearch {
     cursor: pointer;
     color: $grey-font;
 
@@ -14,180 +14,210 @@ ul {
 }
 
 //fine provvisorie e utilities da separare
-.bnb-search {
-    .search-bar {
-        padding-top: 15px;
+.bnb-pagaSearchWrap{
+    .bnb-flatCol{
 
-        .search-input {
-            height: fit-content;
-            background-color: #fff;
-            border: 1px solid #000;
-            border-radius: 75px;
-            padding: 5px 15px;
+        .search-bar {
+            padding-top: 15px;
 
-            @media screen and (min-width: 576px) {
-                width: 100%;
-            }
+            .search-input {
+                height: fit-content;
+                background-color: #fff;
+                border: 1px solid #000;
+                border-radius: 75px;
+                padding: 5px 15px;
 
-            @media screen and (min-width: 768px) {
-                width: fit-content;
-            }
-
-            i {
-                cursor: pointer;
-                font-size: 26px;
-            }
-
-            input {
-                border: none;
-                outline: none;
-                font-size: 26px;
-                width: calc(100% - 31px);
-
+                @media screen and (min-width: 576px) {
+                    width: 100%;
+                }
 
                 @media screen and (min-width: 768px) {
-                    width: 400px;
+                    width: fit-content;
                 }
 
-                &::placeholder {
-                    text-align: center;
-                }
-            }
-        }
-
-        .drop-section.bnb-btn {
-            font-size: 36px;
-            margin-left: 15px;
-        }
-    }
-
-    .advanced-settings {
-        background-color: #eee;
-        height: 0;
-        overflow: hidden;
-        transition: height 1s;
-        z-index: -1;
-
-        &.active {
-            @media screen and (min-width: 576px) {
-                height: 1000px;
-            }
-
-            @media screen and (min-width: 768px) {
-                height: 590px;
-            }
-
-            @media screen and (min-width: 992px) {
-                height: 430px;
-            }
-        }
-
-        .container {
-            .row {
-                & > * {
-                    margin: 15px 0;
+                i {
+                    cursor: pointer;
+                    font-size: 26px;
                 }
 
                 input {
-                    &[type="range"] {
-                        vertical-align: middle;
+                    border: none;
+                    outline: none;
+                    font-size: 26px;
+                    width: calc(100% - 31px);
+
+
+                    @media screen and (min-width: 768px) {
+                        width: 400px;
                     }
 
-                    &[type="number"] {
-                        width: 50px;
-                    }
-                }
-
-                .lift-section.bnb-btn {
-                    font-size: 25px;
-                    text-align: center;
-                }
-            }
-        }
-    }
-
-    h1 {
-        margin: 15px 0 15px 50px;
-    }
-
-    .flat {
-        & a,
-        & a:link,
-        & a:visited,
-        & a:hover,
-        & a:active {
-            //TODO
-            text-decoration: none;
-            color: #000;
-        }
-
-        @media screen and (min-width: 576px) {
-            height: fit-content;
-        }
-
-        @media screen and (min-width: 768px) {
-            height: 320px;
-        }
-
-        @media screen and (min-width: 992px) {
-            height: 270px;
-        }
-
-        .row {
-            height: 100%;
-            padding: 30px;
-            border-bottom: 1px solid #ccc;
-
-            .flat-img-box {
-                height: 100%;
-
-                a {
-                    img {
-                        border-radius: 15px;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
+                    &::placeholder {
+                        text-align: center;
                     }
                 }
             }
 
-            .flat-info {
-                position: relative;
-                a {
-                    .flat-title {
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
+            .drop-section.bnb-btnSearch {
+                font-size: 36px;
+                margin-left: 15px;
+            }
+        }
+
+        .advanced-settings {
+            background-color: #eee;
+            height: 0;
+            overflow: hidden;
+            transition: height 1s;
+            z-index: -1;
+
+            &.active {
+                @media screen and (min-width: 576px) {
+                    height: 1000px;
+                }
+
+                @media screen and (min-width: 768px) {
+                    height: 590px;
+                }
+
+                @media screen and (min-width: 992px) {
+                    height: 430px;
+                }
+            }
+
+            .container {
+                .row {
+                    & > * {
+                        margin: 15px 0;
                     }
 
-                    .flat-text {
-                        font-size: 17px;
-                        color: $grey-font;
-                    }
-
-                    .flat-others-info {
-                        &-quantities {
-                            font-size: 21px;
-                            margin: 30px;
+                    input {
+                        &[type="range"] {
+                            vertical-align: middle;
                         }
 
-                        .services{
-                            div{
-                                margin: 0 15px 15px 0;
-                                border: 1px solid #000;
-                                border-radius: 15px;
-                                text-align: center;
-                                padding: 0 10px;
+                        &[type="number"] {
+                            width: 50px;
+                        }
+                    }
+
+                    .lift-section.bnb-btn {
+                        font-size: 25px;
+                        text-align: center;
+                    }
+                }
+            }
+        }//adnvaced settings
+        .bnb-resultRow {
+            padding-bottom: 20px;
+            .bnb-resultSearch {
+
+                h1 {
+                    margin: 15px 0 15px 50px;
+                }
+
+                .flat {
+                    & a,
+                    & a:link,
+                    & a:visited,
+                    & a:hover,
+                    & a:active {
+                        //TODO
+                        text-decoration: none;
+                        color: #000;
+                    }
+
+                    @media screen and (min-width: 576px) {
+                        height: fit-content;
+                    }
+
+                    @media screen and (min-width: 768px) {
+                        height: 300px;
+                    }
+
+                    @media screen and (min-width: 992px) {
+                        height: 220px;
+                    }
+                    .row {
+                        height: 100%;
+                        padding: 15px;
+                        border-bottom: 1px solid #ccc;
+
+                        .flat-img-box {
+                            height: 100%;
+
+                            a {
+                                img {
+                                    border-radius: 15px;
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
                             }
                         }
+                        .flat-info {
+                            position: relative;
+                            a {
+                                .flat-title {
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                }
 
-                        &-price {
-                            font-size: 21px;
-                            text-align: right;
+                                .flat-text {
+                                    font-size: 14px;
+                                    color: $grey-font;
+                                }
+
+                                .flat-others-info {
+                                    &-quantities {
+                                        font-size: 15px;
+                                        margin: 5px;
+                                    }
+
+                                    .services{
+                                        position:relative;
+                                        div{
+                                            margin: 0px 5px 5px 0px;
+                                            border: 1px solid #000;
+                                            border-radius: 15px;
+                                            text-align: center;
+                                            padding: 0 10px;
+                                            font-size: 9px;
+                                        }
+                                    }
+
+                                    &-price {
+                                        position: absolute;
+                                        right:0;
+                                        bottom: 0;
+                                        font-size: 15px;
+                                        text-align: right;
+                                    }
+                                }
+                            }
                         }
                     }
-                }
+                } //end flat
+            }
+
+        }//bnb result row
+
+
+    }//bnb search and flat col
+
+    .bnb-mapCol {
+        padding: 0;
+        .bnb-map-container {
+            width: 100%;
+            height:calc(100vh - 90px);
+            position: sticky;
+            top: 0;
+            #map-div {
+                width: 100%;
+                height: 100%;
             }
         }
     }
+
+
 }
