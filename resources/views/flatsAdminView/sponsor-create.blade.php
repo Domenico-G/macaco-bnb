@@ -30,24 +30,20 @@
 
         @if (!$sponsorActiveFlag)
             @foreach ($sponsorTypes as $sponsorType)
-                <div class="form-check">
-                    <input class="form-check-input sponsor-type" type="radio" v-on:click="changeFlag()" name="sponsor-type" id="sponsor-type{{ $sponsorType->id }}"
+                <div class="form-check bnb-formCheck">
+                    <input class="form-check-input sponsor-type bnb-sponsorType" type="radio" v-on:click="changeFlag()" name="sponsor-type" id="sponsor-type{{ $sponsorType->id }}"
                         value="{{ $sponsorType->id }}">
-
                     <label class="form-check-label" for="sponsor-type">
-                        Pacchetto {{ $sponsorType->sponsor_name }} Durata: {{ $sponsorType->sponsor_duration }} Prezzo:
-                        {{ $sponsorType->sponsor_price }}
+                        Pacchetto {{ $sponsorType->sponsor_name }}: &nbsp; Durata della sponsorizzazione: {{ $sponsorType->sponsor_duration }}/h &nbsp;&nbsp; Prezzo:
+                        {{ $sponsorType->sponsor_price }} &euro;
                     </label>
                 </div>
             @endforeach
         @endif
 
         @if ($sponsorActiveFlag)
-            <h2>Questo appartamento ha già una sponsorizzazione attiva in scadenza il {{$sponsorEnd}}</h2>
+            <h2 class="advertice">Questo appartamento ha già una sponsorizzazione attiva in scadenza il {{$sponsorEnd}}</h2>
         @endif
 
     </div>
-    <a class="nav-link" href="{{ route('admin.dashboard') }}">
-        Torna alla Dashboard
-    </a>
 @endsection

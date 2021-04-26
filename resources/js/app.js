@@ -38,7 +38,8 @@ const app = new Vue({
         roomsNumber: "1",
         bedsNumber: "1",
         distanceKm: "20",
-        flatsArr: [],
+        normalFlats: [],
+        sponsoredFlats: [],
         checkedServices: [],
         classDropdownSection: "",
         titleFlag: false,
@@ -47,7 +48,6 @@ const app = new Vue({
         chartViewInstce: null,
         viewsArr: [],
         map: null,
-
         /*
         questi data formano il carousel visibile se il video del jumbotron non dovesse
         essere supportato dal browser
@@ -115,49 +115,80 @@ const app = new Vue({
         ],
 
 
-        lonMapMarker:'',//data per i marker della mappa
-        latMapMarker:'',//data per i marker della mappa
-        titleFlatMarker:'',//data per i marker della mappa
+        lonMapMarker:'12.55251545667927',//data per i marker della mappa
+        latMapMarker:'42.090241374915855',//data per i marker della mappa
+        titleFlatMarker:'Dove ti porta il cuore?',//data per i marker della mappa
         priceMapMarker:'',//data per i marker della mappa
         addressMarker: '',
-        sponsoredFlats:[]
+        zoomView: 5,
+
+        multiMarker: []
     },
 
     mounted() {
         /* >>>>>>MAP TOMTOM IMPORT <<<<< */
         //la const pos passa le coordinate della posizione di riferimento
-       const pos = { lng: this.lonMapMarker, lat: this.latMapMarker };
-    //    var mapDiv = document.getElementById("map-div");
+       const pos ={ lng: this.lonMapMarker, lat: this.latMapMarker };
+       let newZoom=parseInt(this.zoomView);
+
+       var mapDiv = document.getElementById("map-div");
        this.map = tt.map({
            key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
            container: "map-div",
            style: "tomtom://vector/1/basic-main",
            //center importa la posizione di riferimento della ricerca
            center: pos,
-           zoom: 10
+           zoom: newZoom
        });
        //funzione che abilita il tasto full screen
        this.map.addControl(new tt.FullscreenControl());
        //funzione che abilita i tasti per navigare la mappa (zoom in out e bussola)
        this.map.addControl(new tt.NavigationControl());
        //aggiunge la funzione che renderizza il marker sulla mappa
-       this.addMarker(this.map);
-
+       this.addMarker2(this.map);
           /* >>>>>>END MAP TOMTOM IMPORT <<<<< */
      },
     methods: {
+    mapRendering: function(){
+                /* >>>>>>MAP TOMTOM IMPORT <<<<< */
+        //la const pos passa le coordinate della posizione di riferimento
+        let pos;
+
+        if(this.sponsoredFlats.length > 0){
+            pos ={ lng: this.sponsoredFlats[0].lon, lat: this.sponsoredFlats[0].lat };
+        }else{
+            pos ={ lng: this.normalFlats[0].lon, lat: this.normalFlats[0].lat };
+        }
+
+           var mapDiv = document.getElementById("map-div");
+            this.map = tt.map({
+                key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
+                container: "map-div",
+                style: "tomtom://vector/1/basic-main",
+                //center importa la posizione di riferimento della ricerca
+                center: pos,
+                zoom: 10
+            });
+            //funzione che abilita il tasto full screen
+            this.map.addControl(new tt.FullscreenControl());
+            //funzione che abilita i tasti per navigare la mappa (zoom in out e bussola)
+            this.map.addControl(new tt.NavigationControl());
+            //aggiunge la funzione che renderizza il marker sulla mappa
+        //    this.addMarker(this.map);
+            /* >>>>>>END MAP TOMTOM IMPORT <<<<< */
+            this.getDataForMarker();
+        },
         //al caricamento della pagina prende la lat e la lon per creare il marker sulla mappa in maniera dinamica e le informazioni del flat
-        getInfoForMarker: function(paramLon, paramLat, title, price,address) {
+        getInfoForMarker: function(paramLon, paramLat, title, price,address, zoom) {
             this.lonMapMarker = paramLon;
             this.latMapMarker = paramLat;
             this.titleFlatMarker = title;
             this.addressMarker = address;
             this.priceMapMarker = price;
+            this.zoomView = zoom;
         },
-
-        //funzione di tomtom per aggiugere i marker alla mappa
-        addMarker: function(map){
-            const tt = window.tt;
+        addMarker2: function(map){
+             const tt = window.tt;
             //qui bisogna inserire la coordinata del marker nell'ordine lon e lat
              var location = [this.lonMapMarker, this.latMapMarker];
              var popupOffsets = {
@@ -177,6 +208,57 @@ const app = new Vue({
              marker.setPopup(popup).togglePopup();
         },
 
+        //funzione di tomtom per aggiugere i marker alla mappa
+        addMarker: function(map){
+
+            for (let x = 0; x < this.multiMarker.length; x++) {
+                const element = this.multiMarker[x];
+                const tt = window.tt;
+                //qui bisogna inserire la coordinata del marker nell'ordine lon e lat
+                 var location = [element.lon, element.lat];
+                 var popupOffsets = {
+                   top: [0, 0],
+                   bottom: [0, -30],
+                   'bottom-right': [0, -30],
+                   'bottom-left': [0, -30],
+                   left: [25, -35],
+                   right: [-25, -35]
+                 }
+                 var marker = new tt.Marker().setLngLat(location).addTo(map);
+                 //questa variabile popolerà la modale che si apre al click sul marker della mappa
+                 var popup = new tt.Popup({offset: popupOffsets})
+                 .setHTML( '<h5 style="font-size:13px;">' + element.title + '</h5>'
+                    + '<div style="color:#797979; font-style: italic">' + element.address + '</div>'
+                    + ' price: ' + element.price + ' €');
+                 marker.setPopup(popup).togglePopup();
+            }
+
+        },
+        getDataForMarker: function(){
+            this.multiMarker=[];
+            for (let index = 0; index < this.normalFlats.length; index++) {
+                this.multiMarker.push({
+                    lat: this.normalFlats[index].lat,
+                    lon: this.normalFlats[index].lon,
+                    title: this.normalFlats[index].details['flat_title'],
+                    price: this.normalFlats[index].details['price_day'],
+                    address: this.normalFlats[index].street_name + ' ' + this.normalFlats[index].street_number
+                })
+            }
+
+            for (let index = 0; index < this.sponsoredFlats.length; index++) {
+                this.multiMarker.push({
+                    lat: this.sponsoredFlats[index].lat,
+                    lon: this.sponsoredFlats[index].lon,
+                    title: this.sponsoredFlats[index].details['flat_title'],
+                    price: this.sponsoredFlats[index].details['price_day'],
+                    address: this.sponsoredFlats[index].street_name + ' ' + this.sponsoredFlats[index].street_number
+                })
+            }
+            this.addMarker(this.map)
+
+        },
+
         getFlats: function () {
             const self = this;
             axios
@@ -192,7 +274,7 @@ const app = new Vue({
                 .then(function(resp) {
                     self.titleSearchedInput = self.address;
 
-                    if (resp.data.length === 0) {
+                    if (resp.data.normals.length === 0) {
                         self.titleNoResultsFlag = true;
 
                         self.titleFlag = false;
@@ -201,12 +283,15 @@ const app = new Vue({
 
                         self.titleNoResultsFlag = false;
                     }
-                    self.flatsArr = resp.data;
+                    self.normalFlats = resp.data.normals;
+
+                    self.sponsoredFlats = resp.data.sponsoreds;
+
+                    self.mapRendering();
                 });
         },
 
         getChar: function (id) {
-            console.log(id);
             const self = this;
             axios
                 .get("http://127.0.0.1:8000/api/views?id=" + this.$userId)
@@ -262,22 +347,23 @@ const app = new Vue({
 
         filterChar: function(arr, id, date) {
             let dataArrChar = [
-                { month: "Gennaio", views: 0 },
-                { month: "Febbraio", views: 0 },
-                { month: "Marzo", views: 0 },
-                { month: "Aprile", views: 0 },
-                { month: "Maggio", views: 0 },
-                { month: "Giugno", views: 0 },
-                { month: "Luglio", views: 0 },
-                { month: "Agosto", views: 0 },
-                { month: "Settembre", views: 0 },
-                { month: "Ottobre", views: 0 },
-                { month: "Novembre", views: 0 },
-                { month: "Dicembre", views: 0 }
+                { month: "January", views: 0 },
+                { month: "February", views: 0 },
+                { month: "March", views: 0 },
+                { month: "April", views: 0 },
+                { month: "May", views: 0 },
+                { month: "June", views: 0 },
+                { month: "July", views: 0 },
+                { month: "August", views: 0 },
+                { month: "September", views: 0 },
+                { month: "October", views: 0 },
+                { month: "November", views: 0 },
+                { month: "December", views: 0 }
             ];
 
             // Raccolgo solo le visualizzazzioni della stanza selezionata
             arr.forEach(item => {
+                console.log(item.flat_id);
                 if (id === item.flat_id) {
                     let viewMonth = date(item.updated_at);
 
@@ -288,6 +374,8 @@ const app = new Vue({
                     });
                 }
             });
+
+            console.log(dataArrChar.map(item => item.views));
 
             return dataArrChar.map(item => item.views);
         },
@@ -301,8 +389,15 @@ const app = new Vue({
                 return (this.classDropdownSection = "");
             }
         },
-        getFlatsBySponsor(flat){
-            this.sponsoredFlats=[...this.sponosoredFlats,...flat];
+
+        thereIsResponse() { //todo
+            if(this.normalFlats.length > 0 || this.sponsoredFlats.length > 0){
+                return true;
+            }
+
+            if(this.normalFlats.length === 0 || this.sponsoredFlats.length === 0){
+                return false;
+            }
         }
     }
 });

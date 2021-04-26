@@ -83,7 +83,9 @@ class ApiFlatsController extends Controller
 
         $filteredFlats = Flat::whereIn('id', $ids)->get();
 
-        $arrFlats = [];
+        $normalFlats = [];
+        $sponsoredFlats = [];
+
         foreach($filteredFlats as $filteredFlat){
             $details = $filteredFlat->details;
             $bedsQuantity = $details->beds_quantity;
@@ -105,10 +107,33 @@ class ApiFlatsController extends Controller
                     }
                 }
             }
+
+            $sponsors = $filteredFlat->sponsor;
+
+            if (count($filteredFlat->sponsor) == 0) {
+                $sponsorFlag = false;
+            } else {
+                if ($sponsors[count($sponsors) - 1]->sponsor_end > date('Y-m-d H:i:s')) {
+                    $sponsorFlag = true;
+                } else {
+                    $sponsorFlag = false;
+                }
+            }
+
             if ($bedsQuantity >= $bedsNumber && $roomsQuantity >= $roomsNumber && $servicesFlag) {
-                array_push($arrFlats, $filteredFlat);
+                if($sponsorFlag){
+                array_push($sponsoredFlats, $filteredFlat);
+
+                }else{
+                    array_push($normalFlats, $filteredFlat);
+                }
             }
         };
+
+        $arrFlats = [
+            "sponsoreds"=>$sponsoredFlats,
+            "normals"=>$normalFlats
+        ];
 
         return json_encode($arrFlats);
     }

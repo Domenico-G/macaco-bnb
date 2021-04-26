@@ -20,6 +20,7 @@ class GuestController extends Controller
         $flats = Flat::all();
 
         $sponsoredFlats = Flat::join('sponsors', 'flats.id', '=' , 'sponsors.flat_id')->orderBy('sponsor_end', 'asc')->get();
+
         return view("flatsGuestView.home", compact("flats", "sponsoredFlats"));
     }
 
@@ -49,7 +50,9 @@ class GuestController extends Controller
 
     protected function searchView(){
         $services = Service::all();
-        return view("flatsGuestView.search", compact("services"));
 
+        $flats = Flat::join('sponsors', 'flats.id', '=' , 'sponsors.flat_id')->orderBy('sponsor_end', 'asc')->get();
+
+        return view("flatsGuestView.search", compact("services", "flats"));
     }
 }

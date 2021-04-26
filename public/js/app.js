@@ -1849,18 +1849,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
@@ -1901,7 +1889,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     roomsNumber: "1",
     bedsNumber: "1",
     distanceKm: "20",
-    flatsArr: [],
+    normalFlats: [],
+    sponsoredFlats: [],
     checkedServices: [],
     classDropdownSection: "",
     titleFlag: false,
@@ -1962,16 +1951,17 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       bootStrapAlt: "Tenth slide",
       dataSlideTo: "9"
     }],
-    lonMapMarker: '',
+    lonMapMarker: '12.55251545667927',
     //data per i marker della mappa
-    latMapMarker: '',
+    latMapMarker: '42.090241374915855',
     //data per i marker della mappa
-    titleFlatMarker: '',
+    titleFlatMarker: 'Dove ti porta il cuore?',
     //data per i marker della mappa
     priceMapMarker: '',
     //data per i marker della mappa
     addressMarker: '',
-    sponsoredFlats: []
+    zoomView: 5,
+    multiMarker: []
   },
   mounted: function mounted() {
     /* >>>>>>MAP TOMTOM IMPORT <<<<< */
@@ -1979,35 +1969,72 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     var pos = {
       lng: this.lonMapMarker,
       lat: this.latMapMarker
-    }; //    var mapDiv = document.getElementById("map-div");
-
+    };
+    var newZoom = parseInt(this.zoomView);
+    var mapDiv = document.getElementById("map-div");
     this.map = tt.map({
       key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
       container: "map-div",
       style: "tomtom://vector/1/basic-main",
       //center importa la posizione di riferimento della ricerca
       center: pos,
-      zoom: 10
+      zoom: newZoom
     }); //funzione che abilita il tasto full screen
 
     this.map.addControl(new tt.FullscreenControl()); //funzione che abilita i tasti per navigare la mappa (zoom in out e bussola)
 
     this.map.addControl(new tt.NavigationControl()); //aggiunge la funzione che renderizza il marker sulla mappa
 
-    this.addMarker(this.map);
+    this.addMarker2(this.map);
     /* >>>>>>END MAP TOMTOM IMPORT <<<<< */
   },
   methods: {
+    mapRendering: function mapRendering() {
+      /* >>>>>>MAP TOMTOM IMPORT <<<<< */
+      //la const pos passa le coordinate della posizione di riferimento
+      var pos;
+
+      if (this.sponsoredFlats.length > 0) {
+        pos = {
+          lng: this.sponsoredFlats[0].lon,
+          lat: this.sponsoredFlats[0].lat
+        };
+      } else {
+        pos = {
+          lng: this.normalFlats[0].lon,
+          lat: this.normalFlats[0].lat
+        };
+      }
+
+      var mapDiv = document.getElementById("map-div");
+      this.map = tt.map({
+        key: "iTF86GRA2V5iGjM6LMMV54lrK8v6zC1w",
+        container: "map-div",
+        style: "tomtom://vector/1/basic-main",
+        //center importa la posizione di riferimento della ricerca
+        center: pos,
+        zoom: 10
+      }); //funzione che abilita il tasto full screen
+
+      this.map.addControl(new tt.FullscreenControl()); //funzione che abilita i tasti per navigare la mappa (zoom in out e bussola)
+
+      this.map.addControl(new tt.NavigationControl()); //aggiunge la funzione che renderizza il marker sulla mappa
+      //    this.addMarker(this.map);
+
+      /* >>>>>>END MAP TOMTOM IMPORT <<<<< */
+
+      this.getDataForMarker();
+    },
     //al caricamento della pagina prende la lat e la lon per creare il marker sulla mappa in maniera dinamica e le informazioni del flat
-    getInfoForMarker: function getInfoForMarker(paramLon, paramLat, title, price, address) {
+    getInfoForMarker: function getInfoForMarker(paramLon, paramLat, title, price, address, zoom) {
       this.lonMapMarker = paramLon;
       this.latMapMarker = paramLat;
       this.titleFlatMarker = title;
       this.addressMarker = address;
       this.priceMapMarker = price;
+      this.zoomView = zoom;
     },
-    //funzione di tomtom per aggiugere i marker alla mappa
-    addMarker: function addMarker(map) {
+    addMarker2: function addMarker2(map) {
       var tt = window.tt; //qui bisogna inserire la coordinata del marker nell'ordine lon e lat
 
       var location = [this.lonMapMarker, this.latMapMarker];
@@ -2026,6 +2053,54 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       }).setHTML('<h5 style="font-size:13px;">' + this.titleFlatMarker + '</h5>' + '<div style="color:#797979; font-style: italic">' + this.addressMarker + '</div>' + ' price: ' + this.priceMapMarker + ' €');
       marker.setPopup(popup).togglePopup();
     },
+    //funzione di tomtom per aggiugere i marker alla mappa
+    addMarker: function addMarker(map) {
+      for (var x = 0; x < this.multiMarker.length; x++) {
+        var element = this.multiMarker[x];
+        var _tt = window.tt; //qui bisogna inserire la coordinata del marker nell'ordine lon e lat
+
+        var location = [element.lon, element.lat];
+        var popupOffsets = {
+          top: [0, 0],
+          bottom: [0, -30],
+          'bottom-right': [0, -30],
+          'bottom-left': [0, -30],
+          left: [25, -35],
+          right: [-25, -35]
+        };
+        var marker = new _tt.Marker().setLngLat(location).addTo(map); //questa variabile popolerà la modale che si apre al click sul marker della mappa
+
+        var popup = new _tt.Popup({
+          offset: popupOffsets
+        }).setHTML('<h5 style="font-size:13px;">' + element.title + '</h5>' + '<div style="color:#797979; font-style: italic">' + element.address + '</div>' + ' price: ' + element.price + ' €');
+        marker.setPopup(popup).togglePopup();
+      }
+    },
+    getDataForMarker: function getDataForMarker() {
+      this.multiMarker = [];
+
+      for (var index = 0; index < this.normalFlats.length; index++) {
+        this.multiMarker.push({
+          lat: this.normalFlats[index].lat,
+          lon: this.normalFlats[index].lon,
+          title: this.normalFlats[index].details['flat_title'],
+          price: this.normalFlats[index].details['price_day'],
+          address: this.normalFlats[index].street_name + ' ' + this.normalFlats[index].street_number
+        });
+      }
+
+      for (var _index = 0; _index < this.sponsoredFlats.length; _index++) {
+        this.multiMarker.push({
+          lat: this.sponsoredFlats[_index].lat,
+          lon: this.sponsoredFlats[_index].lon,
+          title: this.sponsoredFlats[_index].details['flat_title'],
+          price: this.sponsoredFlats[_index].details['price_day'],
+          address: this.sponsoredFlats[_index].street_name + ' ' + this.sponsoredFlats[_index].street_number
+        });
+      }
+
+      this.addMarker(this.map);
+    },
     getFlats: function getFlats() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/search", {
@@ -2039,7 +2114,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
       }).then(function (resp) {
         self.titleSearchedInput = self.address;
 
-        if (resp.data.length === 0) {
+        if (resp.data.normals.length === 0) {
           self.titleNoResultsFlag = true;
           self.titleFlag = false;
         } else {
@@ -2047,11 +2122,12 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
           self.titleNoResultsFlag = false;
         }
 
-        self.flatsArr = resp.data;
+        self.normalFlats = resp.data.normals;
+        self.sponsoredFlats = resp.data.sponsoreds;
+        self.mapRendering();
       });
     },
     getChar: function getChar(id) {
-      console.log(id);
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/views?id=" + this.$userId).then(function (resp) {
         var _Chart;
@@ -2097,44 +2173,46 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     },
     filterChar: function filterChar(arr, id, date) {
       var dataArrChar = [{
-        month: "Gennaio",
+        month: "January",
         views: 0
       }, {
-        month: "Febbraio",
+        month: "February",
         views: 0
       }, {
-        month: "Marzo",
+        month: "March",
         views: 0
       }, {
-        month: "Aprile",
+        month: "April",
         views: 0
       }, {
-        month: "Maggio",
+        month: "May",
         views: 0
       }, {
-        month: "Giugno",
+        month: "June",
         views: 0
       }, {
-        month: "Luglio",
+        month: "July",
         views: 0
       }, {
-        month: "Agosto",
+        month: "August",
         views: 0
       }, {
-        month: "Settembre",
+        month: "September",
         views: 0
       }, {
-        month: "Ottobre",
+        month: "October",
         views: 0
       }, {
-        month: "Novembre",
+        month: "November",
         views: 0
       }, {
-        month: "Dicembre",
+        month: "December",
         views: 0
       }]; // Raccolgo solo le visualizzazzioni della stanza selezionata
 
       arr.forEach(function (item) {
+        console.log(item.flat_id);
+
         if (id === item.flat_id) {
           var viewMonth = date(item.updated_at);
           dataArrChar.forEach(function (el) {
@@ -2144,6 +2222,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
           });
         }
       });
+      console.log(dataArrChar.map(function (item) {
+        return item.views;
+      }));
       return dataArrChar.map(function (item) {
         return item.views;
       });
@@ -2157,8 +2238,15 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
         return this.classDropdownSection = "";
       }
     },
-    getFlatsBySponsor: function getFlatsBySponsor(flat) {
-      this.sponsoredFlats = [].concat(_toConsumableArray(this.sponosoredFlats), _toConsumableArray(flat));
+    thereIsResponse: function thereIsResponse() {
+      //todo
+      if (this.normalFlats.length > 0 || this.sponsoredFlats.length > 0) {
+        return true;
+      }
+
+      if (this.normalFlats.length === 0 || this.sponsoredFlats.length === 0) {
+        return false;
+      }
     }
   }
 });
