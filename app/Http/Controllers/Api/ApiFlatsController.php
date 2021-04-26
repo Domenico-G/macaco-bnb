@@ -125,8 +125,9 @@ class ApiFlatsController extends Controller
                 if($sponsorFlag){
                 array_push($sponsoredFlats, $filteredFlat);
 
+                }else{
+                    array_push($normalFlats, $filteredFlat);
                 }
-                array_push($normalFlats, $filteredFlat);
             }
         };
 
