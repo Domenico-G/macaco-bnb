@@ -77,28 +77,15 @@
 
         <div class="container-fluid all-flats">
             {{-- sponsored flats section --}}
-            <div class="row sponsored-flats" v-if="normalFlats.length === 0">
+            <div class="row sponsored-flats" v-if="normalFlats.length === 0 && sponsoredFlats.length === 0">
                 <div class="col-12">
                     <div class="container">
                         <h1>Prima di cercare da un'occhiata a questi appartamenti in evidenza</h1>
 
                         {{-- sponsored flats --}}
                         @foreach ($flats as $flat)
-                            @php
-                                $sponsors = $flat->sponsor;
 
-                                if (count($flat->sponsor) == 0) {
-                                    $sponsorFlag = false;
-                                } else {
-                                    if ($sponsors[count($sponsors) - 1]->sponsor_end > date('Y-m-d H:i:s')) {
-                                        $sponsorFlag = true;
-                                    } else {
-                                        $sponsorFlag = false;
-                                    }
-                                }
-                            @endphp
-
-                            @if ($sponsorFlag)
+                            @if ($flat->sponsor_end>=date("Y-m-d H:i:s"))
                                 <div class="container flat">
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-12 flat-img-box">
