@@ -10698,18 +10698,18 @@ ul {
   list-style: none;
 }
 
-.bnb-btnSearch {
+.bnb-btn {
   cursor: pointer;
   color: #797979;
 }
-.bnb-btnSearch:hover {
+.bnb-btn:hover {
   color: #000;
 }
 
-.bnb-pagaSearchWrap .bnb-flatCol .search-bar {
+.bnb-search .search-bar {
   padding-top: 15px;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .search-bar .search-input {
+.bnb-search .search-bar .search-input {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -10719,46 +10719,46 @@ ul {
   padding: 5px 15px;
 }
 @media screen and (min-width: 576px) {
-  .bnb-pagaSearchWrap .bnb-flatCol .search-bar .search-input {
+  .bnb-search .search-bar .search-input {
     width: 100%;
   }
 }
 @media screen and (min-width: 768px) {
-  .bnb-pagaSearchWrap .bnb-flatCol .search-bar .search-input {
+  .bnb-search .search-bar .search-input {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
   }
 }
-.bnb-pagaSearchWrap .bnb-flatCol .search-bar .search-input i {
+.bnb-search .search-bar .search-input i {
   cursor: pointer;
   font-size: 26px;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .search-bar .search-input input {
+.bnb-search .search-bar .search-input input {
   border: none;
   outline: none;
   font-size: 26px;
   width: calc(100% - 31px);
 }
 @media screen and (min-width: 768px) {
-  .bnb-pagaSearchWrap .bnb-flatCol .search-bar .search-input input {
+  .bnb-search .search-bar .search-input input {
     width: 400px;
   }
 }
-.bnb-pagaSearchWrap .bnb-flatCol .search-bar .search-input input::-moz-placeholder {
+.bnb-search .search-bar .search-input input::-moz-placeholder {
   text-align: center;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .search-bar .search-input input:-ms-input-placeholder {
+.bnb-search .search-bar .search-input input:-ms-input-placeholder {
   text-align: center;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .search-bar .search-input input::placeholder {
+.bnb-search .search-bar .search-input input::placeholder {
   text-align: center;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .search-bar .drop-section.bnb-btnSearch {
+.bnb-search .search-bar .drop-section.bnb-btn {
   font-size: 36px;
   margin-left: 15px;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .advanced-settings {
+.bnb-search .advanced-settings {
   background-color: #eee;
   height: 0;
   overflow: hidden;
@@ -10766,119 +10766,112 @@ ul {
   z-index: -1;
 }
 @media screen and (min-width: 576px) {
-  .bnb-pagaSearchWrap .bnb-flatCol .advanced-settings.active {
+  .bnb-search .advanced-settings.active {
     height: 1000px;
   }
 }
 @media screen and (min-width: 768px) {
-  .bnb-pagaSearchWrap .bnb-flatCol .advanced-settings.active {
+  .bnb-search .advanced-settings.active {
     height: 590px;
   }
 }
 @media screen and (min-width: 992px) {
-  .bnb-pagaSearchWrap .bnb-flatCol .advanced-settings.active {
+  .bnb-search .advanced-settings.active {
     height: 430px;
   }
 }
-.bnb-pagaSearchWrap .bnb-flatCol .advanced-settings .container .row > * {
+.bnb-search .advanced-settings .container .row > * {
   margin: 15px 0;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .advanced-settings .container .row input[type=range] {
+.bnb-search .advanced-settings .container .row input[type=range] {
   vertical-align: middle;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .advanced-settings .container .row input[type=number] {
+.bnb-search .advanced-settings .container .row input[type=number] {
   width: 50px;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .advanced-settings .container .row .lift-section.bnb-btn {
+.bnb-search .advanced-settings .container .row .lift-section.bnb-btn {
   font-size: 25px;
   text-align: center;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow {
-  padding-bottom: 20px;
-}
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch h1 {
+.bnb-search h1 {
   margin: 15px 0 15px 50px;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat a, .bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat a:link, .bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat a:visited, .bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat a:hover, .bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat a:active {
+.bnb-search .flat {
+  overflow: hidden;
+}
+.bnb-search .flat a, .bnb-search .flat a:link, .bnb-search .flat a:visited, .bnb-search .flat a:hover, .bnb-search .flat a:active {
   text-decoration: none;
   color: #000;
 }
 @media screen and (min-width: 576px) {
-  .bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat {
+  .bnb-search .flat {
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
 }
 @media screen and (min-width: 768px) {
-  .bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat {
-    height: 300px;
+  .bnb-search .flat {
+    height: 320px;
   }
 }
 @media screen and (min-width: 992px) {
-  .bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat {
-    height: 220px;
+  .bnb-search .flat {
+    height: 270px;
   }
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row {
+.bnb-search .flat .row {
   height: 100%;
-  padding: 15px;
+  padding: 30px;
   border-bottom: 1px solid #ccc;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row .flat-img-box {
+.bnb-search .flat .row .flat-img-box {
   height: 100%;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row .flat-img-box a img {
+.bnb-search .flat .row .flat-img-box a img {
   border-radius: 15px;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row .flat-info {
+.bnb-search .flat .row .flat-info {
   position: relative;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row .flat-info a .flat-title {
+.bnb-search .flat .row .flat-info a .flat-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row .flat-info a .flat-text {
-  font-size: 14px;
+.bnb-search .flat .row .flat-info a .flat-text {
+  font-size: 17px;
   color: #797979;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row .flat-info a .flat-others-info-quantities {
-  font-size: 15px;
-  margin: 5px;
+.bnb-search .flat .row .flat-info a .flat-others-info-quantities {
+  font-size: 21px;
+  margin: 30px;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row .flat-info a .flat-others-info .services {
-  position: relative;
-}
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row .flat-info a .flat-others-info .services div {
-  margin: 0px 5px 5px 0px;
+.bnb-search .flat .row .flat-info a .flat-others-info .services div {
+  margin: 0 15px 20px 0;
   border: 1px solid #000;
   border-radius: 15px;
   text-align: center;
   padding: 0 10px;
-  font-size: 9px;
 }
-.bnb-pagaSearchWrap .bnb-flatCol .bnb-resultRow .bnb-resultSearch .flat .row .flat-info a .flat-others-info-price {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  font-size: 15px;
+.bnb-search .flat .row .flat-info a .flat-others-info-price {
+  font-size: 21px;
   text-align: right;
 }
-.bnb-pagaSearchWrap .bnb-mapCol {
+.bnb-search .bnb-mapCol {
   padding: 0;
 }
-.bnb-pagaSearchWrap .bnb-mapCol .bnb-map-container {
+.bnb-search .bnb-mapCol .bnb-map-container {
   width: 100%;
   height: calc(100vh - 90px);
   position: sticky;
   top: 0;
 }
-.bnb-pagaSearchWrap .bnb-mapCol .bnb-map-container #map-div {
+.bnb-search .bnb-mapCol .bnb-map-container #map-div {
   width: 100%;
   height: 100%;
 }
