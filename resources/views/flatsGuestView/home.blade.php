@@ -142,7 +142,7 @@
                     @if(!isset($flat->sponsor[0]) || (isset($flat->sponsor[0]) && $flat->sponsor[count($flat->sponsor)-1]->sponsor_end<date("Y-m-d H:i:s")))
                         <div class="bnb-card">
                             <div class="bnb-imgContainer">
-                                <img class="bnb-imgCard" src="{{$flat->details->image}}" alt="Card image cap">
+                                <img class="bnb-imgCard" src="{{ asset($flat->details->image)}}" alt="Card image cap">
                             </div>
 
                             <div class=" bnb-flatTitleStrip">
