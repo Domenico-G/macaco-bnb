@@ -133,12 +133,11 @@
 
     .bnb-totalMain {
         height: calc(100vh - 155px);
-        overflow-y: scroll;
+        overflow-y: auto;
         padding-bottom: 20px;
         .bnb-mainPayment {
-            .bnb-totalContainer { //TODO STYLE
+            .bnb-totalContainer {
                 .bnb-text {
-                height: 80px;
                 h1 {
                     font-size: 28px;
                 }
@@ -148,9 +147,9 @@
                     label {
                     border: 1px solid #00000086;
                     border-radius: 8px;
-                    padding-left: 5px;
-                    height: 30px;
-                    width: 55%;
+                    padding: 0 5px;
+                    // height: 30px;
+                    width: fit-content;
                     &:hover {
                         background-color: #fff;
                     }

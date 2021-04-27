@@ -156,6 +156,8 @@ const app = new Vue({
 
         if(this.sponsoredFlats.length > 0){
             pos ={ lng: this.sponsoredFlats[0].lon, lat: this.sponsoredFlats[0].lat };
+        }else if(this.sponsoredFlats.length === 0 && this.normalFlats.length === 0){
+            pos ={ lng: this.lonMapMarker, lat: this.latMapMarker };
         }else{
             pos ={ lng: this.normalFlats[0].lon, lat: this.normalFlats[0].lat };
         }
@@ -274,7 +276,7 @@ const app = new Vue({
                 .then(function(resp) {
                     self.titleSearchedInput = self.address;
 
-                    if (resp.data.normals.length === 0) {
+                    if (resp.data.normals.length === 0 && resp.data.sponsoreds.length === 0) {
                         self.titleNoResultsFlag = true;
 
                         self.titleFlag = false;

@@ -11707,6 +11707,7 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
 
 .card-box .img-card {
   width: 100%;
+  max-height: 350px;
   padding: 0px 0px;
   overflow: hidden;
   border-radius: 10px;
@@ -11852,6 +11853,12 @@ ul {
   z-index: -1;
 }
 
+@media screen and (max-width: 576px) {
+  .bnb-search .advanced-settings.active {
+    height: 1000px;
+  }
+}
+
 @media screen and (min-width: 576px) {
   .bnb-search .advanced-settings.active {
     height: 1000px;
@@ -11905,6 +11912,12 @@ ul {
 .bnb-search .all-flats .searched-flats-left {
   height: 100%;
   overflow-y: auto;
+}
+
+.bnb-search .all-flats .empty-search {
+  padding: 20px 0 250px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
 }
 
 .bnb-search .all-flats h1 {
@@ -11978,12 +11991,11 @@ ul {
 }
 
 .bnb-search .all-flats .flat .row .flat-info a .flat-others-info-quantities {
-  font-size: 21px;
-  margin: 30px;
+  font-size: 18px;
 }
 
 .bnb-search .all-flats .flat .row .flat-info a .flat-others-info .services div {
-  margin: 0 15px 20px 0;
+  margin: 0 10px 5px 0;
   border: 1px solid #000;
   border-radius: 15px;
   text-align: center;
@@ -12012,11 +12024,11 @@ ul {
 }
 
 .container.bnb-containerForm {
-  margin-bottom: 25px;
+  margin: 25px auto;
 }
 
 .container.bnb-containerForm form {
-  margin-bottom: 25px;
+  margin: 25px 0;
   min-width: 360px;
   width: 100vw;
   max-width: 100%;
@@ -12169,12 +12181,8 @@ ul {
 
 .bnb-pageWrapper .bnb-totalMain {
   height: calc(100vh - 155px);
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-bottom: 20px;
-}
-
-.bnb-pageWrapper .bnb-totalMain .bnb-mainPayment .bnb-totalContainer .bnb-text {
-  height: 80px;
 }
 
 .bnb-pageWrapper .bnb-totalMain .bnb-mainPayment .bnb-totalContainer .bnb-text h1 {
@@ -12188,9 +12196,10 @@ ul {
 .bnb-pageWrapper .bnb-totalMain .bnb-mainPayment .bnb-totalContainer .bnb-formCheck label {
   border: 1px solid #00000086;
   border-radius: 8px;
-  padding-left: 5px;
-  height: 30px;
-  width: 55%;
+  padding: 0 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .bnb-pageWrapper .bnb-totalMain .bnb-mainPayment .bnb-totalContainer .bnb-formCheck label:hover {

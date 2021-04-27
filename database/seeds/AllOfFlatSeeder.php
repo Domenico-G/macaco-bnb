@@ -86,7 +86,7 @@ class AllOfFlatSeeder extends Seeder
         $details->description = '
         Locale di 100 mq compreso di bagni divisi da porta.
         Situato nel cuore di Vicenza, al terzo piano con ascensore e portineria 24h. ' . $faker->paragraph(5);
-        $details->image = 'https://images.pexels.com/photos/279719/pexels-photo-279719.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
+        $details->image = 'https://images.pexels.com/photos/4451937/pexels-photo-4451937.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
         $details->area_sqm = 100;
         $details->rooms_quantity = 3;
         $details->beds_quantity = 4;

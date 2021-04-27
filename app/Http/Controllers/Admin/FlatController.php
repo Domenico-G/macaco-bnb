@@ -47,8 +47,12 @@ class FlatController extends Controller
      */
     public function store(Request $request)
     {
-        // Funzione di validazione
+        // Funzioni di validazione
         $this->formValidate($request);
+
+        $request->validate([
+            'image' => 'required'
+        ]);
 
         $data = $request->all();
         $id = Auth::id();
@@ -127,7 +131,7 @@ class FlatController extends Controller
         $res = $this->tomtomCall($data);
 
         if (empty($res->results)) {
-            // Creare pagine per gestione errore
+            //TODO Creare pagine per gestione errore
             return "caso";
         } else {
         $lat = $res->results[0]->position->lat;
@@ -136,6 +140,14 @@ class FlatController extends Controller
         $flat->lon = $lon;
         $flat->save();
         $flat->update($data);
+
+        if($request->file("image") == null){
+            $path = $flat->details->image;
+        }else{
+            $path = $request->file("image")->store("public");
+        }
+
+        $flat->details->image = $path;
         $flat->details->update($data);
         $flat->services()->sync($services);
 
@@ -201,7 +213,7 @@ class FlatController extends Controller
             "postal_code" => 'required|max:8',
             "flat_title" => 'required',
             "description" => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "area_sqm" => 'required|numeric',
             "rooms_quantity" => 'required|numeric',
             "beds_quantity" => 'required|numeric',

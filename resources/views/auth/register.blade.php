@@ -44,7 +44,7 @@
                             <label for="birth" class="col-md-4 col-form-label text-md-right">Data Di Nascita</label>
 
                             <div class="col-md-6">
-                                <input id="birth" type="text" class="form-control @error('birth') is-invalid @enderror" name="birth" value="{{ old('birth') }}" required autocomplete="birth" autofocus placeholder="aaaa-mm-gg">
+                                <input id="birth" type="date" class="form-control @error('birth') is-invalid @enderror" name="birth" value="{{ old('birth') }}" required autocomplete="birth" autofocus>
 
                                 @error('birth')
                                     <span class="invalid-feedback" role="alert">

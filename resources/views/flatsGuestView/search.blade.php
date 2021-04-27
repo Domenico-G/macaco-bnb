@@ -80,6 +80,15 @@
             <div class="row sponsored-flats" v-if="normalFlats.length === 0 && sponsoredFlats.length === 0">
                 <div class="col-12">
                     <div class="container">
+                        <div v-if="titleNoResultsFlag" class="empty-search">
+                            <h1>
+                                <em>Non ci sono risultati per @{{ titleSearchedInput }}</em>
+                                <br>
+                                <i class="fas fa-toilet-paper-slash"></i>
+                            </h1>
+
+                        </div>
+
                         <h1>Prima di cercare da un'occhiata a questi appartamenti in evidenza</h1>
 
                         {{-- sponsored flats --}}
@@ -121,6 +130,11 @@
                                                             <i class="fas fa-vector-square"></i>
                                                             {{ $flat->details->rooms_quantity }}
                                                         </li>
+
+                                                        <li title="Euro a notte">
+                                                            <i class="fas fa-euro-sign"></i>
+                                                            {{ $flat->details->price_day }}
+                                                        </li>
                                                     </ul>
                                                 </div>
 
@@ -130,12 +144,6 @@
                                                             {{ $service->service_name }}
                                                         </div>
                                                     @endforeach
-                                                </div>
-
-                                                <div class="flat-others-info-price">
-                                                    <div>
-                                                        <strong>{{ $flat->details->price_day }}&euro;</strong>/notte
-                                                    </div>
                                                 </div>
                                             </div>
                                         </a>
@@ -151,14 +159,12 @@
 
             {{-- results section --}}
             <div class="row searched-flats">
-                <div class="searched-flats-left col-lg-6 col-sm-12">
-                    <div class="container">
+                <div class="searched-flats-left col-xl-6 col-lg-12">
                         <h1 v-if="titleFlag">Risultati per @{{ titleSearchedInput }}</h1>
-                        <h1 v-if="titleNoResultsFlag">Non ci sono risultati per @{{ titleSearchedInput }}</h1>
 
                         {{-- searched sponsored flat's results --}}
                         {{-- TODO: sistemare stile sponsorizzati --}}
-                        <div v-for="flat in sponsoredFlats" class="container flat" style="background: gold;">
+                        <div v-for="flat in sponsoredFlats" class="container-fluid flat" style="background: gold;">
                             <div class="row">
 
                                 <div class="col-lg-4 col-md-4 col-sm-12 flat-img-box">
@@ -195,18 +201,17 @@
                                                         <i class="fas fa-vector-square"></i>
                                                         @{{ flat . details . rooms_quantity }}
                                                     </li>
+
+                                                    <li title="Euro a notte">
+                                                        <i class="fas fa-euro-sign"></i>
+                                                        @{{ flat . details . price_day }}
+                                                    </li>
                                                 </ul>
                                             </div>
 
                                             <div class="services d-flex flex-wrap">
                                                 <div v-for="service in flat.services">
                                                     @{{ service . service_name }}
-                                                </div>
-                                            </div>
-
-                                            <div class="flat-others-info-price">
-                                                <div>
-                                                    <strong>@{{ flat . details . price_day }}&euro;</strong>/notte
                                                 </div>
                                             </div>
                                         </div>
@@ -254,6 +259,11 @@
                                                         <i class="fas fa-vector-square"></i>
                                                         @{{ flat . details . rooms_quantity }}
                                                     </li>
+
+                                                    <li title="Euro a notte">
+                                                        <i class="fas fa-euro-sign"></i>
+                                                        @{{ flat . details . price_day }}
+                                                    </li>
                                                 </ul>
                                             </div>
 
@@ -262,23 +272,16 @@
                                                     @{{ service . service_name }}
                                                 </div>
                                             </div>
-
-                                            <div class="flat-others-info-price">
-                                                <div>
-                                                    <strong>@{{ flat . details . price_day }}&euro;</strong>/notte
-                                                </div>
-                                            </div>
                                         </div>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         {{-- end searched flat's results --}}
-                    </div>
                 </div>
 
                 <!-- map -->
-                <div class="col-lg-6 col-sm-12 bnb-mapCol">
+                <div class="col-xl-6 col-lg-12 bnb-mapCol">
                     <div class="bnb-map-container">
                         <div id="map-div"></div>
                     </div>

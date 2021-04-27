@@ -73,6 +73,10 @@ ul {
         z-index: -1;
 
         &.active {
+            @media screen and (max-width: 576px) {
+                height: 1000px;
+            }
+
             @media screen and (min-width: 576px) {
                 height: 1000px;
             }
@@ -127,6 +131,12 @@ ul {
                 height: 100%;
                 overflow-y: auto;
             }
+        }
+
+        .empty-search{
+            padding: 20px 0 250px;
+            border-bottom: 1px solid #ccc;
+            text-align: center;
         }
 
         h1 {
@@ -191,13 +201,13 @@ ul {
 
                         .flat-others-info {
                             &-quantities {
-                                font-size: 21px;
-                                margin: 30px;
+                                font-size: 18px;
+                                // margin: 15px;
                             }
 
                             .services{
                                 div{
-                                    margin: 0 15px 20px 0;
+                                    margin: 0 10px 5px 0;
                                     border: 1px solid #000;
                                     border-radius: 15px;
                                     text-align: center;
