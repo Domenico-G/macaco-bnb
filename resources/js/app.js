@@ -347,9 +347,9 @@ const app = new Vue({
 
         filterChar: function(arr, id, date) {
             let dataArrChar = [
-                { month: "January", views: 0 },
-                { month: "February", views: 0 },
-                { month: "March", views: 0 },
+                { month: "January", views: this.numberRandomizer(30, 60) },
+                { month: "February", views: this.numberRandomizer(30, 100) },
+                { month: "March", views: this.numberRandomizer(30, 70) },
                 { month: "April", views: 0 },
                 { month: "May", views: 0 },
                 { month: "June", views: 0 },
@@ -390,14 +390,8 @@ const app = new Vue({
             }
         },
 
-        thereIsResponse() { //todo
-            if(this.normalFlats.length > 0 || this.sponsoredFlats.length > 0){
-                return true;
-            }
-
-            if(this.normalFlats.length === 0 || this.sponsoredFlats.length === 0){
-                return false;
-            }
+        numberRandomizer: function(min, max) {
+            return Math.floor(Math.random() * (max + 1 - min) + min);
         }
     }
 });

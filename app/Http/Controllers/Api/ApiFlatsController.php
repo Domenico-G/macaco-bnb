@@ -37,6 +37,7 @@ class ApiFlatsController extends Controller
         $flats = Flat::where("visible", "=", 1)->get();
 
         $poiList = [];
+
         foreach ($flats as $flat) {
             $poi = [
                 "position" => [
@@ -134,6 +135,7 @@ class ApiFlatsController extends Controller
             "sponsoreds"=>$sponsoredFlats,
             "normals"=>$normalFlats
         ];
+
 
         return json_encode($arrFlats);
     }

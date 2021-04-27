@@ -11588,8 +11588,8 @@ div.carousel.slide.bnb-slide a.carousel-control-next.bnb-carouselInd {
   border: 1px solid #ccc;
   border-radius: 3px;
   max-height: 440px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
   background-color: #000;
 }
 

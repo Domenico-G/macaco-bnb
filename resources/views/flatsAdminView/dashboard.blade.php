@@ -19,12 +19,17 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <div class="row card-row">
+                <div class="row card-row flex-column-reverse">
+                    @php
+                        $userArray = array_reverse(auth()->user()->flats->toArray());
+                    @endphp
+
                     @foreach (auth()->user()->flats as $flat)
-                        <div class="card-box col-lg-12 ">
+                        <div class="card-box col-lg-12">
                             <div class="content-card row">
                                 <div class="img-card col-lg-5 col-md-12">
                                     <img src="{{ asset($flat->details->image) }}" alt="Card image cap">
+
                                     <div class="detais-views">
                                         <div class="message" type="button" data-toggle="modal"
                                             data-target="#messageModal{{ $flat->id }}"><i class="far fa-envelope"></i>
@@ -32,9 +37,9 @@
                                         <div class="chart-button" v-on:click="getChar({{ $flat->id }})" type="button"
                                             data-toggle="modal" data-target="#chartModal"><i class="fas fa-chart-line"></i>
                                         </div>
-
                                     </div>
                                 </div>
+
                                 <div class="card-text col-lg-6 col-md-12">
                                     <h5 class="card-title">{{ $flat->details->flat_title }}</h5>
                                     <hr>
@@ -57,24 +62,18 @@
                                         <a href="{{ route('flats.show', compact('flat')) }}"
                                             class="btn btn-dark">Visualizza</a>
                                         <a href="{{ route('admin.sponsor.create', compact('flat')) }}"
-                                            class="btn btn-dark">Sposnosrizza</a>
-                                        <button class="btn btn-dark" data-toggle="modal" data-target="#deleteModal"
+                                            class="btn btn-dark">Sponsorizza</a>
+                                        <button class="btn btn-dark" data-toggle="modal" data-target="#deleteModal{{ $flat->id }}"
                                             type="submit">
                                             Elimina
                                         </button>
-
-
-                                        {{-- <form action="{{ route('flats.destroy', compact('flat')) }}" method="POST">
-                                            @csrf
-                                            @method("DELETE")
-                                            <button class="btn btn-dark" type="submit">Elimina</button>
-                                        </form> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Delete Modal -->
-                        <div class="modal fade" id="deleteModal" aria-labelledby="exampleModalCenterTitle"
+                        <div class="modal fade" id="deleteModal{{ $flat->id }}" aria-labelledby="exampleModalCenterTitle"
                             aria-hidden="true">
                             <div class="modal-dialog modal-delete modal-dialog-centered" role="document">
                                 <div class="modal-content">

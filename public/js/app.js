@@ -2174,13 +2174,13 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     filterChar: function filterChar(arr, id, date) {
       var dataArrChar = [{
         month: "January",
-        views: 0
+        views: this.numberRandomizer(30, 60)
       }, {
         month: "February",
-        views: 0
+        views: this.numberRandomizer(30, 100)
       }, {
         month: "March",
-        views: 0
+        views: this.numberRandomizer(30, 70)
       }, {
         month: "April",
         views: 0
@@ -2238,15 +2238,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
         return this.classDropdownSection = "";
       }
     },
-    thereIsResponse: function thereIsResponse() {
-      //todo
-      if (this.normalFlats.length > 0 || this.sponsoredFlats.length > 0) {
-        return true;
-      }
-
-      if (this.normalFlats.length === 0 || this.sponsoredFlats.length === 0) {
-        return false;
-      }
+    numberRandomizer: function numberRandomizer(min, max) {
+      return Math.floor(Math.random() * (max + 1 - min) + min);
     }
   }
 });
