@@ -113,9 +113,7 @@
             <div class="form-group col-12">
                 <label for="description">Descrizione completa</label>
 
-                <textarea rows="5" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" placeholder="Inserisci una descrizione completa dell'appartamento">
-                    {{ isset($flat) ? $flat->details->description : '' }}
-                </textarea>
+                <textarea rows="5" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" placeholder="Inserisci una descrizione completa dell'appartamento">{{ isset($flat) ? $flat->details->description : '' }}</textarea>
 
                 <div class="invalid-feedback">
                     Inserire una descrizione

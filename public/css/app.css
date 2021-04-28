@@ -11965,6 +11965,25 @@ ul {
 
 .bnb-search .all-flats .flat .row .flat-img-box {
   height: 100%;
+  position: relative;
+}
+
+.bnb-search .all-flats .flat .row .flat-img-box .bnb-flatSponsoredTag {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  top: -1%;
+  right: 1%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  background: #000;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
 }
 
 .bnb-search .all-flats .flat .row .flat-img-box a img {

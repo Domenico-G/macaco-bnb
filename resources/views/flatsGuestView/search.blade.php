@@ -171,6 +171,10 @@
                                     <a :href="'/flats/' + flat.id">
                                         <img :src="flat.details.image" :alt="flat . details . flat_title">
                                     </a>
+
+                                    <div class=" bnb-flatSponsoredTag">
+                                        IN EVIDENZA
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-8 col-md-8 col-sm-12 flat-info">
