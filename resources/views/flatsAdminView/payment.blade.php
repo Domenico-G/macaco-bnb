@@ -173,10 +173,10 @@
                                 function(response) {
                                     if (response.success) {
                                         alert('Pagamento avvenuto con sucesso!');
-                                        location.reload();
                                     } else {
-                                        alert('Transazzione fallita!');
+                                        alert('Transazione fallita, riprova piu tardi!');
                                     }
+                                    location.reload();
                                 }, 'json');
                         });
                     });

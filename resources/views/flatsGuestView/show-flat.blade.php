@@ -26,7 +26,32 @@
             <div class="description col-md-12 col-lg-7 mt-2">
                 <div class="box-desecription-bnb">
                     <h5 class="mt-2">Descrizione appartamento</h5>
+
                     <p class="">{{ $flat->details->description }}</p>
+
+                    <div class="flat-others-info-quantities">
+                        <ul class="d-flex justify-content-around">
+                            <li title="Area in metri quadri">
+                                <i class="fas fa-home"></i>
+                                {{ $flat->details->area_sqm }}
+                            </li>
+
+                            <li title="Posti letto">
+                                <i class="fas fa-bed"></i>
+                                {{ $flat->details->beds_quantity }}
+                            </li>
+
+                            <li title="Stanze">
+                                <i class="fas fa-vector-square"></i>
+                                {{ $flat->details->rooms_quantity }}
+                            </li>
+
+                            <li title="Euro a notte">
+                                <i class="fas fa-euro-sign"></i>
+                                {{ $flat->details->price_day }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class=" box-service-bnb col-md-12 col-lg-5 mt-2">
