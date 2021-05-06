@@ -125,36 +125,4 @@
         <a class="carousel-control-next bnb-carouselInd" href="#carouselExampleIndicators " role="button" data-slide="next">
         </a>
     </div>
-
-    <div class="bnb-flatsContainerB">
-        {{-- titolo della sezione flat --}}
-        <div class="row">
-            <div class="container-fluid bnb-titleSection">
-                <h4>Tutte Le Offerte</h4>
-            </div>
-        </div>
-        {{-- tutti i flats --}}
-        <div class="container-fluid d-flex flex-wrap bnb-cardBoxAll">
-            <div class="d-flex flex-row-reverse">
-                @foreach ($normalFlats as $flat)
-                    <div class="bnb-card">
-                        <div class="bnb-imgContainer">
-                            <img class="bnb-imgCard" src="{{ asset($flat->details->image)}}" alt="Card image cap">
-                        </div>
-
-                        <div class=" bnb-flatTitleStrip">
-                            <h5 class="bnb-cardTitle">
-                                {{$flat->details->flat_title}}
-                            </h5>
-                        </div>
-                        <div class="bnb-buttonContainer">
-                            <a href="{{route('public.flats.show', ['flat'=>$flat->id])}}" class="btn btn-dark bnb-button" >
-                                Visualizza
-                            </a>
-                        </div>
-                    </div>
-                 @endforeach
-            </div>
-        </div>
-    </div>
 @endsection

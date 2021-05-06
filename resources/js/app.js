@@ -212,7 +212,6 @@ const app = new Vue({
 
         //funzione di tomtom per aggiugere i marker alla mappa
         addMarker: function(map){
-
             for (let x = 0; x < this.multiMarker.length; x++) {
                 const element = this.multiMarker[x];
                 const tt = window.tt;
@@ -292,7 +291,6 @@ const app = new Vue({
                     self.mapRendering();
                 });
         },
-
         getChar: function (id) {
             const self = this;
             axios
@@ -346,7 +344,6 @@ const app = new Vue({
                     });
                 });
         },
-
         filterChar: function(arr, id, date) {
             let dataArrChar = [
                 { month: "January", views: this.numberRandomizer(30, 60) },
@@ -381,7 +378,6 @@ const app = new Vue({
 
             return dataArrChar.map(item => item.views);
         },
-
         toggleDropdownSection: function() {
             if (this.classDropdownSection === "") {
                 return (this.classDropdownSection = "active");
@@ -391,9 +387,19 @@ const app = new Vue({
                 return (this.classDropdownSection = "");
             }
         },
+        toggleCloseSection: function() {
+            if (this.classDropdownSection === "active") {
+                return (this.classDropdownSection = "");
+            }
+        },
 
         numberRandomizer: function(min, max) {
             return Math.floor(Math.random() * (max + 1 - min) + min);
+        },
+
+        showMap: function(){
+            let mapIcon= document.getElementsByClassName('mapboxgl-ctrl-fullscreen')[0];
+            mapIcon.click();
         }
     }
 });

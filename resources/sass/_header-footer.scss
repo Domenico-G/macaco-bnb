@@ -145,28 +145,23 @@
         }//end bnb-container
     }//end nav section
     main {
-
         max-width: 100%;
         min-width: 360px;
-        max-height: calc(100vh - 90px);
-        overflow-y: scroll;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
     }
     footer {
-        background: linear-gradient(-45deg, #000000, #1316d8e5, #10d3c35d, #ffffff);
-        background-size: 200% 200%;
-	    animation: gradient 15s ease infinite;
-        overflow: hidden;
+
         position: fixed;
         width : 100vw;
         max-width: 100%;
         min-width: 360px;//limite minimo oltre il quale la pagina non si rimpicciolirà più
-        height: 10px;
+        height: 60px;
         bottom: 0px;
         z-index: 1;
-        border-top: 4px solid $darkGrayFoot;
-        border-bottom: 4px solid $darkGrayFoot;
+        background-color: $darkGrayFoot;
         .bnb-container {
-            display: none;
+            display: flex;
             height: 100%;
             // display: flex;
             justify-content: center;
@@ -198,19 +193,8 @@
                 }
             }
         }//end bnb-container
-        &:hover {
-            // background-color: $darkGrayFoot;
-            border: none;
-            height: 60px;
-            transition: 2s;
-            background: linear-gradient($darkGrayFoot,$darkGrayFoot,$darkGrayFoot,$darkGrayFoot);
-            background-size: 200% 200%;
-	        animation: gradient 1s ease infinite;
-        }
-        &:hover .bnb-container{
-            display: flex;
 
-        }
+
     }//end footer
 }//end #app
 

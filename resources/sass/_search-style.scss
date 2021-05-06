@@ -19,6 +19,25 @@ ul {
 
 //fine provvisorie e utilities da separare
 .bnb-search {
+    .show-map-button {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        bottom: 67px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        background-color: #00000081;
+        border-radius: 10px;
+        padding: 0px 10px;
+        &:hover {
+            transition: 2s;
+            background-color: #000;
+        }
+        @media screen and (max-width: 1199px) {
+            display: inline-block;
+        }
+    }
     .search-bar {
         padding-top: 15px;
 
@@ -115,7 +134,7 @@ ul {
     }
 
     .all-flats{
-        height: calc(100vh - 175px);
+        height: calc(100vh - 220px);
         overflow: hidden;
 
         .sponsored-flats{
@@ -134,7 +153,7 @@ ul {
         }
 
         .empty-search{
-            padding: 20px 0 250px;
+            padding: 20px 0 200px;
             border-bottom: 1px solid #ccc;
             text-align: center;
         }

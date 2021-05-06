@@ -2243,8 +2243,17 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
         return this.classDropdownSection = "";
       }
     },
+    toggleCloseSection: function toggleCloseSection() {
+      if (this.classDropdownSection === "active") {
+        return this.classDropdownSection = "";
+      }
+    },
     numberRandomizer: function numberRandomizer(min, max) {
       return Math.floor(Math.random() * (max + 1 - min) + min);
+    },
+    showMap: function showMap() {
+      var mapIcon = document.getElementsByClassName('mapboxgl-ctrl-fullscreen')[0];
+      mapIcon.click();
     }
   }
 });

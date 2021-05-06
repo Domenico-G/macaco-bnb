@@ -3,16 +3,17 @@
 @section('title', 'Cerca un appartamento')
 
 @section('content')
+
+
     <div class="container-fluid bnb-search">
         {{-- searchbar --}}
         {{-- search input --}}
         <div class="row">
             <div class="col-12 d-flex justify-content-center align-items-center search-bar">
                 <div class="search-input d-flex justify-content-between align-items-center">
-                    <input v-model="address" v-on:keyup.enter="getFlats()" type="text"
+                    <input v-model="address" v-on:keyup.enter="getFlats(); toggleCloseSection()" type="text"
                         placeholder="Dove ti porta il cuore?">
-
-                    <i class="fas fa-search" v-on:click="getFlats()"></i>
+                    <i class="fas fa-search" v-on:click="getFlats(); toggleCloseSection()"></i>
                 </div>
 
                 <div v-on:click="toggleDropdownSection()" class="drop-section bnb-btn" title="Avanzate">
@@ -41,7 +42,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <label for="raggio-ricerca">Raggio di ricerca in km</label>
 
-                        <input id="raggio-ricerca" v-model="distanceKm" type="range" min="2" step="2" max="80">
+                        <input id="raggio-ricerca" v-model="distanceKm" type="range" min="2" step="2" max="80" v-on:click="getFlats()">
 
                         <span>@{{ distanceKm }}</span>
                     </div>
@@ -66,8 +67,9 @@
                         </div>
                     </div>
 
-                    <div v-on:click="toggleDropdownSection()" class="col-12 lift-section bnb-btn">
+                    <div v-on:click="getFlats();toggleCloseSection()" class="col-12 lift-section bnb-btn">
                         <i class="fas fa-angle-up"></i>
+                        <div>Applica Filtri</div>
                     </div>
                 </div>
             </div>
@@ -292,6 +294,9 @@
                 </div>
             </div>
             {{-- end results section --}}
+        </div>
+        <div class="show-map-button" v-on:click="showMap()">
+            <i class="fas fa-map"></i> Map
         </div>
 
     </div>
