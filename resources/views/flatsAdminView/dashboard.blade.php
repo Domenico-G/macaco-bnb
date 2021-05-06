@@ -21,7 +21,11 @@
             <div class="col-lg-12">
                 <div class="row card-row flex-column-reverse">
                     @php
-                        $userArray = array_reverse(auth()->user()->flats->toArray());
+                        $userArray = array_reverse(
+                            auth()
+                                ->user()
+                                ->flats->toArray(),
+                        );
                     @endphp
 
                     @foreach (auth()->user()->flats as $flat)
@@ -58,13 +62,13 @@
                                     </div>
                                     <div class="button-container">
                                         <a href="{{ route('flats.edit', compact('flat')) }}"
-                                            class="btn btn-dark">Modifica</a>
+                                            class="btn btn-dark edit">Modifica</a>
                                         <a href="{{ route('flats.show', compact('flat')) }}"
-                                            class="btn btn-dark">Visualizza</a>
+                                            class="btn btn-dark show">Visualizza</a>
                                         <a href="{{ route('admin.sponsor.create', compact('flat')) }}"
-                                            class="btn btn-dark">Sponsorizza</a>
-                                        <button class="btn btn-dark" data-toggle="modal" data-target="#deleteModal{{ $flat->id }}"
-                                            type="submit">
+                                            class="btn btn-dark sponsor">Sponsorizza</a>
+                                        <button class="btn btn-dark delete" data-toggle="modal"
+                                            data-target="#deleteModal{{ $flat->id }}" type="submit">
                                             Elimina
                                         </button>
                                     </div>
@@ -73,12 +77,13 @@
                         </div>
 
                         <!-- Delete Modal -->
-                        <div class="modal fade" id="deleteModal{{ $flat->id }}" aria-labelledby="exampleModalCenterTitle"
-                            aria-hidden="true">
+                        <div class="modal fade" id="deleteModal{{ $flat->id }}"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-delete modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title mx-auto" id="exampleModalLongTitle">Sei Sicuro di voler eliminare
+                                        <h5 class="modal-title mx-auto" id="exampleModalLongTitle">Sei Sicuro di voler
+                                            eliminare
                                             l'appartamento?</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -88,9 +93,8 @@
                                         <form action="{{ route('flats.destroy', compact('flat')) }}" method="POST">
                                             @csrf
                                             @method("DELETE")
-                                            <button class="btn btn-dark" type="submit">Elimina</button>
+                                            <button class="btn btn-dark delete-modal" type="submit">Elimina</button>
                                         </form>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
                                     </div>
                                 </div>
                             </div>
@@ -107,8 +111,8 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="card">
-                                            <h5 class="card-header">Questo appartameno ha ricevuto i seguenti messaggi:</h5>
+                                        <h5 class="card-header">Questo appartameno ha ricevuto i seguenti messaggi:</h5>
+                                        <div class="card flex-column-reverse ">
                                             @foreach ($flat->messages as $message)
                                                 <div class="card-body">
                                                     <h5 class="card-title">{{ $message->sender_name }}

@@ -9,6 +9,12 @@
 
         button {
             margin: auto 0px;
+
+            &:hover {
+                background: #0086b3;
+                color: #fff;
+                font-weight: 600;
+            }
         }
     }
 }
@@ -49,6 +55,71 @@
         .button-container {
             display: flex;
             justify-content: space-between;
+
+            .btn {
+                border: 2px solid #343A40;
+
+            }
+
+            .edit:hover {
+                background: #fff;
+                color: #248f24;
+                border: 2px solid #248f24;
+                font-weight: 600;
+            }
+
+            .show:hover {
+                background: #fff;
+                color: #0059b3;
+                border: 2px solid #0059b3;
+                font-weight: 600;
+            }
+
+            .sponsor:hover {
+                background: gold;
+                color: #3d445a;
+                border: 2px solid gold;
+                font-weight: 600;
+            }
+
+            .delete:hover {
+                background: #b30000;
+                color: #fff;
+                border: 2px solid #b30000;
+                font-weight: 600;
+            }
+
+            @media screen and (max-width: 1024px) {
+                .edit {
+                    background: #fff;
+                    color: #248f24;
+                    border: 2px solid #248f24;
+                    font-weight: 600;
+                }
+
+                .show {
+                    background: #fff;
+                    color: #0059b3;
+                    border: 2px solid #0059b3;
+                    font-weight: 600;
+                }
+
+                .sponsor {
+                    background: gold;
+                    color: #3d445a;
+                    border: 2px solid gold;
+                    font-weight: 600;
+                }
+
+                .delete {
+                    background: #b30000;
+                    color: #fff;
+                    border: 2px solid #b30000;
+                    font-weight: 600;
+                }
+            }
+
+
         }
 
     }
@@ -83,7 +154,7 @@
             font-size: 20px;
             transition: 0.3s;
 
-            &:hover{
+            &:hover {
                 opacity: 1;
             }
 
@@ -104,17 +175,24 @@
     }
 }
 
-.modal-dialog{
+.modal-dialog {
     max-width: 1000px;
 }
 
 .modal-delete {
-   max-width: 500px;
+    max-width: 500px;
+
+}
+
+.delete-modal:hover {
+    background: #b30000;
+    color: #fff;
+    font-weight: 600;
 }
 
 .modal {
 
-    .card-body{
-        border:1px solid rgba(0, 0, 0, 0.125);
+    .card-body {
+        border: 1px solid rgba(0, 0, 0, 0.125);
     }
 }
