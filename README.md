@@ -96,3 +96,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - impostazione grafica delle cards
 - creazione e applicazione favicon
 - impostazione slider nel main
+# macaco-bnb-da
